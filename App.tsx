@@ -1,10 +1,10 @@
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import { SafeAreaView, Text } from 'react-native';
 
 function App() {
   return (
     <SafeAreaView>
-      <Text>Tex</Text>
+      <Text className="text-red-400">Text</Text>
     </SafeAreaView>
   );
 }
