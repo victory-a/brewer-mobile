@@ -490,6 +490,7 @@
 				DEVELOPMENT_TEAM = 8Y9TCQ44QJ;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = brewer/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Brewer;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -523,6 +524,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8Y9TCQ44QJ;
 				INFOPLIST_FILE = brewer/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Brewer;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -618,6 +620,8 @@
 					"$(inherited)",
 					"-Wl",
 					"-ld_classic",
+					"-Wl",
+					"-ld_classic",
 					"-Wl -ld_classic ",
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
@@ -691,6 +695,8 @@
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
+					"-Wl",
+					"-ld_classic",
 					"-Wl",
 					"-ld_classic",
 					"-Wl -ld_classic ",
