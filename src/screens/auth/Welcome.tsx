@@ -2,7 +2,7 @@ import React from 'react';
 import { ImageBackground, View, Text, SafeAreaView } from 'react-native';
 import { SolidButton } from 'src/components/formElements/Button';
 
-const bg = require('../../images/coffee-bg.png');
+const bg = require('../../../assets/images/coffee-bg.png');
 
 const Welcome = () => {
   return (

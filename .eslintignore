@@ -6,3 +6,8 @@ dist
 /android
 /ios
 /.bundle
+
+.eslintrc.js
+ios/
+android/
+*.config.js

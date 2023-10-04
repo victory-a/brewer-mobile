@@ -1,3 +1,20 @@
 {
   "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "lib": ["es2017"],
+    "jsx": "react-native",
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "src/*": ["src/*"],
+      "components/*": ["./src/components/*"],
+      "screens/*": ["./src/screens/*"],
+      "navigation/*": ["./src/navigation/*"]
+    }
+  },
+  "include": ["./.eslintrc.json", "src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]
 }
