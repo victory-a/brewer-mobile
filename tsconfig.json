@@ -15,6 +15,6 @@
       "navigation/*": ["./src/navigation/*"]
     }
   },
-  "include": ["./.eslintrc.json", "src/**/*.ts", "src/**/*.tsx"],
+  "include": ["./.eslintrc.json", "App.tsx", "src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]
 }
