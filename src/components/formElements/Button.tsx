@@ -7,7 +7,7 @@ interface ISolidButton {
   children: React.ReactNode;
 }
 export const SolidButton = ({
-  buttonclassName = 'bg-primary rounded-lg py-3 w-full max-w-[300px]',
+  buttonclassName = 'bg-primary rounded-lg py-3 w-full',
   labelClassName = 'text-white text-center text-base font-semibold',
   children
 }: ISolidButton) => {

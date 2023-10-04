@@ -1,6 +1,7 @@
 import React from 'react';
-import { ImageBackground, View, Text, SafeAreaView } from 'react-native';
+import { ImageBackground, View, SafeAreaView } from 'react-native';
 import { SolidButton } from 'src/components/formElements/Button';
+import { Text } from 'src/components/shared/Text';
 
 const bg = require('../../../assets/images/coffee-bg.png');
 
@@ -11,15 +12,15 @@ const Welcome = () => {
 
       <View className="flex-[2] w-full mx-auto">
         <View className="flex-[2] w-full max-w-[280px] mx-auto">
-          <Text className="text-white font-Sora-regular text-center text-[30px] w-full mt-7">
+          <Text className="text-center text-[30px] leading-[30.6px] w-full mt-7">
             Coffee so good, your taste buds will love it.
           </Text>
-          <Text className="mt-2 text-dark-grey text-center">
+          <Text className="mt-2 text-base text-dark-grey text-center">
             The best grain, the finest roast, the powerful flavor.
           </Text>
         </View>
 
-        <SafeAreaView className="items-center w-full mt-auto">
+        <SafeAreaView className="items-center w-[85%] mt-auto mx-auto">
           <SolidButton>Get Started</SolidButton>
         </SafeAreaView>
       </View>
