@@ -11,7 +11,8 @@ module.exports = {
           src: './src',
           components: './src/components',
           screens: './src/screens',
-          navigation: './src/navigation'
+          navigation: './src/navigation',
+          styles: './src/styles'
         }
       }
     ]

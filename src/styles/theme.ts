@@ -8,3 +8,8 @@ export const colors = {
   white: '#fff',
   black: '#000'
 };
+
+export const fonts = {
+  fontFamilyRegular: 'Sora-Regular',
+  fontFamilyBold: 'Sora-Regular_Bold'
+};
