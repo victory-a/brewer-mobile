@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, Pressable } from 'react-native';
+import { Text, Pressable, PressableProps } from 'react-native';
 
-interface ISolidButton {
+interface ISolidButton extends PressableProps {
   buttonclassName?: string;
   labelClassName?: string;
   children: React.ReactNode;
@@ -9,10 +9,11 @@ interface ISolidButton {
 export const SolidButton = ({
   buttonclassName = 'bg-primary rounded-lg py-3 w-full',
   labelClassName = 'text-white text-center text-base font-semibold',
-  children
+  children,
+  ...props
 }: ISolidButton) => {
   return (
-    <Pressable className={buttonclassName}>
+    <Pressable className={buttonclassName} {...props}>
       <Text className={labelClassName}>{children}</Text>
     </Pressable>
   );

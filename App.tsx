@@ -7,11 +7,7 @@ function App() {
     SplashScreen.hide();
   }, []);
 
-  return (
-    <>
-      <RootNavigator />
-    </>
-  );
+  return <RootNavigator />;
 }
 
 export default App;

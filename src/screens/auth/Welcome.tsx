@@ -1,11 +1,15 @@
 import React from 'react';
 import { ImageBackground, View, SafeAreaView } from 'react-native';
+
+import { useAuthNavigation } from 'src/hooks/useTypedNavigation';
 import { SolidButton } from 'src/components/formElements/Button';
 import { Text } from 'src/components/shared/Text';
 
 const bg = require('../../../assets/images/coffee-bg.png');
 
-const Welcome = () => {
+export const Welcome = () => {
+  const { navigate } = useAuthNavigation();
+
   return (
     <View className="flex-1 bg-black">
       <ImageBackground source={bg} className="flex-[3] bg-black opacity-70" />
@@ -21,11 +25,9 @@ const Welcome = () => {
         </View>
 
         <SafeAreaView className="items-center w-[85%] mt-auto mx-auto">
-          <SolidButton>Get Started</SolidButton>
+          <SolidButton onPress={() => navigate('Login')}>Get Started</SolidButton>
         </SafeAreaView>
       </View>
     </View>
   );
 };
-
-export default Welcome;
