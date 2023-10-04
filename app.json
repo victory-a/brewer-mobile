@@ -1,4 +1,5 @@
 {
   "name": "brewer",
-  "displayName": "brewer"
+  "displayName": "brewer",
+  "jsEngine": "jsc"
 }

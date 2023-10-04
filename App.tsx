@@ -1,6 +1,6 @@
 import React from 'react';
-import { SafeAreaView, Text } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
+import { RootNavigator } from 'navigation/RootNavigator';
 
 function App() {
   React.useEffect(() => {
@@ -8,9 +8,9 @@ function App() {
   }, []);
 
   return (
-    <SafeAreaView>
-      <Text className="text-red-400">Holla Holla we popping bottles</Text>
-    </SafeAreaView>
+    <>
+      <RootNavigator />
+    </>
   );
 }
 
