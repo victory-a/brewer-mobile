@@ -13,7 +13,8 @@ module.exports = {
           screens: './src/screens',
           hooks: './src/hooks',
           navigation: './src/navigation',
-          styles: './src/styles'
+          styles: './src/styles',
+          utils: './src/utils'
         }
       }
     ]

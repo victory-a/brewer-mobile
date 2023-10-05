@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Welcome } from 'src/screens/auth/Welcome';
 import { Register } from 'src/screens/auth/Register';
 import { Login } from 'src/screens/auth/Login';
+import { ValidateOTP } from 'src/screens/auth/ValidateOTP';
 
 const defaultOptions = {
   headerShown: false,
@@ -28,6 +29,11 @@ const AuthNavigator = () => {
       <Stack.Screen
         name="Login"
         component={Login}
+        options={{ ...defaultOptions, headerShown: false }}
+      />
+      <Stack.Screen
+        name="Validate-OTP"
+        component={ValidateOTP}
         options={{ ...defaultOptions, headerShown: false }}
       />
     </Stack.Navigator>

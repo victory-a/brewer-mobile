@@ -12,7 +12,10 @@ module.exports = {
         'dark-lemon-green': '#2F4B4E',
         'sea-shell': '#FFFCFB',
         'white-color': '#ddd',
-        zambezi: '#5F5F5F'
+        'gray-67': '#ABABAB',
+        zambezi: '#5F5F5F',
+        white: '#fff',
+        black: '#000'
       },
       fontFamily: {
         'Sora-regular': ['Sora-Regular', 'sans']

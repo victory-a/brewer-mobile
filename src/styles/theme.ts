@@ -7,9 +7,11 @@ export const colors = {
   'dark-lemon-green': '#2F4B4E',
   'sea-shell': '#FFFCFB',
   'white-color': '#ddd',
+  'gray-67': '#ABABAB',
   zambezi: '#5F5F5F',
   white: '#fff',
-  black: '#000'
+  black: '#000',
+  transparent: 'transparent'
 };
 
 export const fonts = {

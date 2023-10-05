@@ -7,13 +7,17 @@ import {
   Keyboard
 } from 'react-native';
 
+import { useAuthNavigation } from 'src/hooks/useTypedNavigation';
+
 import { Text } from 'src/components/shared/Text';
 import { ContainerView } from 'src/components/shared/ContainerView';
 import { TextInput } from 'src/components/formElements/TextInput';
-import { SolidButton } from 'src/components/formElements/Button';
+import { SolidButton, TextButton } from 'src/components/formElements/Button';
 import { PhoneInput } from 'src/components/formElements/PhoneInput';
 
 export const Register = () => {
+  const { navigate } = useAuthNavigation();
+
   const [formValues, setFormValues] = React.useState({
     fullName: '',
     email: '',
@@ -58,7 +62,12 @@ export const Register = () => {
                 keyboardType="email-address"
               />
             </View>
-            <SolidButton className="mt-6">Register</SolidButton>
+            <SolidButton className="mt-6" onPress={() => navigate('Validate-OTP')}>
+              Register
+            </SolidButton>
+            <TextButton onPress={() => navigate('Login')} className="mt-8">
+              Already have an account? Login
+            </TextButton>
           </ContainerView>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
