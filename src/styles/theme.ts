@@ -5,6 +5,7 @@ export const colors = {
   'mid-gray': '#303336',
   'dark-grey': '#A9A9A9',
   'dark-lemon-green': '#2F4B4E',
+  'sea-shell': '#FFFCFB',
   white: '#fff',
   black: '#000'
 };

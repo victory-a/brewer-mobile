@@ -16,7 +16,7 @@ export const Welcome = () => {
 
       <View className="flex-[2] w-full mx-auto">
         <View className="flex-[2] w-full max-w-[280px] mx-auto">
-          <Text className="text-center text-[30px] leading-[30.6px] w-full mt-7">
+          <Text className="text-white text-center text-[30px] leading-[30.6px] w-full mt-7">
             Coffee so good, your taste buds will love it.
           </Text>
           <Text className="mt-2 text-base text-dark-grey text-center">
@@ -25,7 +25,7 @@ export const Welcome = () => {
         </View>
 
         <SafeAreaView className="items-center w-[85%] mt-auto mx-auto">
-          <SolidButton onPress={() => navigate('Login')}>Get Started</SolidButton>
+          <SolidButton onPress={() => navigate('Register')}>Get Started</SolidButton>
         </SafeAreaView>
       </View>
     </View>

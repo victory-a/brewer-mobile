@@ -9,7 +9,8 @@ module.exports = {
         'light-gray': '#808080',
         'mid-gray': '#303336',
         'dark-grey': '#A9A9A9',
-        'dark-lemon-green': '#2F4B4E'
+        'dark-lemon-green': '#2F4B4E',
+        'sea-shell': '#FFFCFB'
       },
       fontFamily: {
         'Sora-regular': ['Sora-Regular', 'sans']
