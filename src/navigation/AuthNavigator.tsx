@@ -38,7 +38,7 @@ const AuthNavigator = () => {
         options={{
           ...defaultOptions,
           headerShown: true,
-          headerTintColor: colors['dark-lemon-green']
+          headerTintColor: colors.primary
         }}
       />
     </Stack.Navigator>
