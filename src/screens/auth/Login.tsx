@@ -11,15 +11,17 @@ import { Text } from 'src/components/shared/Text';
 import { ContainerView } from 'src/components/shared/ContainerView';
 import { TextInput } from 'src/components/formElements/TextInput';
 import { SolidButton } from 'src/components/formElements/Button';
+import Checkbox from 'src/components/formElements/Checkbox';
 
 export const Login = () => {
   const [formValues, setFormValues] = React.useState({
     fullName: '',
-    email: ''
+    email: '',
+    rememberUser: false
   });
 
   function handleChange(field: string) {
-    return (value: string | number) => {
+    return (value: string | number | boolean) => {
       setFormValues((current) => ({ ...current, [field]: value }));
     };
   }
@@ -29,7 +31,7 @@ export const Login = () => {
       <KeyboardAvoidingView behavior="padding">
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <ContainerView>
-            <Text className="mt-8 text-2xl font-semibold text-dark-lemon-green">Login</Text>
+            <Text className="mt-12 text-2xl font-semibold text-dark-lemon-green">Login</Text>
 
             {/* Form Container */}
             <View className="mt-8">
@@ -47,6 +49,12 @@ export const Login = () => {
                 onChangeText={handleChange('email')}
                 returnKeyType="done"
                 keyboardType="email-address"
+              />
+
+              <Checkbox
+                rightText="Remember me"
+                onClick={() => handleChange('rememberUser')(!formValues.rememberUser)}
+                isChecked={formValues.rememberUser}
               />
             </View>
             <SolidButton className="mt-6">Register</SolidButton>

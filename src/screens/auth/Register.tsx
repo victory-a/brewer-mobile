@@ -31,7 +31,7 @@ export const Register = () => {
       <KeyboardAvoidingView behavior="padding">
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <ContainerView>
-            <Text className="mt-8 text-2xl font-semibold text-dark-lemon-green">Register</Text>
+            <Text className="mt-12 text-2xl font-semibold text-dark-lemon-green">Register</Text>
 
             {/* Form Container */}
             <View className="mt-8">
@@ -40,14 +40,14 @@ export const Register = () => {
                 value={formValues.fullName}
                 placeholder="Adan Turan"
                 onChangeText={handleChange('fullName')}
-                returnKeyType="next"
+                returnKeyType="done"
               />
               <PhoneInput
                 label="Phone Number"
                 value={formValues.mobile}
                 placeholder="+234 812 345 6789"
                 onChangeText={handleChange('mobile')}
-                returnKeyType="next"
+                returnKeyType="done"
               />
               <TextInput
                 label="Email"

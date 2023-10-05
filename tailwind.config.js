@@ -11,7 +11,8 @@ module.exports = {
         'dark-grey': '#A9A9A9',
         'dark-lemon-green': '#2F4B4E',
         'sea-shell': '#FFFCFB',
-        'white-color': '#ddd'
+        'white-color': '#ddd',
+        zambezi: '#5F5F5F'
       },
       fontFamily: {
         'Sora-regular': ['Sora-Regular', 'sans']
