@@ -17,7 +17,7 @@ import { SolidButton, TextButton } from 'components/formElements/Button';
 import { ContainerView } from 'src/components/shared/ContainerView';
 
 export function ValidateOTP() {
-  const timer = useCountDown(10);
+  const timer = useCountDown(60);
   const parsedTime = parseTimeSecInMinsAndSec(timer);
 
   const [OTP, setOTP] = React.useState('');
