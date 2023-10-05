@@ -19,7 +19,7 @@ export const Register = () => {
   const { navigate } = useAuthNavigation();
 
   const [formValues, setFormValues] = React.useState({
-    fullName: '',
+    username: '',
     email: '',
     mobile: ''
   });
@@ -40,10 +40,10 @@ export const Register = () => {
             {/* Form Container */}
             <View className="mt-8">
               <TextInput
-                label="Full Name"
-                value={formValues.fullName}
-                placeholder="Adan Turan"
-                onChangeText={handleChange('fullName')}
+                label="Username"
+                value={formValues.username}
+                placeholder="Adnan"
+                onChangeText={handleChange('username')}
                 returnKeyType="done"
               />
               <PhoneInput
@@ -52,11 +52,12 @@ export const Register = () => {
                 placeholder="+234 812 345 6789"
                 onChangeText={handleChange('mobile')}
                 returnKeyType="done"
+                keyboardType="phone-pad"
               />
               <TextInput
                 label="Email"
                 value={formValues.email}
-                placeholder="adanturan@emil.com"
+                placeholder="adanan@example.com"
                 onChangeText={handleChange('email')}
                 returnKeyType="done"
                 keyboardType="email-address"

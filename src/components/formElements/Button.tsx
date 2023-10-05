@@ -1,5 +1,7 @@
 import React from 'react';
-import { Text, Pressable, PressableProps } from 'react-native';
+import { Pressable, PressableProps } from 'react-native';
+
+import { Text } from '../shared/Text';
 
 interface ISolidButton extends PressableProps {
   buttonclassName?: string;

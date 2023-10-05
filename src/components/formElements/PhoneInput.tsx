@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, TextInput as NativeTextInput, TextInputProps } from 'react-native';
+import { View, TextInput as NativeTextInput, TextInputProps } from 'react-native';
 
+import { Text } from '../shared/Text';
 import { colors } from 'src/styles/theme';
 
 interface IPhoneInput extends TextInputProps {

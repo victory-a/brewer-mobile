@@ -20,7 +20,7 @@ export const Login = () => {
   const { navigate } = useAuthNavigation();
 
   const [formValues, setFormValues] = React.useState({
-    fullName: '',
+    username: '',
     email: '',
     rememberUser: false
   });
@@ -41,16 +41,16 @@ export const Login = () => {
             {/* Form Container */}
             <View className="mt-8">
               <TextInput
-                label="Full Name"
-                value={formValues.fullName}
-                placeholder="Adan Turan"
-                onChangeText={handleChange('fullName')}
+                label="Username"
+                value={formValues.username}
+                placeholder="Adnan"
+                onChangeText={handleChange('username')}
                 returnKeyType="next"
               />
               <TextInput
                 label="Email"
                 value={formValues.email}
-                placeholder="adanturan@emil.com"
+                placeholder="adanan@example.com"
                 onChangeText={handleChange('email')}
                 returnKeyType="done"
                 keyboardType="email-address"

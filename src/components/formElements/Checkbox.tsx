@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import CheckBox from 'react-native-check-box';
-import { colors } from 'src/styles/theme';
+import { colors, fonts } from 'src/styles/theme';
 
 interface ICheckBox {
   onClick: () => void;
@@ -28,6 +28,8 @@ export default Checkbox;
 
 const styles = StyleSheet.create({
   label: {
-    color: colors['dark-lemon-green']
+    color: colors['dark-lemon-green'],
+    fontFamily: fonts.fontFamilyRegular,
+    fontSize: 14
   }
 });
