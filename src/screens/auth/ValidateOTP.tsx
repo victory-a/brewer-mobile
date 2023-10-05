@@ -22,8 +22,6 @@ export function ValidateOTP() {
 
   const [OTP, setOTP] = React.useState('');
 
-  console.log({ OTP });
-
   function resendOTP() {}
 
   return (
@@ -31,7 +29,7 @@ export function ValidateOTP() {
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <ContainerView>
-            <Text className="mt-12 text-2xl font-semibold text-dark-lemon-green">Enter OTP</Text>
+            <Text className="mt-4 text-2xl font-semibold text-dark-lemon-green">Enter OTP</Text>
             <Text className="mt-4 text-sm text-dark-lemon-green">
               Enter the verification code sent to your email or mobile number
             </Text>

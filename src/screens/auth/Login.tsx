@@ -63,10 +63,10 @@ export const Login = () => {
             </View>
 
             <SolidButton className="mt-6" onPress={() => navigate('Validate-OTP')}>
-              Register
+              Login
             </SolidButton>
 
-            <TextButton onPress={() => navigate('Register')} className="mt-8">
+            <TextButton onPress={() => navigate('Register')} className="mt-6">
               Don&apos;t have an account? Register
             </TextButton>
           </ContainerView>

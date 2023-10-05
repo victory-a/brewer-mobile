@@ -65,7 +65,7 @@ export const Register = () => {
             <SolidButton className="mt-6" onPress={() => navigate('Validate-OTP')}>
               Register
             </SolidButton>
-            <TextButton onPress={() => navigate('Login')} className="mt-8">
+            <TextButton onPress={() => navigate('Login')} className="mt-6">
               Already have an account? Login
             </TextButton>
           </ContainerView>

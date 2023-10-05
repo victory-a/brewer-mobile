@@ -5,6 +5,7 @@ import { Welcome } from 'src/screens/auth/Welcome';
 import { Register } from 'src/screens/auth/Register';
 import { Login } from 'src/screens/auth/Login';
 import { ValidateOTP } from 'src/screens/auth/ValidateOTP';
+import { colors } from 'src/styles/theme';
 
 const defaultOptions = {
   headerShown: false,
@@ -34,7 +35,11 @@ const AuthNavigator = () => {
       <Stack.Screen
         name="Validate-OTP"
         component={ValidateOTP}
-        options={{ ...defaultOptions, headerShown: false }}
+        options={{
+          ...defaultOptions,
+          headerShown: true,
+          headerTintColor: colors['dark-lemon-green']
+        }}
       />
     </Stack.Navigator>
   );
