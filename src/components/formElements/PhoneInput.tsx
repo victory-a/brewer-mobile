@@ -12,10 +12,10 @@ export function PhoneInput({ label, ...props }: IPhoneInput) {
   const phoneInputRef = React.useRef<NativeTextInput | null>(null);
 
   return (
-    <Pressable className="w-full mb-4" onPress={() => phoneInputRef?.current?.focus()}>
+    <Pressable className="mb-4" onPress={() => phoneInputRef?.current?.focus()}>
       {label ? <Text className="mb-1 text-sm text-dark-lemon-green">{label}</Text> : null}
       <View
-        className="w-full flex-row border-white-color bg-sea-shell rounded-[4px] pr-[0.5px] pl-2"
+        className="flex-row border-white-color bg-sea-shell rounded-[4px] pr-[0.5px] pl-2"
         style={{ borderWidth: 1, borderRightWidth: 1 }}
       >
         <View className="flex-row items-center">
