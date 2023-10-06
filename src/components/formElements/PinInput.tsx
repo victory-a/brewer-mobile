@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   textInputStyle: {
     backgroundColor: colors['sea-shell'],
     borderRadius: 8,
-    color: colors.primary,
+    color: colors['mid-gray'],
     fontSize: 16,
     height: 48,
     width: 48,

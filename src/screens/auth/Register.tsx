@@ -49,7 +49,7 @@ export const Register = () => {
               <PhoneInput
                 label="Phone Number"
                 value={formValues.mobile}
-                placeholder="+234 812 345 6789"
+                placeholder="812 345 6789"
                 onChangeText={handleChange('mobile')}
                 returnKeyType="done"
                 keyboardType="phone-pad"
