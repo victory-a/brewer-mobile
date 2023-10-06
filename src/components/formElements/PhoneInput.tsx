@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, TextInput as NativeTextInput, TextInputProps, Pressable } from 'react-native';
-import { NGFlag } from '../../../assets/icons/NGFlag';
 
 import { Text } from '../shared/Text';
 import { colors } from 'src/styles/theme';
+import { NGFlag } from '../Icons';
 
 interface IPhoneInput extends TextInputProps {
   label?: string;

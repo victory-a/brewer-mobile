@@ -7,10 +7,11 @@ type IconProps = {
   color?: string;
 };
 
-export const TestIcon: React.FC<IconProps> = ({ width = 40, height = 40, color = '' }) => {
+export const NGFlag: React.FC<IconProps> = ({ width = 18, height = 20, color = '' }) => {
   return (
-    <Svg width={width} height={height} fill={color}>
-      <Path></Path>
+    <Svg width={width} height={height} fill={color} viewBox="0 0 6 3" style={{ opacity: 0.8 }}>
+      <Path fill="#008751" d="M0 0h6v3H0z" />
+      <Path fill="#FFF" d="M2 0h2v3H2z" />
     </Svg>
   );
 };
