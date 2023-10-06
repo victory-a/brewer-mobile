@@ -15,14 +15,21 @@ import { Text } from 'src/components/shared/Text';
 import PinInput from 'components/formElements/PinInput';
 import { SolidButton, TextButton } from 'components/formElements/Button';
 import { ContainerView } from 'src/components/shared/ContainerView';
+import { useAuth } from 'src/context/AuthContext';
 
 export function ValidateOTP() {
   const timer = useCountDown(60);
   const parsedTime = parseTimeSecInMinsAndSec(timer);
 
+  const { setIsAuthenticated } = useAuth();
+
   const [OTP, setOTP] = React.useState('');
 
   function resendOTP() {}
+
+  function handleConfirm() {
+    setIsAuthenticated(true);
+  }
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -45,7 +52,9 @@ export function ValidateOTP() {
               )}
             </View>
 
-            <SolidButton className="mt-8">Confirm</SolidButton>
+            <SolidButton className="mt-8" onPress={handleConfirm}>
+              Confirm
+            </SolidButton>
           </ContainerView>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
