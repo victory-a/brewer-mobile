@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text, SafeAreaView } from 'react-native';
 
 const AppNavigator = () => {
   return (
-    <View>
-      <Text>AppNavigator</Text>
-    </View>
+    <SafeAreaView className="bg-white">
+      <Text className="text-primary">AppNavigator</Text>
+    </SafeAreaView>
   );
 };
 
