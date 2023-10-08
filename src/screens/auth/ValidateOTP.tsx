@@ -18,7 +18,7 @@ import { ContainerView } from 'src/components/shared/ContainerView';
 import { useAuth } from 'src/context/AuthContext';
 
 export function ValidateOTP() {
-  const timer = useCountDown(60);
+  const timer = useCountDown(10);
   const parsedTime = parseTimeSecInMinsAndSec(timer);
 
   const { setIsAuthenticated } = useAuth();
@@ -36,17 +36,27 @@ export function ValidateOTP() {
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <ContainerView>
-            <Text className="mt-4 text-2xl font-semibold text-dark-lemon-green">Enter OTP</Text>
+            <Text className="mt-4 text-2xl font-semibold text-dark-lemon-green">
+              Verify your account
+            </Text>
             <Text className="mt-4 text-sm text-dark-lemon-green">
-              Enter the verification code sent to your email or mobile number
+              Please enter the 4 digit code we sent to mobile number
             </Text>
             <View className="mt-8">
-              <PinInput onChange={setOTP} inputCount={5} secureTextEntry={false} />
+              <ContainerView className="w-full max-w-[260px]">
+                <PinInput onChange={setOTP} inputCount={4} secureTextEntry={false} />
+              </ContainerView>
 
               {timer > 0 ? (
-                <TextButton className="mt-4">Resend code {`(${parsedTime})`}</TextButton>
+                <TextButton className="mt-6" labelClassName="underline">
+                  Tap here to resend OTP in {parsedTime}s
+                </TextButton>
               ) : (
-                <TextButton className="mt-4" onPress={resendOTP}>
+                <TextButton
+                  className="mt-6"
+                  onPress={resendOTP}
+                  labelClassName="underline text-dark-lemon-green"
+                >
                   Resend OTP
                 </TextButton>
               )}

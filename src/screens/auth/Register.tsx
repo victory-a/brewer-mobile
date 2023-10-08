@@ -35,7 +35,9 @@ export const Register = () => {
       <KeyboardAvoidingView behavior="padding">
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <ContainerView>
-            <Text className="mt-12 text-2xl font-semibold text-dark-lemon-green">Register</Text>
+            <Text className="mt-12 text-2xl font-semibold text-dark-lemon-green">
+              Create your account
+            </Text>
 
             {/* Form Container */}
             <View className="mt-8">
@@ -67,7 +69,7 @@ export const Register = () => {
               Register
             </SolidButton>
             <TextButton onPress={() => navigate('Login')} className="mt-6">
-              Already have an account? Login
+              Have an account? <Text>Login</Text>
             </TextButton>
           </ContainerView>
         </TouchableWithoutFeedback>

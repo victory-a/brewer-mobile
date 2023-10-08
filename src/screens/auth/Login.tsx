@@ -67,7 +67,7 @@ export const Login = () => {
             </SolidButton>
 
             <TextButton onPress={() => navigate('Register')} className="mt-6">
-              Don&apos;t have an account? Register
+              Don&apos;t have an account? <Text>Register</Text>
             </TextButton>
           </ContainerView>
         </TouchableWithoutFeedback>
