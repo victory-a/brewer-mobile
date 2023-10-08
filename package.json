@@ -12,6 +12,7 @@
     "watchman-clear": "if [ \"$(uname)\" == \"Darwin\" ]; then DIR=$(pwd); else DIR=$(cd && echo %cd%); fi && watchman watch-del \"$DIR\" && watchman watch-project \"$DIR\""
   },
   "dependencies": {
+    "@react-navigation/bottom-tabs": "^6.5.9",
     "@react-navigation/native": "^6.1.8",
     "@react-navigation/native-stack": "^6.9.14",
     "@react-navigation/stack": "^6.3.18",
