@@ -5,7 +5,7 @@ interface ContextProps {
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Context = React.createContext<ContextProps>({});
+const Context = React.createContext<ContextProps | undefined>(undefined);
 
 interface Props {
   children: React.ReactNode;

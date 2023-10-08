@@ -8,6 +8,7 @@ export const colors = {
   'sea-shell': '#FFFCFB',
   'white-color': '#ddd',
   'gray-67': '#ABABAB',
+  'coffee-brown': '#313131',
   zambezi: '#5F5F5F',
   white: '#fff',
   black: '#000',
