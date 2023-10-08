@@ -17,21 +17,9 @@ const Stack = createNativeStackNavigator();
 const AuthNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="Welcome">
-      <Stack.Screen
-        name="Welcome"
-        component={Welcome}
-        options={{ ...defaultOptions, headerShown: false }}
-      />
-      <Stack.Screen
-        name="Register"
-        component={Register}
-        options={{ ...defaultOptions, headerShown: false }}
-      />
-      <Stack.Screen
-        name="Login"
-        component={Login}
-        options={{ ...defaultOptions, headerShown: false }}
-      />
+      <Stack.Screen name="Welcome" component={Welcome} options={defaultOptions} />
+      <Stack.Screen name="Register" component={Register} options={defaultOptions} />
+      <Stack.Screen name="Login" component={Login} options={defaultOptions} />
       <Stack.Screen
         name="Validate-OTP"
         component={ValidateOTP}
