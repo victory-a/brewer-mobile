@@ -1,27 +1,39 @@
 import React from 'react';
-import { Pressable, PressableProps } from 'react-native';
+import { Pressable, PressableProps, ActivityIndicator } from 'react-native';
 
 import { Text } from '../shared/Text';
+import { colors } from 'src/styles/theme';
 
 interface ISolidButton extends PressableProps {
   buttonclassName?: string;
   labelClassName?: string;
+  loading?: boolean;
+  activityLoaderColor?: string;
   children: React.ReactNode;
 }
 export const SolidButton = ({
   buttonclassName = '',
   labelClassName = '',
+  loading = false,
+  activityLoaderColor = colors.white,
   children,
   ...props
 }: ISolidButton) => {
   return (
     <Pressable
-      className={`bg-primary rounded-lg py-3 w-full shadow-sm ${buttonclassName}`}
+      className={`${
+        loading ? 'bg-[#808080]' : 'bg-primary'
+      } rounded-lg py-3 w-full shadow-sm ${buttonclassName}`}
+      disabled={loading}
       {...props}
     >
-      <Text className={`text-white text-center text-base font-semibold ${labelClassName}`}>
-        {children}
-      </Text>
+      {loading ? (
+        <ActivityIndicator color="white" />
+      ) : (
+        <Text className={`text-white text-center text-base font-semibold ${labelClassName}`}>
+          {children}
+        </Text>
+      )}
     </Pressable>
   );
 };

@@ -4,7 +4,7 @@ export const colors = {
   'light-gray': 'rgba(128, 128, 128, 0.6)',
   'lighter-gray': '#B7B7B7',
   'mid-gray': '#303336',
-  'dark-grey': '#A9A9A9',
+  'dark-gray': '#A9A9A9',
   'dark-lemon-green': '#2F4B4E',
   'sea-shell': '#FFFCFB',
   'white-color': '#ddd',

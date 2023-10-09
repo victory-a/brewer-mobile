@@ -19,7 +19,7 @@ export const Welcome = () => {
           <Text className="text-white text-center text-[30px] leading-[30.6px] w-full mt-7">
             Coffee so good, your taste buds will love it.
           </Text>
-          <Text className="mt-2 text-base text-dark-grey text-center">
+          <Text className="mt-2 text-base text-dark-gray text-center">
             The best grain, the finest roast, the powerful flavor.
           </Text>
         </View>
