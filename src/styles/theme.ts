@@ -2,6 +2,7 @@ export const colors = {
   primary: '#C67C4E',
   secondary: '#2F2D2C',
   'light-gray': 'rgba(128, 128, 128, 0.6)',
+  'lighter-gray': '#B7B7B7',
   'mid-gray': '#303336',
   'dark-grey': '#A9A9A9',
   'dark-lemon-green': '#2F4B4E',
@@ -12,6 +13,8 @@ export const colors = {
   zambezi: '#5F5F5F',
   white: '#fff',
   black: '#000',
+  snow: '#F9F9F9',
+  'red-ish': '#ED5151',
   transparent: 'transparent'
 };
 
