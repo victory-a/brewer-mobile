@@ -6,16 +6,19 @@ import { formatCurrency } from 'src/utils/amount';
 interface ICoffeeCard {
   title: string;
   type: string;
-  thumbnail: HTMLImageElement;
+  thumbnail: HTMLImageElement | null;
   amount: number;
 }
+
+const coffeebg1 = require('../../assets/images/coffee-1.png');
+
 function CoffeeCard({ title, type, thumbnail, amount }: ICoffeeCard) {
   return (
-    <Pressable>
-      <View className="bg-white w-full max-w-[152]" style={styles.shadow}>
-        <Image source={thumbnail} className="w-full h-[100] rounded-t-lg" />
+    <Pressable className="w-full max-w-[152]">
+      <View className="bg-white" style={styles.shadow}>
+        <Image source={thumbnail ?? coffeebg1} className="w-full h-[100] rounded-t-lg" />
         <View className="py-3 px-4">
-          <Text className="text-sm text-secondary font-semibold capitalize">{title}</Text>
+          <Text className="text-sm text-dark-lemon-green font-semibold capitalize">{title}</Text>
           <Text className="text-xs text-nobel mb-3">{type}</Text>
           <Text className="text-base font-semibold text-dark-lemon-green">
             {formatCurrency(amount)}

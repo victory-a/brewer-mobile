@@ -19,7 +19,11 @@ const coffeeList = [
   { title: 'Cappucino', type: 'with Chocolate', thumbnail: coffeebg1, amount: 25 },
   { title: 'Cappucino', type: 'with Oat Milk', thumbnail: coffeebg2, amount: 25 },
   { title: 'Cappucino', type: 'with goat Milk', thumbnail: coffeebg3, amount: 25 },
-  { title: 'Cappucino', type: 'with lamb Milk', thumbnail: coffeebg4, amount: 25 }
+  { title: 'Cappucino', type: 'with lamb Milk', thumbnail: coffeebg4, amount: 25 },
+  { title: 'Cappucino', type: 'with goat Milk', thumbnail: coffeebg3, amount: 25 },
+  { title: 'Cappucino', type: 'with Oat Milk', thumbnail: coffeebg2, amount: 25 },
+  { title: 'Cappucino', type: 'with lamb Milk', thumbnail: coffeebg4, amount: 25 },
+  { title: 'Cappucino', type: 'with Chocolate', thumbnail: coffeebg1, amount: 25 }
 ];
 
 const HomeScreen = () => {
@@ -33,9 +37,9 @@ const HomeScreen = () => {
       </SafeAreaView>
 
       <ContainerView className="flex-1 mt-[90px]">
-        <View>
+        <View className="flex-row flex-wrap" style={{ gap: 20 }}>
           {coffeeList.map((item, i) => (
-            <CoffeeCard key={i} />
+            <CoffeeCard key={i} {...item} />
           ))}
         </View>
       </ContainerView>
