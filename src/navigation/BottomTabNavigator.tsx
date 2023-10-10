@@ -33,7 +33,7 @@ export default function BottomTabNavigator() {
         component={SearchScreen}
         options={{
           ...renderIcon(SearchIcon, {}),
-          tabBarLabel: ({ color }) => renderLabel('Home', color)
+          tabBarLabel: ({ color }) => renderLabel('Search', color)
         }}
       />
       <BottomTabs.Screen
@@ -64,7 +64,7 @@ function renderIcon(Icon: any, { width = 20, height = 20 }: { width?: number; he
 
 function renderLabel(label: string, color: string) {
   return (
-    <Text className="text-[11px] -mt-1" style={{ color }}>
+    <Text className="text-[10px] -mt-1" style={{ color }}>
       {label}
     </Text>
   );

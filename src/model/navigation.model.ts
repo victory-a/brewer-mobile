@@ -8,7 +8,7 @@ export type AuthNavigatorParams = {
 export type AppNavigatorParams = {
   'Select-Location-Modal': undefined;
   Home: undefined;
-  favourites: undefined;
+  Search: undefined;
   Orders: undefined;
-  Settings: undefined;
+  Profile: undefined;
 };
