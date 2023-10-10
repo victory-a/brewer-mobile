@@ -25,7 +25,7 @@ export default function BottomTabNavigator() {
         component={HomeScreen}
         options={{
           ...renderIcon(HomeIcon, {}),
-          tabBarLabel: ({ color }) => renderLabel('Home', color)
+          tabBarLabel: (props) => renderLabel({ ...props, label: 'Home' })
         }}
       />
       <BottomTabs.Screen
@@ -33,7 +33,7 @@ export default function BottomTabNavigator() {
         component={SearchScreen}
         options={{
           ...renderIcon(SearchIcon, {}),
-          tabBarLabel: ({ color }) => renderLabel('Search', color)
+          tabBarLabel: (props) => renderLabel({ ...props, label: 'Search' })
         }}
       />
       <BottomTabs.Screen
@@ -41,7 +41,8 @@ export default function BottomTabNavigator() {
         component={OrdersScreen}
         options={{
           ...renderIcon(OrdersIcon, {}),
-          tabBarLabel: ({ color }) => renderLabel('Orders', color)
+
+          tabBarLabel: (props) => renderLabel({ ...props, label: 'Orders' })
         }}
       />
       <BottomTabs.Screen
@@ -49,7 +50,7 @@ export default function BottomTabNavigator() {
         component={ProfileScreen}
         options={{
           ...renderIcon(ProfileIcon, {}),
-          tabBarLabel: ({ color }) => renderLabel('Profile', color)
+          tabBarLabel: (props) => renderLabel({ ...props, label: 'Profile' })
         }}
       />
     </BottomTabs.Navigator>
@@ -62,10 +63,21 @@ function renderIcon(Icon: any, { width = 20, height = 20 }: { width?: number; he
   };
 }
 
-function renderLabel(label: string, color: string) {
+interface IRenderLabel {
+  label: string;
+  focused: boolean;
+  color: string;
+  children: string;
+}
+function renderLabel(props: IRenderLabel) {
+  const { focused } = props;
+
   return (
-    <Text className="text-[12px] font-semibold -mt-1" style={{ color }}>
-      {label}
+    <Text
+      className={`text-[12px] -mt-1 ${focused && 'font-semibold'}`}
+      style={{ color: props.color }}
+    >
+      {props.label}
     </Text>
   );
 }
