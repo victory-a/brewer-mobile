@@ -5,7 +5,8 @@ import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 
 import { ContainerView } from 'src/components/shared/ContainerView';
 import { Text } from 'src/components/shared/Text';
-import { ArrowDown, HomeIcon, OrdersIcon, SearchIcon, ProfileIcon } from 'src/components/Icons';
+import { ArrowDown } from 'src/components/Icons';
+import { CoffeeCard } from 'src/components/CoffeeCard';
 
 const bg = require('../../assets/images/promo-bg.png');
 
@@ -19,8 +20,8 @@ const HomeScreen = () => {
         </ContainerView>
       </SafeAreaView>
 
-      <ContainerView className="flex-1 mt-[80px]">
-        <Text>Booooooo</Text>
+      <ContainerView className="flex-1 mt-[90px]">
+        <CoffeeCard />
       </ContainerView>
     </ScrollView>
   );

@@ -15,6 +15,7 @@ export const colors = {
   black: '#000',
   snow: '#F9F9F9',
   'red-ish': '#ED5151',
+  nobel: '#9B9B9B',
   transparent: 'transparent'
 };
 
