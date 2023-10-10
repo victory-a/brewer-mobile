@@ -1,20 +1,30 @@
-import { View, Image, StyleSheet, Platform } from 'react-native';
+import { View, Image, StyleSheet, Platform, Pressable } from 'react-native';
 import React from 'react';
 import { Text } from './shared/Text';
+import { formatCurrency } from 'src/utils/amount';
 
-const coffeebg = require('../../assets/images/bg-1.png');
-
-const CoffeeCard = () => {
+interface ICoffeeCard {
+  title: string;
+  type: string;
+  thumbnail: HTMLImageElement;
+  amount: number;
+}
+function CoffeeCard({ title, type, thumbnail, amount }: ICoffeeCard) {
   return (
-    <View className="bg-white w-full max-w-[152]" style={styles.shadow}>
-      <Image source={coffeebg} className="w-full h-[100] rounded-t-lg" />
-      <View className="py-3 px-4">
-        <Text className="text-sm text-secondary font-semibold mb-1">Cappucino</Text>
-        <Text className="text-xs text-nobel mb-3">with Chocolate</Text>
+    <Pressable>
+      <View className="bg-white w-full max-w-[152]" style={styles.shadow}>
+        <Image source={thumbnail} className="w-full h-[100] rounded-t-lg" />
+        <View className="py-3 px-4">
+          <Text className="text-sm text-secondary font-semibold capitalize">{title}</Text>
+          <Text className="text-xs text-nobel mb-3">{type}</Text>
+          <Text className="text-base font-semibold text-dark-lemon-green">
+            {formatCurrency(amount)}
+          </Text>
+        </View>
       </View>
-    </View>
+    </Pressable>
   );
-};
+}
 
 export { CoffeeCard };
 

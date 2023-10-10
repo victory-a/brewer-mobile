@@ -10,6 +10,18 @@ import { CoffeeCard } from 'src/components/CoffeeCard';
 
 const bg = require('../../assets/images/promo-bg.png');
 
+const coffeebg1 = require('../../assets/images/coffee-1.png');
+const coffeebg2 = require('../../assets/images/coffee-2.png');
+const coffeebg3 = require('../../assets/images/coffee-3.png');
+const coffeebg4 = require('../../assets/images/coffee-4.png');
+
+const coffeeList = [
+  { title: 'Cappucino', type: 'with Chocolate', thumbnail: coffeebg1, amount: 25 },
+  { title: 'Cappucino', type: 'with Oat Milk', thumbnail: coffeebg2, amount: 25 },
+  { title: 'Cappucino', type: 'with goat Milk', thumbnail: coffeebg3, amount: 25 },
+  { title: 'Cappucino', type: 'with lamb Milk', thumbnail: coffeebg4, amount: 25 }
+];
+
 const HomeScreen = () => {
   return (
     <ScrollView bouncesZoom={false} bounces={false}>
@@ -21,7 +33,11 @@ const HomeScreen = () => {
       </SafeAreaView>
 
       <ContainerView className="flex-1 mt-[90px]">
-        <CoffeeCard />
+        <View>
+          {coffeeList.map((item, i) => (
+            <CoffeeCard key={i} />
+          ))}
+        </View>
       </ContainerView>
     </ScrollView>
   );
