@@ -1,18 +1,71 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { HomeScreen } from 'src/screens/HomeScreen';
+import SearchScreen from 'src/screens/SearchScreen';
+import OrdersScreen from 'src/screens/OrdersScreen';
+import ProfileScreen from 'src/screens/ProfileScreen';
+import { colors } from 'src/styles/theme';
+import { HomeIcon, IconProps, OrdersIcon, ProfileIcon, SearchIcon } from 'src/components/Icons';
+import { Text } from 'src/components/shared/Text';
 
-const Tab = createBottomTabNavigator();
+const BottomTabs = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      {/* <Tab.Screen name="Favourites" component={() => <Text>Favourites</Text>} /> */}
-      {/* <Tab.Screen name="Orders" component={() => <Text>Orders</Text>} /> */}
-      {/* <Tab.Screen name="Settings" component={() => <Text>Settings</Text>} /> */}
-    </Tab.Navigator>
+    <BottomTabs.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.black
+      }}
+    >
+      <BottomTabs.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          ...renderIcon(HomeIcon, {}),
+          tabBarLabel: ({ color }) => renderLabel('Home', color)
+        }}
+      />
+      <BottomTabs.Screen
+        name="Search"
+        component={SearchScreen}
+        options={{
+          ...renderIcon(SearchIcon, {}),
+          tabBarLabel: ({ color }) => renderLabel('Home', color)
+        }}
+      />
+      <BottomTabs.Screen
+        name="Orders"
+        component={OrdersScreen}
+        options={{
+          ...renderIcon(OrdersIcon, {}),
+          tabBarLabel: ({ color }) => renderLabel('Orders', color)
+        }}
+      />
+      <BottomTabs.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          ...renderIcon(ProfileIcon, {}),
+          tabBarLabel: ({ color }) => renderLabel('Profile', color)
+        }}
+      />
+    </BottomTabs.Navigator>
+  );
+}
+
+function renderIcon(Icon: any, { width = 20, height = 20 }: { width?: number; height?: number }) {
+  return {
+    tabBarIcon: ({ color }: IconProps) => <Icon width={width} height={height} color={color} />
+  };
+}
+
+function renderLabel(label: string, color: string) {
+  return (
+    <Text className="text-[11px] -mt-1" style={{ color }}>
+      {label}
+    </Text>
   );
 }

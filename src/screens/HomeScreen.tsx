@@ -5,37 +5,47 @@ import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 
 import { ContainerView } from 'src/components/shared/ContainerView';
 import { Text } from 'src/components/shared/Text';
-import { ArrowDown } from 'src/components/Icons';
+import { ArrowDown, HomeIcon, OrdersIcon, SearchIcon, ProfileIcon } from 'src/components/Icons';
 
 const bg = require('../../assets/images/promo-bg.png');
 
 const HomeScreen = () => {
-  const { navigate } = useAppNavigation();
   return (
-    <ScrollView>
+    <ScrollView bouncesZoom={false} bounces={false}>
       <SafeAreaView className="bg-coffee-brown">
-        <ContainerView className="bg-coffee-brown pt-4 pb-[100px] relative">
-          <Pressable hitSlop={5} onPress={() => navigate('Select-Location-Modal')}>
-            <Text className="text-sm text-light-gray">Location</Text>
-            <View className="flex-row items-center">
-              <Text className="mr-1 font-semibold text-[#DDDDDD]">Utako, Abuja</Text>
-              <ArrowDown />
-            </View>
-          </Pressable>
+        <ContainerView className="pt-4 pb-[100px] relative">
+          <SelectLocation />
           <PromoBanner />
         </ContainerView>
       </SafeAreaView>
-      <ContainerView></ContainerView>
+
+      <ContainerView className="flex-1 mt-[80px]">
+        <Text>Booooooo</Text>
+      </ContainerView>
     </ScrollView>
   );
 };
 
 export { HomeScreen };
 
+function SelectLocation() {
+  const { navigate } = useAppNavigation();
+
+  return (
+    <Pressable hitSlop={5} onPress={() => navigate('Select-Location-Modal')}>
+      <Text className="text-sm text-light-gray">Location</Text>
+      <View className="flex-row items-center">
+        <Text className="mr-1 font-semibold text-[#DDDDDD]">Utako, Abuja</Text>
+        <ArrowDown />
+      </View>
+    </Pressable>
+  );
+}
+
 function PromoBanner() {
   return (
-    <Pressable className="w-full absolute -bottom-[60px] rounded-xl overflow-hidden">
-      <ImageBackground source={bg} className="w-full h-[140px]">
+    <Pressable className="w-full absolute -bottom-[70px] rounded-xl overflow-hidden">
+      <ImageBackground source={bg} className="w-full">
         <View className="py-3 px-4">
           {/* pill */}
           <View className="flex-row">
@@ -45,7 +55,7 @@ function PromoBanner() {
           </View>
 
           <View
-            className="mt-2 max-w-[70%] p-[6px]"
+            className="mt-2 max-w-[70%] p-[6px] rounded-lg "
             style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
           >
             <Text className="text-white font-semibold text-3xl">Buy one get one FREE</Text>
