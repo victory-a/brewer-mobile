@@ -64,7 +64,7 @@ function renderIcon(Icon: any, { width = 20, height = 20 }: { width?: number; he
 
 function renderLabel(label: string, color: string) {
   return (
-    <Text className="text-[10px] -mt-1" style={{ color }}>
+    <Text className="text-[12px] font-semibold -mt-1" style={{ color }}>
       {label}
     </Text>
   );

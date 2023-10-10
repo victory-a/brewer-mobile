@@ -28,7 +28,7 @@ const coffeeList = [
 
 const HomeScreen = () => {
   return (
-    <ScrollView bouncesZoom={false} bounces={false}>
+    <ScrollView bouncesZoom className="mb-4" showsVerticalScrollIndicator={false}>
       <SafeAreaView className="bg-coffee-brown">
         <ContainerView className="pt-4 pb-[100px] relative">
           <SelectLocation />
@@ -36,8 +36,8 @@ const HomeScreen = () => {
         </ContainerView>
       </SafeAreaView>
 
-      <ContainerView className="flex-1 mt-[90px]">
-        <View className="flex-row flex-wrap" style={{ gap: 20 }}>
+      <ContainerView className="flex-1 mt-[100px]">
+        <View className="flex-row flex-wrap justify-between" style={{ gap: 18 }}>
           {coffeeList.map((item, i) => (
             <CoffeeCard key={i} {...item} />
           ))}

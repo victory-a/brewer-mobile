@@ -14,7 +14,7 @@ const coffeebg1 = require('../../assets/images/coffee-1.png');
 
 function CoffeeCard({ title, type, thumbnail, amount }: ICoffeeCard) {
   return (
-    <Pressable className="w-full max-w-[152]">
+    <Pressable className="min-w-[152]">
       <View className="bg-white" style={styles.shadow}>
         <Image source={thumbnail ?? coffeebg1} className="w-full h-[100] rounded-t-lg" />
         <View className="py-3 px-4">
