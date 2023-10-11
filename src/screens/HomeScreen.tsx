@@ -1,4 +1,11 @@
-import { SafeAreaView, View, Pressable, ImageBackground, ScrollView } from 'react-native';
+import {
+  View,
+  Pressable,
+  ImageBackground,
+  ScrollView,
+  StatusBar,
+  SafeAreaView
+} from 'react-native';
 import React from 'react';
 
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
@@ -7,6 +14,7 @@ import { ContainerView } from 'src/components/shared/ContainerView';
 import { Text } from 'src/components/shared/Text';
 import { ArrowDown } from 'src/components/Icons';
 import { CoffeeCard } from 'src/components/CoffeeCard';
+import { colors } from 'src/styles/theme';
 
 const bg = require('../../assets/images/promo-bg.png');
 
@@ -28,22 +36,28 @@ const coffeeList = [
 
 const HomeScreen = () => {
   return (
-    <ScrollView bouncesZoom className="mb-4" showsVerticalScrollIndicator={false}>
-      <SafeAreaView className="bg-coffee-brown">
-        <ContainerView className="pt-4 pb-[100px] relative">
-          <SelectLocation />
-          <PromoBanner />
-        </ContainerView>
-      </SafeAreaView>
-
-      <ContainerView className="flex-1 mt-[100px]">
-        <View className="flex-row flex-wrap justify-between" style={{ gap: 18 }}>
-          {coffeeList.map((item, i) => (
-            <CoffeeCard key={i} {...item} />
-          ))}
+    <SafeAreaView className="bg-coffee-brown">
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ backgroundColor: colors.white }}
+      >
+        <StatusBar barStyle="light-content" />
+        <View className="bg-coffee-brown">
+          <ContainerView className="pt-4 pb-[100px] relative">
+            <SelectLocation />
+            <PromoBanner />
+          </ContainerView>
         </View>
-      </ContainerView>
-    </ScrollView>
+
+        <ContainerView className="flex-1 mt-[100px] mb-6">
+          <View className="flex-row flex-wrap justify-between" style={{ gap: 18 }}>
+            {coffeeList.map((item, i) => (
+              <CoffeeCard key={i} {...item} />
+            ))}
+          </View>
+        </ContainerView>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -65,7 +79,7 @@ function SelectLocation() {
 
 function PromoBanner() {
   return (
-    <Pressable className="w-full absolute -bottom-[70px] rounded-xl overflow-hidden">
+    <Pressable className="w-full absolute -bottom-[80px] rounded-xl overflow-hidden">
       <ImageBackground source={bg} className="w-full">
         <View className="py-3 px-4">
           {/* pill */}
