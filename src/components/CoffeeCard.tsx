@@ -1,7 +1,8 @@
-import { View, Image, StyleSheet, Platform, Pressable } from 'react-native';
+import { View, Image, StyleSheet, Platform } from 'react-native';
 import React from 'react';
 import { Text } from './shared/Text';
 import { formatCurrency } from 'src/utils/amount';
+import { Pressable } from './shared/Pressable';
 
 interface ICoffeeCard {
   title: string;

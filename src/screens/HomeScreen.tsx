@@ -1,10 +1,11 @@
 import {
   View,
-  Pressable,
   ImageBackground,
   ScrollView,
   StatusBar,
-  SafeAreaView
+  SafeAreaView,
+  FlatList,
+  StyleSheet
 } from 'react-native';
 import React from 'react';
 
@@ -15,6 +16,7 @@ import { Text } from 'src/components/shared/Text';
 import { ArrowDown } from 'src/components/Icons';
 import { CoffeeCard } from 'src/components/CoffeeCard';
 import { colors } from 'src/styles/theme';
+import { Pressable } from 'src/components/shared/Pressable';
 
 const bg = require('../../assets/images/promo-bg.png');
 
@@ -50,11 +52,11 @@ const HomeScreen = () => {
         </View>
 
         <ContainerView className="flex-1 mt-[100px] mb-6">
-          <View className="flex-row flex-wrap justify-between" style={{ gap: 18 }}>
-            {coffeeList.map((item, i) => (
-              <CoffeeCard key={i} {...item} />
-            ))}
-          </View>
+          <FlatList
+            data={coffeeList}
+            renderItem={({ item }) => <CoffeeCard {...item} />}
+            contentContainerStyle={style.coffeeList}
+          />
         </ContainerView>
       </ScrollView>
     </SafeAreaView>
@@ -100,3 +102,12 @@ function PromoBanner() {
     </Pressable>
   );
 }
+
+const style = StyleSheet.create({
+  coffeeList: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+    gap: 18
+  }
+});
