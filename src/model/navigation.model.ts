@@ -1,3 +1,5 @@
+import { ICoffeeCard } from './product';
+
 export type AuthNavigatorParams = {
   Welcome: undefined;
   Register: undefined;
@@ -6,7 +8,9 @@ export type AuthNavigatorParams = {
 };
 
 export type AppNavigatorParams = {
+  AppBottomTabs: undefined;
   'Select-Location-Modal': undefined;
+  'Product-Detail-Screen': { product: ICoffeeCard };
   Home: undefined;
   Search: undefined;
   Orders: undefined;

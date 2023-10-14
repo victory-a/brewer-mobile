@@ -14,7 +14,8 @@ module.exports = {
           hooks: './src/hooks',
           navigation: './src/navigation',
           styles: './src/styles',
-          utils: './src/utils'
+          utils: './src/utils',
+          model: './src/model'
         }
       }
     ]

@@ -19,7 +19,8 @@ export const Register = () => {
   const { navigate } = useAuthNavigation();
 
   const [formValues, setFormValues] = React.useState({
-    username: '',
+    firstname: '',
+    lastname: '',
     email: '',
     mobile: ''
   });
@@ -43,9 +44,16 @@ export const Register = () => {
             <View className="mt-8">
               <TextInput
                 label="Username"
-                value={formValues.username}
+                value={formValues.firstname}
                 placeholder="Adnan"
-                onChangeText={handleChange('username')}
+                onChangeText={handleChange('firstname')}
+                returnKeyType="done"
+              />
+              <TextInput
+                label="Username"
+                value={formValues.lastname}
+                placeholder="Frimpong"
+                onChangeText={handleChange('lastname')}
                 returnKeyType="done"
               />
               <PhoneInput

@@ -15,7 +15,8 @@
       "hooks/*": ["./src/hooks/*"],
       "navigation/*": ["./src/navigation/*"],
       "styles/*": ["./src/styles/*"],
-      "utils/*": ["./src/utils/*"]
+      "utils/*": ["./src/utils/*"],
+      "model/*": ["./src/model/*"]
     }
   },
   "include": ["./.eslintrc.json", "App.tsx", "src/**/*.ts", "src/**/*.tsx"],

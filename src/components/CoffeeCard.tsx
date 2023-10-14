@@ -3,19 +3,20 @@ import React from 'react';
 import { Text } from './shared/Text';
 import { formatCurrency } from 'src/utils/amount';
 import { Pressable } from './shared/Pressable';
-
-interface ICoffeeCard {
-  title: string;
-  type: string;
-  thumbnail: HTMLImageElement | null;
-  amount: number;
-}
+import { ICoffeeCard } from 'model/product';
+import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 
 const coffeebg1 = require('../../assets/images/coffee-1.png');
 
-function CoffeeCard({ title, type, thumbnail, amount }: ICoffeeCard) {
+function CoffeeCard(product: ICoffeeCard) {
+  const { title, type, thumbnail, amount } = product;
+  const { navigate } = useAppNavigation();
+
   return (
-    <Pressable className="min-w-[152] mb-5">
+    <Pressable
+      className="min-w-[152] mb-5"
+      onPress={() => navigate('Product-Detail-Screen', { product })}
+    >
       <View className="bg-white  rounded-lg" style={styles.shadow}>
         <Image source={thumbnail ?? coffeebg1} className="w-full h-[100] rounded-t-lg" />
         <View className="py-3 px-4">
