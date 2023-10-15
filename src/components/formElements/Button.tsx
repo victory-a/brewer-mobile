@@ -56,3 +56,21 @@ export const TextButton = ({
     </Pressable>
   );
 };
+
+interface ISelectButton extends PressableProps {
+  value: string | number;
+  isSelected: boolean;
+}
+
+export const SelectButton = ({ value = '', isSelected, ...props }: ISelectButton) => {
+  return (
+    <Pressable
+      {...props}
+      className={`w-full max-w-[96] py-[10] border flex flex-row justify-center items-center rounded-xl ${
+        isSelected ? 'bg-[#FFF5EE] border-primary' : 'bg-white border-[#DEDEDE]'
+      }`}
+    >
+      <Text className={`text-sm ${isSelected ? 'text-primary' : 'text-secondary'}`}>{value}</Text>
+    </Pressable>
+  );
+};

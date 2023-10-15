@@ -6,11 +6,10 @@ export const formatCurrency = (
 ) => {
   const amountNotUndefined = Number(amount) || 0;
   return amountNotUndefined
-    ? amountNotUndefined
-        .toLocaleString(locales, {
-          style: 'currency',
-          currency
-        })
-        .slice(0, -3)
-    : amountNotUndefined;
+    ? amountNotUndefined.toLocaleString(locales, {
+        style: 'currency',
+        currency,
+        minimumFractionDigits: 2
+      })
+    : amountNotUndefined.toFixed(2);
 };
