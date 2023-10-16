@@ -14,11 +14,15 @@ const BottomTabs = createBottomTabNavigator();
 export default function BottomTabNavigator() {
   return (
     <BottomTabs.Navigator
-      initialRouteName="Orders"
+      initialRouteName="Home"
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.black
+        tabBarInactiveTintColor: colors.black,
+        tabBarStyle: {
+          paddingTop: 10,
+          height: 90
+        }
       }}
     >
       <BottomTabs.Screen
