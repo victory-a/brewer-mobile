@@ -4,7 +4,6 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { Completed } from './Completed';
 import { Ongoing } from './Ongoing';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { View } from 'react-native';
 
 const Tabs = createMaterialTopTabNavigator();
 const OrdersScreen = () => {
