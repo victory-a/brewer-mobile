@@ -1,4 +1,4 @@
-import { useRoute, RouteProp } from '@react-navigation/native';
+import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Image, SafeAreaView, StatusBar, ScrollView, View } from 'react-native';
 
@@ -21,21 +21,22 @@ export const ProductDetailScreen = () => {
   const navigation = useAppNavigation();
   const { params } = useRoute<RouteProp<AppNavigatorParams>>();
 
-  // React.useLayoutEffect(() => {
-  //   if (!params?.product) {
-  //     navigation.navigate('AppBottomTabs');
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [params?.product]);
+  React.useLayoutEffect(() => {
+    if (!params?.product) {
+      navigation.navigate('AppBottomTabs');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params?.product]);
 
   const product = params?.product;
 
-  // if (!product) return;
+  if (!product) return;
 
   return (
     <SafeAreaView className="bg-white flex-1 relative">
       <ScrollView className="bg-white">
         <StatusBar barStyle="dark-content" />
+
         <ContainerView className="relative mt-2">
           <Image
             source={product?.thumbnail ?? coffeebg1}
@@ -67,38 +68,53 @@ export const ProductDetailScreen = () => {
           <SelectSize />
         </ContainerView>
       </ScrollView>
+
       <TotalDisplay />
     </SafeAreaView>
   );
 };
 
 function TotalDisplay() {
-  return (
-    <View className="absolute w-full bottom-3 py-4 bg-white border-t-[0.3px] border-lighter-gray">
-      <ContainerView className="items-center">
-        <Text className="text-secondary mb-5">
-          Total:
-          <Text className="text-2xl font-semibold text-secondary"> {formatCurrency(153)}</Text>
-        </Text>
+  const [quantity, setQuantity] = React.useState(1);
+  const total = 4.53;
+  const { navigate } = useAppNavigation();
 
+  function handleRemove() {
+    if (quantity === 1) {
+      navigate('AppBottomTabs');
+      return;
+    }
+    setQuantity((curr) => (curr > 0 ? curr - 1 : curr));
+  }
+
+  function handleAdd() {
+    setQuantity((curr) => curr + 1);
+  }
+  return (
+    <View className="absolute w-full bottom-3 py-6 bg-white border-t-[0.3px] border-lighter-gray">
+      <ContainerView className="items-center">
         <View className="flex-row w-full flex-1 space-x-6">
           <View className="flex-row flex-[50%] items-center justify-between">
             <TextButton
               className="py-2 px-4 bg-[#F3F3F3] rounded-lg"
               labelClassName="text-secondary font-semibold text-lg"
+              onPress={handleRemove}
             >
               -
             </TextButton>
-            <Text>{1}</Text>
+            <Text>{quantity}</Text>
             <TextButton
               className="py-2 px-4 bg-[#F3F3F3] rounded-lg"
               labelClassName="text-primary font-semibold text-xl"
+              onPress={handleAdd}
             >
               +
             </TextButton>
           </View>
           <View className="flex-[50%]">
-            <SolidButton className="">Add to Cart</SolidButton>
+            <SolidButton>
+              Add {quantity > 0 ? formatCurrency(total * quantity) : 'to Cart '}
+            </SolidButton>
           </View>
         </View>
       </ContainerView>

@@ -14,6 +14,7 @@ const BottomTabs = createBottomTabNavigator();
 export default function BottomTabNavigator() {
   return (
     <BottomTabs.Navigator
+      initialRouteName="Orders"
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.primary,
@@ -41,8 +42,15 @@ export default function BottomTabNavigator() {
         component={OrdersScreen}
         options={{
           ...renderIcon(OrdersIcon, {}),
-
-          tabBarLabel: (props) => renderLabel({ ...props, label: 'Orders' })
+          tabBarLabel: (props) => renderLabel({ ...props, label: 'Orders' }),
+          tabBarBadge: 3,
+          tabBarBadgeStyle: {
+            fontSize: 10,
+            paddingHorizontal: 2,
+            color: colors.primary,
+            backfaceVisibility: 'hidden',
+            backgroundColor: '#FFF5EE'
+          }
         }}
       />
       <BottomTabs.Screen

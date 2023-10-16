@@ -2,9 +2,10 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import BottomTabNavigator from './BottomTabNavigator';
-import SelectLocationModal from 'src/screens/SelectLocationModal';
+import SelectLocationModal from 'src/screens/Modals/SelectLocationModal';
 import { ProductDetailScreen } from 'src/screens/ProductDetailScreen';
 import { colors } from 'src/styles/theme';
+import { Text } from 'src/components/shared/Text';
 
 const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
@@ -23,6 +24,7 @@ const AppNavigator = () => {
           headerTintColor: colors.primary
         }}
       />
+      <Stack.Screen name="View-Order-Modal" component={SelectLocationModal} />
       <Stack.Screen name="Select-Location-Modal" component={SelectLocationModal} />
     </Stack.Navigator>
   );
