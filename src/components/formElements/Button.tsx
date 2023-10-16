@@ -1,8 +1,9 @@
 import React from 'react';
-import { Pressable, PressableProps, ActivityIndicator } from 'react-native';
+import { PressableProps, ActivityIndicator } from 'react-native';
 
 import { Text } from '../shared/Text';
 import { colors } from 'src/styles/theme';
+import { Pressable } from '../shared/Pressable';
 
 interface ISolidButton extends PressableProps {
   buttonclassName?: string;
