@@ -5,10 +5,10 @@ import { Text } from 'src/components/shared/Text';
 import { SolidButton } from 'src/components/formElements/Button';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 
-const emptyCart = require('../../../assets/images/empty-cart.png');
+const emptyCart = require('../../assets/images/empty-cart.png');
 const cartItems = [];
 
-const Ongoing = () => {
+const OngoingOrder = () => {
   return (
     <SafeAreaView className="bg-white flex-1">
       {cartItems.length === 0 ? (
@@ -22,7 +22,7 @@ const Ongoing = () => {
   );
 };
 
-export { Ongoing };
+export { OngoingOrder };
 
 function EmptyCart() {
   const { navigate } = useAppNavigation();

@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { HomeScreen } from 'src/screens/HomeScreen';
 import SearchScreen from 'src/screens/SearchScreen';
-import OrdersScreen from 'src/screens/OrdersScreen';
+import OrdersScreen from 'src/navigation/OrderNavigator';
 import ProfileScreen from 'src/screens/ProfileScreen';
 import { colors } from 'src/styles/theme';
 import { HomeIcon, IconProps, OrdersIcon, ProfileIcon, SearchIcon } from 'src/components/Icons';

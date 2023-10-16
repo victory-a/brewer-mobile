@@ -1,8 +1,8 @@
 import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-import { Completed } from './Completed';
-import { Ongoing } from './Ongoing';
+import { CompletedOrder } from '../screens/CompletedOrder';
+import { OngoingOrder } from '../screens/OngoingOrder';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Text } from 'src/components/shared/Text';
 import { colors } from 'src/styles/theme';
@@ -24,8 +24,8 @@ const OrdersScreen = () => {
             tabBarLabel: ({ focused }) => <Label name={route.name} focused={focused} />
           })}
         >
-          <Tabs.Screen name="Ongoing" component={Ongoing} />
-          <Tabs.Screen name="Completed" component={Completed} />
+          <Tabs.Screen name="Ongoing" component={OngoingOrder} />
+          <Tabs.Screen name="Completed" component={CompletedOrder} />
         </Tabs.Navigator>
       </ContainerView>
     </SafeAreaView>

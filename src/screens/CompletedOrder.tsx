@@ -2,7 +2,7 @@ import { View, Text, SafeAreaView } from 'react-native';
 import React from 'react';
 import { ContainerView } from 'src/components/shared/ContainerView';
 
-const Completed = () => {
+const CompletedOrder = () => {
   return (
     <SafeAreaView className="bg-white flex-1">
       <ContainerView>
@@ -12,4 +12,4 @@ const Completed = () => {
   );
 };
 
-export { Completed };
+export { CompletedOrder };
