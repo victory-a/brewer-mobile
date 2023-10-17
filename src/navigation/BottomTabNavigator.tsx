@@ -95,12 +95,5 @@ const styles = StyleSheet.create({
     color: colors.primary,
     backfaceVisibility: 'hidden',
     backgroundColor: '#FFF5EE'
-  },
-  headerStyle: {
-    height: 70
-  },
-  tabBarStyle: {
-    // paddingTop: 10,
-    // height: 90
   }
 });
