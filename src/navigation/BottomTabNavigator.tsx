@@ -6,6 +6,7 @@ import { colors } from 'src/styles/theme';
 import { HomeIcon, IconProps, OrdersIcon, ProfileIcon, SearchIcon } from 'src/components/Icons';
 import { Text } from 'src/components';
 import OrderTabNavigator from './OrderTabNavigator';
+import { StyleSheet } from 'react-native';
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -17,10 +18,7 @@ export default function BottomTabNavigator() {
         headerShown: false,
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.black,
-        tabBarStyle: {
-          paddingTop: 10,
-          height: 90
-        }
+        tabBarStyle: styles.tabBarStyle
       }}
     >
       <BottomTabs.Screen
@@ -46,13 +44,11 @@ export default function BottomTabNavigator() {
           ...renderIcon(OrdersIcon, {}),
           tabBarLabel: (props) => renderLabel({ ...props, label: 'Orders' }),
           tabBarBadge: 3,
-          tabBarBadgeStyle: {
-            fontSize: 10,
-            paddingHorizontal: 2,
-            color: colors.primary,
-            backfaceVisibility: 'hidden',
-            backgroundColor: '#FFF5EE'
-          }
+          tabBarBadgeStyle: styles.tabBarBadgeStyle,
+          headerShown: true,
+          headerTintColor: colors.secondary,
+          headerShadowVisible: false,
+          headerStyle: styles.headerStyle
         }}
       />
       <BottomTabs.Screen
@@ -91,3 +87,20 @@ function renderLabel(props: IRenderLabel) {
     </Text>
   );
 }
+
+const styles = StyleSheet.create({
+  tabBarBadgeStyle: {
+    fontSize: 10,
+    paddingHorizontal: 2,
+    color: colors.primary,
+    backfaceVisibility: 'hidden',
+    backgroundColor: '#FFF5EE'
+  },
+  headerStyle: {
+    height: 70
+  },
+  tabBarStyle: {
+    // paddingTop: 10,
+    // height: 90
+  }
+});

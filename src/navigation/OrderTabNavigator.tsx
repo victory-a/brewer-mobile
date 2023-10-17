@@ -1,17 +1,16 @@
 import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 import { CompletedOrder } from '../screens/CompletedOrder';
 import { OngoingOrder } from '../screens/OngoingOrder';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Text, ContainerView } from 'src/components';
 import { colors } from 'src/styles/theme';
-import { StyleSheet } from 'react-native';
 
 const Tabs = createMaterialTopTabNavigator();
 const OrderTabNavigator = () => {
   return (
-    <SafeAreaView className="flex-1 bg-white">
+    <View className="flex-1 pt-3 bg-white">
       <ContainerView className="flex-1">
         <Tabs.Navigator
           screenOptions={({ route }) => ({
@@ -27,7 +26,7 @@ const OrderTabNavigator = () => {
           <Tabs.Screen name="Completed" component={CompletedOrder} />
         </Tabs.Navigator>
       </ContainerView>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -35,7 +34,11 @@ export default OrderTabNavigator;
 
 function Label({ name, focused }: { name: string; focused: boolean }) {
   return (
-    <Text className={`${focused ? 'text-white' : 'text-secondary font-normal'} text-sm `}>
+    <Text
+      className={`${
+        focused ? 'text-white font-semibold' : 'text-secondary font-normal'
+      } text-sm mb-1`}
+    >
       {name}
     </Text>
   );
