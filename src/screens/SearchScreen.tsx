@@ -9,4 +9,4 @@ const SearchScreen = () => {
   );
 };
 
-export default SearchScreen;
+export { SearchScreen };

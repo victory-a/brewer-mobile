@@ -9,4 +9,4 @@ const ProfileScreen = () => {
   );
 };
 
-export default ProfileScreen;
+export { ProfileScreen };

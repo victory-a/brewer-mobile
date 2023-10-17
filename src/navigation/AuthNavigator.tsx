@@ -1,10 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { Welcome } from 'src/screens/auth/Welcome';
-import { Register } from 'src/screens/auth/Register';
-import { Login } from 'src/screens/auth/Login';
-import { ValidateOTP } from 'src/screens/auth/ValidateOTP';
+import { Login, Register, ValidateOTP, Welcome } from 'src/screens';
 import { colors } from 'src/styles/theme';
 
 const defaultOptions = {

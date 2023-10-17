@@ -24,8 +24,6 @@ export function Checkbox({ onClick, isChecked, leftText, rightText }: ICheckBox)
   );
 }
 
-export default Checkbox;
-
 const styles = StyleSheet.create({
   label: {
     color: colors['dark-lemon-green'],

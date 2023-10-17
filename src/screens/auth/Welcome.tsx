@@ -2,8 +2,7 @@ import React from 'react';
 import { ImageBackground, View, SafeAreaView } from 'react-native';
 
 import { useAuthNavigation } from 'src/hooks/useTypedNavigation';
-import { SolidButton } from 'src/components/formElements/Button';
-import { Text } from 'src/components/shared/Text';
+import { SolidButton, Text } from 'src/components';
 
 const bg = require('../../../assets/images/coffee-bg.png');
 

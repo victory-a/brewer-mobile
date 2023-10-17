@@ -1,13 +1,11 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { HomeScreen } from 'src/screens/HomeScreen';
-import SearchScreen from 'src/screens/SearchScreen';
-import OrdersScreen from 'src/navigation/OrderNavigator';
-import ProfileScreen from 'src/screens/ProfileScreen';
+import { HomeScreen, ProfileScreen, SearchScreen } from 'src/screens';
 import { colors } from 'src/styles/theme';
 import { HomeIcon, IconProps, OrdersIcon, ProfileIcon, SearchIcon } from 'src/components/Icons';
-import { Text } from 'src/components/shared/Text';
+import { Text } from 'src/components';
+import OrderTabNavigator from './OrderTabNavigator';
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -43,7 +41,7 @@ export default function BottomTabNavigator() {
       />
       <BottomTabs.Screen
         name="Orders"
-        component={OrdersScreen}
+        component={OrderTabNavigator}
         options={{
           ...renderIcon(OrdersIcon, {}),
           tabBarLabel: (props) => renderLabel({ ...props, label: 'Orders' }),

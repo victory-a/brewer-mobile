@@ -1,11 +1,8 @@
 import { View, ScrollView, StatusBar, SafeAreaView, FlatList } from 'react-native';
 import React from 'react';
 
-import { ContainerView } from 'src/components/shared/ContainerView';
-import { CoffeeCard } from 'src/components/CoffeeCard';
+import { CoffeeCard, PromoBanner, ContainerView, SelectLocation } from 'src/components';
 import { colors } from 'src/styles/theme';
-import { PromoBanner } from 'src/components/PromoBanner';
-import { SelectLocation } from 'src/components/SelextLocation';
 
 const coffeebg1 = require('../../assets/images/coffee-1.png');
 const coffeebg2 = require('../../assets/images/coffee-2.png');

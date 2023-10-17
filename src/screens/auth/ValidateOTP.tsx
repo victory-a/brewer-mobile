@@ -11,10 +11,7 @@ import {
 import useCountDown from 'hooks/useCountDown';
 import { parseTimeSecInMinsAndSec } from 'utils/time';
 
-import { Text } from 'src/components/shared/Text';
-import PinInput from 'components/formElements/PinInput';
-import { SolidButton, TextButton } from 'components/formElements/Button';
-import { ContainerView } from 'src/components/shared/ContainerView';
+import { Text, PinInput, SolidButton, TextButton, ContainerView } from 'src/components';
 import { useAuth } from 'src/context/AuthContext';
 
 export function ValidateOTP() {

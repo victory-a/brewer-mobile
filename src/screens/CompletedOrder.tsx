@@ -1,6 +1,6 @@
-import { View, Text, SafeAreaView } from 'react-native';
+import { Text, SafeAreaView } from 'react-native';
 import React from 'react';
-import { ContainerView } from 'src/components/shared/ContainerView';
+import { ContainerView } from 'src/components';
 
 const CompletedOrder = () => {
   return (

@@ -4,13 +4,12 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { CompletedOrder } from '../screens/CompletedOrder';
 import { OngoingOrder } from '../screens/OngoingOrder';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Text } from 'src/components/shared/Text';
+import { Text, ContainerView } from 'src/components';
 import { colors } from 'src/styles/theme';
-import { ContainerView } from 'src/components/shared/ContainerView';
 import { StyleSheet } from 'react-native';
 
 const Tabs = createMaterialTopTabNavigator();
-const OrdersScreen = () => {
+const OrderTabNavigator = () => {
   return (
     <SafeAreaView className="flex-1 bg-white">
       <ContainerView className="flex-1">
@@ -32,7 +31,7 @@ const OrdersScreen = () => {
   );
 };
 
-export default OrdersScreen;
+export default OrderTabNavigator;
 
 function Label({ name, focused }: { name: string; focused: boolean }) {
   return (

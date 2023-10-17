@@ -5,7 +5,6 @@ import BottomTabNavigator from './BottomTabNavigator';
 import SelectLocationModal from 'src/screens/Modals/SelectLocationModal';
 import { ProductDetailScreen } from 'src/screens/ProductDetailScreen';
 import { colors } from 'src/styles/theme';
-import { Text } from 'src/components/shared/Text';
 
 const Stack = createNativeStackNavigator();
 const AppNavigator = () => {

@@ -10,11 +10,7 @@ import {
 
 import { useAuthNavigation } from 'src/hooks/useTypedNavigation';
 
-import { Text } from 'src/components/shared/Text';
-import { ContainerView } from 'src/components/shared/ContainerView';
-import { TextInput } from 'src/components/formElements/TextInput';
-import { SolidButton, TextButton } from 'src/components/formElements/Button';
-import Checkbox from 'src/components/formElements/Checkbox';
+import { Checkbox, ContainerView, SolidButton, Text, TextButton, TextInput } from 'src/components';
 
 export const Login = () => {
   const { navigate } = useAuthNavigation();

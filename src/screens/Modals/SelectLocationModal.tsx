@@ -1,6 +1,6 @@
-import { View, Text, SafeAreaView } from 'react-native';
+import { Text, SafeAreaView } from 'react-native';
 import React from 'react';
-import { SearchInput } from 'src/components/formElements/SearchInput';
+import { SearchInput } from 'src/components';
 
 export default function SelectLocationModal() {
   return (

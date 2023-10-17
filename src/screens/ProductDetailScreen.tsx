@@ -1,16 +1,12 @@
-import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
+import { useRoute, RouteProp } from '@react-navigation/native';
 import React from 'react';
 import { Image, SafeAreaView, StatusBar, ScrollView, View } from 'react-native';
 
-import { BackIcon, StarIcon } from 'src/components/Icons';
-import { SelectButton, SolidButton, TextButton } from 'src/components/formElements/Button';
-import { ContainerView } from 'src/components/shared/ContainerView';
-import { Pressable } from 'src/components/shared/Pressable';
-import { Text } from 'src/components/shared/Text';
+import { StarIcon } from 'src/components/Icons';
+import { SelectButton, SolidButton, TextButton, Text, ContainerView } from 'src/components';
 
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { AppNavigatorParams } from 'src/model/navigation.model';
-import { colors } from 'src/styles/theme';
 import { formatCurrency } from 'src/utils/amount';
 
 const coffeebg1 = require('../../assets/images/coffee-1.png');
