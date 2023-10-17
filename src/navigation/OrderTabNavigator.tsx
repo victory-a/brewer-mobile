@@ -10,7 +10,7 @@ import { colors } from 'src/styles/theme';
 const Tabs = createMaterialTopTabNavigator();
 const OrderTabNavigator = () => {
   return (
-    <View className="flex-1 pt-3 bg-white">
+    <View className="flex-1 pt-4 bg-white">
       <ContainerView className="flex-1">
         <Tabs.Navigator
           screenOptions={({ route }) => ({
@@ -47,13 +47,13 @@ function Label({ name, focused }: { name: string; focused: boolean }) {
 const styles = StyleSheet.create({
   tabBarStyle: {
     width: '99%',
-    height: 44,
+    height: 48,
     borderRadius: 10,
     backgroundColor: '#F2F2F2'
   },
   tabBarIndicatorStyle: {
     backgroundColor: colors.primary,
-    height: 36,
+    height: 40,
     margin: 4,
     borderRadius: 10
   }
