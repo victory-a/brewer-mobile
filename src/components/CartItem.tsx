@@ -18,16 +18,16 @@ export function CartItem() {
         </View>
       </View>
 
-      <View className="flex-row justify-between items-center space-x-3">
+      <View className="flex-row justify-between items-center space-x-4">
         <TextButton
-          className="h-[28] w-[28] bg-white rounded-full border border-whisper items-center justify-center"
+          className="h-[33] w-[33] bg-white rounded-full border border-whisper items-center justify-center align-middle"
           labelClassName="text-secondary font-semibold text-lg"
         >
           -
         </TextButton>
         <Text>1</Text>
         <TextButton
-          className="h-[28] w-[28] bg-white rounded-full border border-whisper flex-row items-center justify-center"
+          className="h-[33] w-[33] bg-white rounded-full border border-whisper flex-row items-center justify-center align-middle"
           labelClassName="text-primary font-semibold text-xl"
         >
           +

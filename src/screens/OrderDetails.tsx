@@ -20,8 +20,8 @@ export function OrderDetails() {
           </Text>
 
           <View className="mt-4 flex-row">
-            <SoftButton label="Edit Address" image={editIcon} additionalClassName="mr-1" />
-            <SoftButton label=" Add Note" image={documentIcon} />
+            <SoftButton label="Edit Address" image={editIcon} additionalClassName="mr-3" />
+            <SoftButton label="Add Note" image={documentIcon} />
           </View>
 
           <View className="my-5 border-b border-whisper" />
