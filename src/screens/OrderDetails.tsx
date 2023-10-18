@@ -13,7 +13,7 @@ export function OrderDetails() {
   const { navigate } = useAppNavigation();
 
   return (
-    <SafeAreaView className="bg-white flex-1">
+    <SafeAreaView className="bg-[#FDFDFD] flex-1 relative">
       <Pressable onPress={() => navigate('Orders')}>
         <BackIcon color={colors.primary} width={44} height={30} />
       </Pressable>
@@ -41,7 +41,7 @@ export function OrderDetails() {
       </ScrollView>
 
       {/* Payment summary */}
-      <View className="border-t-4 border-[#F4F4F4] pt-5">
+      <View className="shadow-lg rounded-t-3xl py-8 bg-white absolute w-full bottom-1">
         <ContainerView>
           <Text className="text-secondary font-semibold text-base">Payment Summary</Text>
           <View className="flex-row justify-between items-center mt-4">
