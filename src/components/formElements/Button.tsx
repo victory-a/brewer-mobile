@@ -84,7 +84,7 @@ type SoftButtonType = PressableProps & {
 export function SoftButton({ label, image, additionalClassName = '', ...props }: SoftButtonType) {
   return (
     <TextButton
-      className={`rounded-2xl border px-3 py-[6px] border-[#DEDEDE] ${additionalClassName}`}
+      className={`rounded-2xl border px-3 py-[6px] border-[#DEDEDE] bg-transparent ${additionalClassName}`}
       labelClassName="text-mid-gray text-sm"
       {...props}
     >

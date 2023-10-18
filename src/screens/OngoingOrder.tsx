@@ -1,16 +1,35 @@
-import { SafeAreaView, View } from 'react-native';
+import { SafeAreaView, ScrollView, View } from 'react-native';
 import React from 'react';
 
-import { EmptyCart } from 'src/components';
+import { EmptyCart, Text } from 'src/components';
 
-const cartItems = [];
+const dummyOrder = {
+  orderCode: '1255334',
+  date: new Date()
+};
 
 const OngoingOrder = () => {
   return (
     <SafeAreaView className="bg-white flex-1">
-      {cartItems.length === 0 ? <EmptyCart /> : <View></View>}
+      {dummyOrder ? <OrderList order={dummyOrder} /> : <EmptyCart />}
     </SafeAreaView>
   );
 };
 
 export { OngoingOrder };
+
+interface IOrder {
+  orderCode: string;
+  date: Date;
+}
+
+function OrderList({ order }: { order: IOrder }) {
+  return (
+    <ScrollView>
+      <View>
+        <Text>Order #{order.orderCode}</Text>
+        <View></View>
+      </View>
+    </ScrollView>
+  );
+}
