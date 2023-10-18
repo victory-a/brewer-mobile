@@ -21,12 +21,22 @@ const AppNavigator = () => {
         options={{
           headerShown: true,
           headerBackVisible: true,
-          headerTintColor: colors.primary
+          headerTintColor: colors.secondary,
+          headerTitle: 'Product Details'
         }}
       />
       <Stack.Screen name="View-Order-Modal" component={SelectLocationModal} />
       <Stack.Screen name="Select-Location-Modal" component={SelectLocationModal} />
-      <Stack.Screen name="Ongoing-Order-Details" component={OrderDetails} />
+      <Stack.Screen
+        name="Ongoing-Order-Details"
+        component={OrderDetails}
+        options={{
+          headerShown: true,
+          headerBackVisible: true,
+          headerTintColor: colors.secondary,
+          headerTitle: 'Order Details'
+        }}
+      />
     </Stack.Navigator>
   );
 };

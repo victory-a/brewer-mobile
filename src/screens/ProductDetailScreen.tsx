@@ -86,6 +86,7 @@ function TotalDisplay() {
   function handleAdd() {
     setQuantity((curr) => curr + 1);
   }
+
   return (
     <View className="absolute w-full bottom-3 py-6 bg-white border-t-[0.3px] border-lighter-gray">
       <ContainerView className="items-center">
@@ -108,7 +109,7 @@ function TotalDisplay() {
             </TextButton>
           </View>
           <View className="flex-[50%]">
-            <SolidButton>
+            <SolidButton onPress={() => navigate('AppBottomTabs')}>
               Add {quantity > 0 ? formatCurrency(total * quantity) : 'to Cart '}
             </SolidButton>
           </View>
