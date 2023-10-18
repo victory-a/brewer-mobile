@@ -3,7 +3,14 @@ import React from 'react';
 import { Image, SafeAreaView, StatusBar, ScrollView, View } from 'react-native';
 
 import { StarIcon } from 'src/components/Icons';
-import { SelectButton, SolidButton, TextButton, Text, ContainerView } from 'src/components';
+import {
+  SelectButton,
+  SolidButton,
+  TextButton,
+  Text,
+  ContainerView,
+  Divider
+} from 'src/components';
 
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { AppNavigatorParams } from 'src/model/navigation.model';
@@ -54,7 +61,8 @@ export const ProductDetailScreen = () => {
             </View>
           </View>
 
-          <View className="my-5 border-b border-whisper" />
+          <Divider additionalClassName="my-5" />
+
           <Text className="text-base font-semibold text-secondary mb-2">Description</Text>
           <Text className="text-nobel text-sm leading-[1.02]">
             A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee

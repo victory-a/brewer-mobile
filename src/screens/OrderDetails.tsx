@@ -1,6 +1,6 @@
 import { View, SafeAreaView, ScrollView } from 'react-native';
 import React from 'react';
-import { ContainerView, SoftButton, Text, CartItem, SolidButton } from 'src/components';
+import { ContainerView, SoftButton, Text, CartItem, SolidButton, Divider } from 'src/components';
 import { formatCurrency } from 'src/utils/amount';
 
 const documentIcon = require('../../assets/icon/document.png');
@@ -24,7 +24,7 @@ export function OrderDetails() {
             <SoftButton label="Add Note" image={documentIcon} />
           </View>
 
-          <View className="my-5 border-b border-whisper" />
+          <Divider additionalClassName="my-5" />
 
           <CartItem />
           <CartItem />
@@ -49,7 +49,7 @@ export function OrderDetails() {
             </View>
           </View>
 
-          <View className="my-4 border-b border-whisper" />
+          <Divider />
 
           <View className="flex-row justify-between items-center mb-7">
             <Text>Total Payment</Text>

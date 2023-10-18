@@ -8,6 +8,7 @@ import { EmptyCart } from './EmptyCart';
 
 import { ContainerView } from './shared/ContainerView';
 import { Pressable } from './shared/Pressable';
+import { Divider } from './shared/Divider';
 import { Text } from './shared/Text';
 import { CoffeeCard } from './CoffeeCard';
 import { PromoBanner } from './PromoBanner';
@@ -31,5 +32,6 @@ export {
   SelectLocation,
   CoffeeCard,
   EmptyCart,
-  CartItem
+  CartItem,
+  Divider
 };
