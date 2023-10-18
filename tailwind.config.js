@@ -20,7 +20,8 @@ module.exports = {
         white: '#fff',
         black: '#000',
         snow: '#F9F9F9',
-        'red-ish': '#ED5151'
+        'red-ish': '#ED5151',
+        whisper: '#EAEAEA'
       },
       fontFamily: {
         'Sora-regular': ['Sora-Regular', 'sans']

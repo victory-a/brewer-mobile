@@ -16,6 +16,8 @@ export const colors = {
   snow: '#F9F9F9',
   'red-ish': '#ED5151',
   nobel: '#9B9B9B',
+  whisper: '#EAEAEA',
+
   transparent: 'transparent'
 };
 

@@ -1,11 +1,8 @@
-import { SafeAreaView, Image, View, ImageSourcePropType, PressableProps } from 'react-native';
+import { SafeAreaView, View } from 'react-native';
 import React from 'react';
 
-import { ContainerView, SoftButton, SolidButton, Text, TextButton } from 'src/components';
+import { ContainerView, EmptyCart, SoftButton, Text, CartItem } from 'src/components';
 
-import { useAppNavigation } from 'src/hooks/useTypedNavigation';
-
-const emptyCart = require('../../assets/images/empty-cart.png');
 const documentIcon = require('../../assets/icon/document.png');
 const editIcon = require('../../assets/icon/edit.png');
 
@@ -29,6 +26,10 @@ const OngoingOrder = () => {
             <SoftButton label="Edit Address" image={editIcon} additionalClassName="mr-1" />
             <SoftButton label=" Add Note" image={documentIcon} />
           </View>
+
+          <View className="my-5 border-b border-whisper" />
+
+          <CartItem />
         </ContainerView>
       )}
     </SafeAreaView>
@@ -36,17 +37,3 @@ const OngoingOrder = () => {
 };
 
 export { OngoingOrder };
-
-function EmptyCart() {
-  const { navigate } = useAppNavigation();
-
-  return (
-    <ContainerView className="flex-1 items-center justify-center pt-2">
-      <Image source={emptyCart} />
-      <Text className="text-secondary text-base mt-2 text-center">Your cart is empty</Text>
-      <View className="mt-12 w-full max-w-[275]">
-        <SolidButton onPress={() => navigate('Home')}>Place an Order 👀</SolidButton>
-      </View>
-    </ContainerView>
-  );
-}

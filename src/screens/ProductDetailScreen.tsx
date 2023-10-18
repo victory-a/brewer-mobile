@@ -54,7 +54,7 @@ export const ProductDetailScreen = () => {
             </View>
           </View>
 
-          <View className="my-5 border-b border-[#EAEAEA]" />
+          <View className="my-5 border-b border-whisper" />
           <Text className="text-base font-semibold text-secondary mb-2">Description</Text>
           <Text className="text-nobel text-sm leading-[1.02]">
             A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee
