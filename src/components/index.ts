@@ -1,4 +1,4 @@
-import { TextButton, SolidButton, SelectButton } from './formElements/Button';
+import { TextButton, SolidButton, SelectButton, SoftButton } from './formElements/Button';
 import { Checkbox } from './formElements/Checkbox';
 import { PhoneInput } from './formElements/PhoneInput';
 import PinInput from './formElements/PinInput';
@@ -16,6 +16,7 @@ export {
   TextButton,
   SolidButton,
   SelectButton,
+  SoftButton,
   Checkbox,
   PhoneInput,
   PinInput,

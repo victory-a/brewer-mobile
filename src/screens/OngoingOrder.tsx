@@ -1,12 +1,15 @@
-import { SafeAreaView, Image, View } from 'react-native';
+import { SafeAreaView, Image, View, ImageSourcePropType, PressableProps } from 'react-native';
 import React from 'react';
 
-import { ContainerView, SolidButton, Text } from 'src/components';
+import { ContainerView, SoftButton, SolidButton, Text, TextButton } from 'src/components';
 
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 
 const emptyCart = require('../../assets/images/empty-cart.png');
-const cartItems = [];
+const documentIcon = require('../../assets/icon/document.png');
+const editIcon = require('../../assets/icon/edit.png');
+
+const cartItems = [{}];
 
 const OngoingOrder = () => {
   return (
@@ -14,8 +17,18 @@ const OngoingOrder = () => {
       {cartItems.length === 0 ? (
         <EmptyCart />
       ) : (
-        <ContainerView className="pt-2">
-          <Text>Delivery Address</Text>
+        <ContainerView className="pt-5">
+          <Text className="text-secondary text-base font-semibold mb-4">Delivery Address</Text>
+
+          <Text className="mb-1 text-sm text-mid-gray font-semibold">Jl. Kpg Sutoyo</Text>
+          <Text className="text-light-gray text-xs ">
+            Kpg. Sutoyo No. 620, Bilzen, Tanjungbalai.
+          </Text>
+
+          <View className="mt-4 flex-row">
+            <SoftButton label="Edit Address" image={editIcon} additionalClassName="mr-1" />
+            <SoftButton label=" Add Note" image={documentIcon} />
+          </View>
         </ContainerView>
       )}
     </SafeAreaView>

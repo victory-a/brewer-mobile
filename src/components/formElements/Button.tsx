@@ -1,5 +1,5 @@
 import React from 'react';
-import { PressableProps, ActivityIndicator } from 'react-native';
+import { PressableProps, ActivityIndicator, ImageSourcePropType, View, Image } from 'react-native';
 
 import { Text } from '../shared/Text';
 import { colors } from 'src/styles/theme';
@@ -75,3 +75,25 @@ export const SelectButton = ({ value = '', isSelected, ...props }: ISelectButton
     </Pressable>
   );
 };
+
+type SoftButtonType = PressableProps & {
+  label: string;
+  image: ImageSourcePropType;
+  additionalClassName?: string;
+};
+export function SoftButton({ label, image, additionalClassName = '', ...props }: SoftButtonType) {
+  return (
+    <TextButton
+      className={`rounded-2xl border px-3 py-[6px] border-[#DEDEDE] ${additionalClassName}`}
+      labelClassName="text-mid-gray text-sm"
+      {...props}
+    >
+      {image && (
+        <View className="mr-1">
+          <Image source={image} />
+        </View>
+      )}
+      {label}
+    </TextButton>
+  );
+}
