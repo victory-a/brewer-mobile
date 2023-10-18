@@ -4,7 +4,7 @@ import { ContainerView } from 'src/components';
 
 const CompletedOrder = () => {
   return (
-    <SafeAreaView className="bg-white flex-1">
+    <SafeAreaView className="flex-1">
       <ContainerView>
         <Text>Completed</Text>
       </ContainerView>

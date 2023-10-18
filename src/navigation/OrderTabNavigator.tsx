@@ -4,13 +4,13 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 
 import { CompletedOrder } from '../screens/CompletedOrder';
 import { OngoingOrder } from '../screens/OngoingOrder';
-import { Text } from 'src/components';
+import { ContainerView, Text } from 'src/components';
 import { colors } from 'src/styles/theme';
 
 const Tabs = createMaterialTopTabNavigator();
 const OrderTabNavigator = () => {
   return (
-    <View className="flex-1 pt-4 bg-white px-3">
+    <ContainerView className="flex-1 pt-4 px-3">
       <Tabs.Navigator
         screenOptions={({ route }) => ({
           tabBarLabelStyle: { textTransform: 'none', fontFamily: 'Sora-Regular' },
@@ -24,7 +24,7 @@ const OrderTabNavigator = () => {
         <Tabs.Screen name="Ongoing" component={OngoingOrder} />
         <Tabs.Screen name="Completed" component={CompletedOrder} />
       </Tabs.Navigator>
-    </View>
+    </ContainerView>
   );
 };
 

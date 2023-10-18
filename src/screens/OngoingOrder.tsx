@@ -1,7 +1,9 @@
-import { SafeAreaView, ScrollView, View } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import React from 'react';
 
-import { EmptyCart, Text } from 'src/components';
+import { EmptyCart } from 'src/components';
+import { useAppNavigation } from 'src/hooks/useTypedNavigation';
+import { OrderItem } from 'src/components/OrderItem';
 
 const dummyOrder = {
   orderCode: '1255334',
@@ -9,27 +11,20 @@ const dummyOrder = {
 };
 
 const OngoingOrder = () => {
+  const { navigate } = useAppNavigation();
   return (
-    <SafeAreaView className="bg-white flex-1">
-      {dummyOrder ? <OrderList order={dummyOrder} /> : <EmptyCart />}
+    <SafeAreaView className="flex-1">
+      {dummyOrder ? (
+        <OrderItem
+          order={dummyOrder}
+          ctaLabel="Proceed to checkout"
+          handlePress={() => navigate('Ongoing-Order-Details')}
+        />
+      ) : (
+        <EmptyCart />
+      )}
     </SafeAreaView>
   );
 };
 
 export { OngoingOrder };
-
-interface IOrder {
-  orderCode: string;
-  date: Date;
-}
-
-function OrderList({ order }: { order: IOrder }) {
-  return (
-    <ScrollView>
-      <View>
-        <Text>Order #{order.orderCode}</Text>
-        <View></View>
-      </View>
-    </ScrollView>
-  );
-}
