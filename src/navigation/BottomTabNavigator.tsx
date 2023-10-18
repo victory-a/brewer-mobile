@@ -17,8 +17,7 @@ export default function BottomTabNavigator() {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.black,
-        tabBarStyle: styles.tabBarStyle
+        tabBarInactiveTintColor: colors.black
       }}
     >
       <BottomTabs.Screen
@@ -47,8 +46,7 @@ export default function BottomTabNavigator() {
           tabBarBadgeStyle: styles.tabBarBadgeStyle,
           headerShown: true,
           headerTintColor: colors.secondary,
-          headerShadowVisible: false,
-          headerStyle: styles.headerStyle
+          headerShadowVisible: false
         }}
       />
       <BottomTabs.Screen

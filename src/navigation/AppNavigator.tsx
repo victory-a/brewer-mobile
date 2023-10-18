@@ -5,6 +5,7 @@ import BottomTabNavigator from './BottomTabNavigator';
 import SelectLocationModal from 'src/screens/Modals/SelectLocationModal';
 import { ProductDetailScreen } from 'src/screens/ProductDetailScreen';
 import { colors } from 'src/styles/theme';
+import { OrderDetails } from 'src/screens';
 
 const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
@@ -25,6 +26,7 @@ const AppNavigator = () => {
       />
       <Stack.Screen name="View-Order-Modal" component={SelectLocationModal} />
       <Stack.Screen name="Select-Location-Modal" component={SelectLocationModal} />
+      <Stack.Screen name="Ongoing-Order-Details" component={OrderDetails} />
     </Stack.Navigator>
   );
 };

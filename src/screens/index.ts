@@ -4,6 +4,7 @@ import { OngoingOrder } from './OngoingOrder';
 import { ProductDetailScreen } from './ProductDetailScreen';
 import { ProfileScreen } from './ProfileScreen';
 import { SearchScreen } from './SearchScreen';
+import { OrderDetails } from './OrderDetails';
 
 import { Login } from './auth/Login';
 import { Register } from './auth/Register';
@@ -20,5 +21,6 @@ export {
   Login,
   Register,
   ValidateOTP,
-  Welcome
+  Welcome,
+  OrderDetails
 };

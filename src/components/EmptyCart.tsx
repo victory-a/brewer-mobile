@@ -2,7 +2,7 @@ import { Image, View } from 'react-native';
 
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 
-import { SolidButton } from './formElements/Button';
+import { SolidButton, TextButton } from './formElements/Button';
 import { ContainerView } from './shared/ContainerView';
 import { Text } from './shared/Text';
 
@@ -18,6 +18,10 @@ export function EmptyCart() {
       <View className="mt-12 w-full max-w-[275]">
         <SolidButton onPress={() => navigate('Home')}>Place an Order 👀</SolidButton>
       </View>
+
+      <TextButton onPress={() => navigate('Ongoing-Order-Details')} className="mt-5">
+        View dummy order
+      </TextButton>
     </ContainerView>
   );
 }

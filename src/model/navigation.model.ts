@@ -11,6 +11,7 @@ export type AppNavigatorParams = {
   AppBottomTabs: undefined;
   'Select-Location-Modal': undefined;
   'Product-Detail-Screen': { product: ICoffeeCard };
+  'Ongoing-Order-Details': undefined;
   Home: undefined;
   Search: undefined;
   Orders: undefined;
