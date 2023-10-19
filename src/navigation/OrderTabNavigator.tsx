@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-import { CompletedOrder } from '../screens/CompletedOrder';
+import { CompletedOrders } from '../screens/CompletedOrders';
 import { OngoingOrder } from '../screens/OngoingOrder';
 import { ContainerView, Text } from 'src/components';
 import { colors } from 'src/styles/theme';
@@ -10,21 +10,23 @@ import { colors } from 'src/styles/theme';
 const Tabs = createMaterialTopTabNavigator();
 const OrderTabNavigator = () => {
   return (
-    <ContainerView className="flex-1 pt-4 px-3">
-      <Tabs.Navigator
-        screenOptions={({ route }) => ({
-          tabBarLabelStyle: { textTransform: 'none', fontFamily: 'Sora-Regular' },
-          tabBarStyle: styles.tabBarStyle,
-          tabBarActiveTintColor: colors.white,
-          tabBarInactiveTintColor: colors.secondary,
-          tabBarIndicatorStyle: styles.tabBarIndicatorStyle,
-          tabBarLabel: ({ focused }) => <Label name={route.name} focused={focused} />
-        })}
-      >
-        <Tabs.Screen name="Ongoing" component={OngoingOrder} />
-        <Tabs.Screen name="Completed" component={CompletedOrder} />
-      </Tabs.Navigator>
-    </ContainerView>
+    <View className="flex-1 bg-white">
+      <ContainerView className="flex-1 pt-4 px-3 bg-white">
+        <Tabs.Navigator
+          screenOptions={({ route }) => ({
+            tabBarLabelStyle: { textTransform: 'none', fontFamily: 'Sora-Regular' },
+            tabBarStyle: styles.tabBarStyle,
+            tabBarActiveTintColor: colors.white,
+            tabBarInactiveTintColor: colors.secondary,
+            tabBarIndicatorStyle: styles.tabBarIndicatorStyle,
+            tabBarLabel: ({ focused }) => <Label name={route.name} focused={focused} />
+          })}
+        >
+          <Tabs.Screen name="Ongoing" component={OngoingOrder} />
+          <Tabs.Screen name="Completed" component={CompletedOrders} />
+        </Tabs.Navigator>
+      </ContainerView>
+    </View>
   );
 };
 

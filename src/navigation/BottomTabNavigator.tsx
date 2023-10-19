@@ -43,7 +43,7 @@ export default function BottomTabNavigator() {
           ...renderIcon(OrdersIcon, {}),
           tabBarLabel: (props) => renderLabel({ ...props, label: 'Orders' }),
           tabBarBadge: 3,
-          headerStyle: { backgroundColor: colors.snow },
+          headerStyle: { backgroundColor: colors.white },
           tabBarBadgeStyle: styles.tabBarBadgeStyle,
           headerShown: true,
           headerTintColor: colors.secondary,

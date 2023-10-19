@@ -13,15 +13,16 @@ const dummyOrder = {
 const OngoingOrder = () => {
   const { navigate } = useAppNavigation();
   return (
-    <SafeAreaView className="flex-1">
+    <SafeAreaView className="flex-1 bg-white">
       {dummyOrder ? (
         <OrderItem
+          containerClass="mt-2"
           order={dummyOrder}
           ctaLabel="Proceed to checkout"
           handlePress={() => navigate('Ongoing-Order-Details')}
         />
       ) : (
-        <EmptyCart />
+        <EmptyCart headline="Your cart is empty" />
       )}
     </SafeAreaView>
   );

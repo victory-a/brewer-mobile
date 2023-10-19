@@ -1,5 +1,5 @@
 import { HomeScreen } from './HomeScreen';
-import { CompletedOrder } from './CompletedOrder';
+import { CompletedOrders } from './CompletedOrders';
 import { OngoingOrder } from './OngoingOrder';
 import { ProductDetailScreen } from './ProductDetailScreen';
 import { ProfileScreen } from './ProfileScreen';
@@ -13,7 +13,7 @@ import { Welcome } from './auth/Welcome';
 
 export {
   HomeScreen,
-  CompletedOrder,
+  CompletedOrders,
   OngoingOrder,
   ProductDetailScreen,
   ProfileScreen,

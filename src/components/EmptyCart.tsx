@@ -8,13 +8,13 @@ import { Text } from './shared/Text';
 
 const emptyCart = require('../../assets/images/empty-cart.png');
 
-export function EmptyCart() {
+export function EmptyCart({ headline = '' }: { headline: string }) {
   const { navigate } = useAppNavigation();
 
   return (
     <ContainerView className="flex-1 items-center justify-center pt-2">
       <Image source={emptyCart} />
-      <Text className="text-secondary text-base mt-2 text-center">Your cart is empty</Text>
+      <Text className="text-secondary text-base mt-2 text-center">{headline}</Text>
       <View className="mt-12 w-full max-w-[275]">
         <SolidButton onPress={() => navigate('Home')}>Place an Order 👀</SolidButton>
       </View>
