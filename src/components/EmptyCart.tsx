@@ -12,7 +12,7 @@ export function EmptyCart({ headline = '' }: { headline: string }) {
   const { navigate } = useAppNavigation();
 
   return (
-    <ContainerView className="flex-1 items-center justify-center pt-2">
+    <ContainerView className="flex-1 items-center justify-center pt-2 px-3">
       <Image source={emptyCart} />
       <Text className="text-secondary text-base mt-2 text-center">{headline}</Text>
       <View className="mt-12 w-full max-w-[275]">

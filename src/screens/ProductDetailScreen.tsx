@@ -37,7 +37,7 @@ export const ProductDetailScreen = () => {
 
   return (
     <SafeAreaView className="bg-white flex-1 relative">
-      <ScrollView className="bg-white">
+      <ScrollView className="bg-white" showsVerticalScrollIndicator={false}>
         <StatusBar barStyle="dark-content" />
 
         <ContainerView className="relative mt-2">

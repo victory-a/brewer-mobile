@@ -17,11 +17,11 @@ export function CompletedOrders() {
   return (
     <SafeAreaView className="flex-1 bg-white">
       {dummyOrder ? (
-        <ScrollView>
+        <ScrollView className="mt-5 px-2" showsVerticalScrollIndicator={false}>
           {completedOrders.map((order, i) => (
             <OrderItem
               key={i}
-              containerClass="mt-2"
+              containerClass=""
               order={order}
               ctaLabel="View Timeline"
               handlePress={() => {}}

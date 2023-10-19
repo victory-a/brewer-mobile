@@ -1,4 +1,4 @@
-import { ScrollView, View } from 'react-native';
+import { View } from 'react-native';
 
 import { Pressable } from './shared/Pressable';
 import { Text } from './shared/Text';
@@ -20,8 +20,8 @@ interface IOrderItem {
 
 export function OrderItem({ order, ctaLabel, handlePress, containerClass = '' }: IOrderItem) {
   return (
-    <ScrollView className={containerClass}>
-      <Pressable className="py-2" onPress={handlePress} hitSlop={0}>
+    <View className={containerClass}>
+      <Pressable className="py-2" onPress={handlePress} hitSlop={1} activeOpacity={0.6}>
         <Text className="text-base font-semibold">Order #{order.orderCode}</Text>
 
         <View className="flex-row justify-between">
@@ -34,9 +34,8 @@ export function OrderItem({ order, ctaLabel, handlePress, containerClass = '' }:
             {ctaLabel}
           </TextButton>
         </View>
-
-        <Divider additionalClassName="my-2" />
       </Pressable>
-    </ScrollView>
+      <Divider additionalClassName="my-2" />
+    </View>
   );
 }

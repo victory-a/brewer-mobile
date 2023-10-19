@@ -10,7 +10,7 @@ export function OrderDetails() {
   return (
     <SafeAreaView className="bg-[#FDFDFD] flex-1 relative">
       {/* delivery info */}
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <ContainerView className="pt-5">
           <Text className="text-secondary text-base font-semibold mb-4">Delivery Address</Text>
 
