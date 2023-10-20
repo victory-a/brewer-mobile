@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     height: 40,
     margin: 4,
-    borderRadius: 10
+    borderRadius: 10,
+    width: '47.8%'
   }
 });
