@@ -5,13 +5,13 @@ import BottomTabNavigator from './BottomTabNavigator';
 import SelectLocationModal from 'src/screens/Modals/SelectLocationModal';
 import { ProductDetailScreen } from 'src/screens/ProductDetailScreen';
 import { colors } from 'src/styles/theme';
-import { OrderDetails } from 'src/screens';
+import { OrderCompleted, OrderDetails } from 'src/screens';
 
 const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="AppBottomTabs"
+      initialRouteName="Order-Completed"
       screenOptions={{ headerShown: false, headerShadowVisible: false, headerTitle: '' }}
     >
       <Stack.Screen name="AppBottomTabs" component={BottomTabNavigator} />
@@ -25,7 +25,6 @@ const AppNavigator = () => {
           headerTitle: 'Product Details'
         }}
       />
-      <Stack.Screen name="View-Order-Modal" component={SelectLocationModal} />
       <Stack.Screen name="Select-Location-Modal" component={SelectLocationModal} />
       <Stack.Screen
         name="Ongoing-Order-Details"
@@ -37,6 +36,7 @@ const AppNavigator = () => {
           headerTitle: 'Order Details'
         }}
       />
+      <Stack.Screen name="Order-Completed" component={OrderCompleted} />
     </Stack.Navigator>
   );
 };

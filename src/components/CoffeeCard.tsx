@@ -17,7 +17,7 @@ function CoffeeCard(product: ICoffeeCard) {
       className="mb-5 min-w-[152]"
       onPress={() => navigate('Product-Detail-Screen', { product })}
     >
-      <View className="rounded-lg  bg-white" style={styles.shadow}>
+      <View className="rounded-lg bg-white" style={styles.shadow}>
         <Image source={thumbnail ?? coffeebg1} className="h-[100] w-full rounded-t-lg" />
         <View className="px-4 py-3">
           <Text className="text-sm font-semibold capitalize text-dark-lemon-green">{title}</Text>

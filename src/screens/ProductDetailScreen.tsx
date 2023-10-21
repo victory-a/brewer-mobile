@@ -40,7 +40,7 @@ export const ProductDetailScreen = () => {
       <ScrollView className="bg-white" showsVerticalScrollIndicator={false}>
         <StatusBar barStyle="dark-content" />
 
-        <ContainerView className="relative mt-2">
+        <ContainerView className="relative mb-40 mt-2">
           <Image
             source={product?.thumbnail ?? coffeebg1}
             className="mx-auto mt-2 h-[226] w-full max-w-[315] rounded-2xl bg-contain"

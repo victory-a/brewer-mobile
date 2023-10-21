@@ -9,9 +9,11 @@ export type AuthNavigatorParams = {
 
 export type AppNavigatorParams = {
   AppBottomTabs: undefined;
+  'View-Order-Modal': undefined;
   'Select-Location-Modal': undefined;
   'Product-Detail-Screen': { product: ICoffeeCard };
   'Ongoing-Order-Details': undefined;
+  'Order-Completed': undefined;
   Home: undefined;
   Search: undefined;
   Orders: undefined;

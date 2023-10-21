@@ -2,11 +2,17 @@ import { View, SafeAreaView, ScrollView } from 'react-native';
 import React from 'react';
 import { ContainerView, SoftButton, Text, CartItem, SolidButton, Divider } from 'src/components';
 import { formatCurrency } from 'src/utils/amount';
+import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 
 const documentIcon = require('../../assets/icon/document.png');
 const editIcon = require('../../assets/icon/edit.png');
 
 export function OrderDetails() {
+  const { navigate } = useAppNavigation();
+
+  function handlePayment() {
+    navigate('Order-Completed');
+  }
   return (
     <SafeAreaView className="relative flex-1 bg-[#FDFDFD]">
       {/* delivery info */}
@@ -56,7 +62,7 @@ export function OrderDetails() {
             <Text>{formatCurrency(5.53)}</Text>
           </View>
 
-          <SolidButton>Make Payment 💸</SolidButton>
+          <SolidButton onPress={handlePayment}>Make Payment 💸</SolidButton>
         </ContainerView>
       </View>
     </SafeAreaView>
