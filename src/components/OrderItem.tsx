@@ -25,7 +25,7 @@ export function OrderItem({ order, ctaLabel, handlePress, containerClass = '' }:
         <Text className="text-base font-semibold">Order #{order.orderCode}</Text>
 
         <View className="flex-row justify-between">
-          <Text className="text-sm mt-1">{formatDatetime(order.date)}</Text>
+          <Text className="mt-1 text-sm">{formatDatetime(order.date)}</Text>
           <TextButton
             labelClassName="text-dark-lemon-green text-xs"
             buttonclassName="bg-transparent"

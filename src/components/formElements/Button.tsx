@@ -24,14 +24,14 @@ export const SolidButton = ({
     <Pressable
       className={`${
         loading ? 'bg-[#808080]' : 'bg-primary'
-      } rounded-lg py-3 w-full shadow-sm ${buttonclassName}`}
+      } w-full rounded-lg py-3 shadow-sm ${buttonclassName}`}
       disabled={loading}
       {...props}
     >
       {loading ? (
         <ActivityIndicator color="white" />
       ) : (
-        <Text className={`text-white text-center text-base font-semibold ${labelClassName}`}>
+        <Text className={`text-center text-base font-semibold text-white ${labelClassName}`}>
           {children}
         </Text>
       )}
@@ -53,7 +53,7 @@ export const TextButton = ({
 }: ITextButton) => {
   return (
     <Pressable className={` bg-white ${buttonclassName}`} hitSlop={hitSlop} {...props}>
-      <Text className={`text-gray-67 text-center text-sm ${labelClassName}`}>{children}</Text>
+      <Text className={`text-center text-sm text-gray-67 ${labelClassName}`}>{children}</Text>
     </Pressable>
   );
 };
@@ -67,8 +67,8 @@ export const SelectButton = ({ value = '', isSelected, ...props }: ISelectButton
   return (
     <Pressable
       {...props}
-      className={`w-full max-w-[96] py-[10] border flex flex-row justify-center items-center rounded-xl ${
-        isSelected ? 'bg-[#FFF5EE] border-primary' : 'bg-white border-[#DEDEDE]'
+      className={`flex w-full max-w-[96] flex-row items-center justify-center rounded-xl border py-[10] ${
+        isSelected ? 'border-primary bg-[#FFF5EE]' : 'border-[#DEDEDE] bg-white'
       }`}
     >
       <Text className={`text-sm ${isSelected ? 'text-primary' : 'text-secondary'}`}>{value}</Text>
@@ -84,7 +84,7 @@ type SoftButtonType = PressableProps & {
 export function SoftButton({ label, image, additionalClassName = '', ...props }: SoftButtonType) {
   return (
     <TextButton
-      className={`rounded-2xl border px-3 py-[6px] border-[#DEDEDE] bg-transparent ${additionalClassName}`}
+      className={`rounded-2xl border border-[#DEDEDE] bg-transparent px-3 py-[6px] ${additionalClassName}`}
       labelClassName="text-mid-gray text-sm"
       {...props}
     >

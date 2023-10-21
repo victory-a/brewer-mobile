@@ -14,14 +14,14 @@ function CoffeeCard(product: ICoffeeCard) {
 
   return (
     <Pressable
-      className="min-w-[152] mb-5"
+      className="mb-5 min-w-[152]"
       onPress={() => navigate('Product-Detail-Screen', { product })}
     >
-      <View className="bg-white  rounded-lg" style={styles.shadow}>
-        <Image source={thumbnail ?? coffeebg1} className="w-full h-[100] rounded-t-lg" />
-        <View className="py-3 px-4">
-          <Text className="text-sm text-dark-lemon-green font-semibold capitalize">{title}</Text>
-          <Text className="text-xs text-nobel mb-3">{type}</Text>
+      <View className="rounded-lg  bg-white" style={styles.shadow}>
+        <Image source={thumbnail ?? coffeebg1} className="h-[100] w-full rounded-t-lg" />
+        <View className="px-4 py-3">
+          <Text className="text-sm font-semibold capitalize text-dark-lemon-green">{title}</Text>
+          <Text className="mb-3 text-xs text-nobel">{type}</Text>
           <Text className="text-base font-semibold text-dark-lemon-green">
             {formatCurrency(amount)}
           </Text>

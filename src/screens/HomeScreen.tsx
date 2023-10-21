@@ -29,13 +29,13 @@ const HomeScreen = () => {
       >
         <StatusBar barStyle="light-content" />
         <View className="bg-coffee-brown">
-          <ContainerView className="pt-4 pb-[100px] relative">
+          <ContainerView className="relative pb-[100px] pt-4">
             <SelectLocation />
             <PromoBanner />
           </ContainerView>
         </View>
 
-        <ContainerView className="flex-1 mt-[100px] mb-6">
+        <ContainerView className="mb-6 mt-[100px] flex-1">
           <FlatList
             data={coffeeList}
             renderItem={({ item }) => <CoffeeCard {...item} />}

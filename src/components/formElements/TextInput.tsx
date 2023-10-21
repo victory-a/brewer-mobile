@@ -14,7 +14,7 @@ export function TextInput({ label, ...props }: ITextInput) {
       {label ? <Text className="mb-1 text-sm text-dark-lemon-green">{label}</Text> : null}
       <NativeTextInput
         {...props}
-        className="px-3 py-4 font-Sora-regular text-[15px] text-mid-gray bg-sea-shell border-white-color rounded-[4px]"
+        className="rounded-[4px] border-white-color bg-sea-shell px-3 py-4 font-Sora-regular text-[15px] text-mid-gray"
         selectionColor={colors.primary}
         placeholderTextColor={colors['light-gray']}
         autoCapitalize="none"

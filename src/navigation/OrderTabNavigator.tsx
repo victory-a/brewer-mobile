@@ -11,7 +11,7 @@ const Tabs = createMaterialTopTabNavigator();
 const OrderTabNavigator = () => {
   return (
     <View className="flex-1 bg-white">
-      <ContainerView className="flex-1 pt-4 bg-white">
+      <ContainerView className="flex-1 bg-white pt-4">
         <Tabs.Navigator
           screenOptions={({ route }) => ({
             tabBarLabelStyle: { textTransform: 'none', fontFamily: 'Sora-Regular' },
@@ -36,8 +36,8 @@ function Label({ name, focused }: { name: string; focused: boolean }) {
   return (
     <Text
       className={`${
-        focused ? 'text-white font-semibold' : 'text-secondary font-normal'
-      } text-sm mb-1`}
+        focused ? 'font-semibold text-white' : 'font-normal text-secondary'
+      } mb-1 text-sm`}
     >
       {name}
     </Text>

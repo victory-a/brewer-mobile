@@ -7,21 +7,21 @@ const bg = require('../../assets/images/promo-bg.png');
 
 export function PromoBanner() {
   return (
-    <Pressable className="w-full absolute -bottom-[80px] rounded-xl overflow-hidden">
+    <Pressable className="absolute -bottom-[80px] w-full overflow-hidden rounded-xl">
       <ImageBackground source={bg} className="w-full">
-        <View className="py-3 px-4">
+        <View className="px-4 py-3">
           {/* pill */}
           <View className="flex-row">
-            <View className="bg-red-ish px-[6px] py-1 rounded-lg w-fit">
-              <Text className="text-white text-sm font-semibold">Promo</Text>
+            <View className="w-fit rounded-lg bg-red-ish px-[6px] py-1">
+              <Text className="text-sm font-semibold text-white">Promo</Text>
             </View>
           </View>
 
           <View
-            className="mt-2 max-w-[70%] p-[6px] rounded-lg "
+            className="mt-2 max-w-[70%] rounded-lg p-[6px] "
             style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
           >
-            <Text className="text-white font-semibold text-3xl">Buy one get one FREE</Text>
+            <Text className="text-3xl font-semibold text-white">Buy one get one FREE</Text>
           </View>
         </View>
       </ImageBackground>

@@ -36,19 +36,19 @@ export const ProductDetailScreen = () => {
   if (!product) return;
 
   return (
-    <SafeAreaView className="bg-white flex-1 relative">
+    <SafeAreaView className="relative flex-1 bg-white">
       <ScrollView className="bg-white" showsVerticalScrollIndicator={false}>
         <StatusBar barStyle="dark-content" />
 
         <ContainerView className="relative mt-2">
           <Image
             source={product?.thumbnail ?? coffeebg1}
-            className="w-full max-w-[315] h-[226] rounded-2xl bg-contain mx-auto mt-2"
+            className="mx-auto mt-2 h-[226] w-full max-w-[315] rounded-2xl bg-contain"
           />
-          <Text className="text-secondary text-xl font-semibold mt-5">{product?.title}</Text>
-          <Text className="text-nobel text-sm">{product?.type}</Text>
+          <Text className="mt-5 text-xl font-semibold text-secondary">{product?.title}</Text>
+          <Text className="text-sm text-nobel">{product?.type}</Text>
 
-          <View className="flex-row mt-2 justify-between items-center ">
+          <View className="mt-2 flex-row items-center justify-between ">
             <View className="flex-row">
               <StarIcon />
               <Text>
@@ -56,15 +56,15 @@ export const ProductDetailScreen = () => {
               </Text>
             </View>
 
-            <View className="bg-snow p-[10] rounded-2xl">
+            <View className="rounded-2xl bg-snow p-[10]">
               <Image source={milk} />
             </View>
           </View>
 
           <Divider additionalClassName="my-5" />
 
-          <Text className="text-base font-semibold text-secondary mb-2">Description</Text>
-          <Text className="text-nobel text-sm leading-[1.02]">
+          <Text className="mb-2 text-base font-semibold text-secondary">Description</Text>
+          <Text className="text-sm leading-[1.02] text-nobel">
             A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee
             and 85ml of fresh milk.
           </Text>
@@ -96,12 +96,12 @@ function TotalDisplay() {
   }
 
   return (
-    <View className="absolute w-full bottom-3 py-6 bg-white border-t-[0.3px] border-lighter-gray">
+    <View className="absolute bottom-3 w-full border-t-[0.3px] border-lighter-gray bg-white py-6">
       <ContainerView className="items-center">
-        <View className="flex-row w-full flex-1 space-x-6">
-          <View className="flex-row flex-[50%] items-center justify-between">
+        <View className="w-full flex-1 flex-row space-x-6">
+          <View className="flex-[50%] flex-row items-center justify-between">
             <TextButton
-              className="py-2 px-4 bg-[#F3F3F3] rounded-lg"
+              className="rounded-lg bg-[#F3F3F3] px-4 py-2"
               labelClassName="text-secondary font-semibold text-lg"
               onPress={handleRemove}
             >
@@ -109,7 +109,7 @@ function TotalDisplay() {
             </TextButton>
             <Text>{quantity}</Text>
             <TextButton
-              className="py-2 px-4 bg-[#F3F3F3] rounded-lg"
+              className="rounded-lg bg-[#F3F3F3] px-4 py-2"
               labelClassName="text-primary font-semibold text-xl"
               onPress={handleAdd}
             >
@@ -132,7 +132,7 @@ function SelectSize() {
 
   return (
     <>
-      <Text className="text-base font-semibold text-secondary mt-5">Size</Text>
+      <Text className="mt-5 text-base font-semibold text-secondary">Size</Text>
 
       <View className="mt-3 flex-row justify-between">
         <SelectButton

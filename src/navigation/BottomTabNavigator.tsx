@@ -79,7 +79,7 @@ function renderLabel(props: IRenderLabel) {
 
   return (
     <Text
-      className={`text-[12px] -mt-1 ${focused && 'font-semibold'}`}
+      className={`-mt-1 text-[12px] ${focused && 'font-semibold'}`}
       style={{ color: props.color }}
     >
       {props.label}

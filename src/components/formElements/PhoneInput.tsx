@@ -15,17 +15,17 @@ export function PhoneInput({ label, ...props }: IPhoneInput) {
     <Pressable className="mb-4" onPress={() => phoneInputRef?.current?.focus()}>
       {label ? <Text className="mb-1 text-sm text-dark-lemon-green">{label}</Text> : null}
       <View
-        className="flex-row border-white-color bg-sea-shell rounded-[4px] pr-[0.5px] pl-2"
+        className="flex-row rounded-[4px] border-white-color bg-sea-shell pl-2 pr-[0.5px]"
         style={{ borderWidth: 1, borderRightWidth: 1 }}
       >
         <View className="flex-row items-center">
           <NGFlag />
-          <Text className="text-[15px] text-light-gray ml-1">+234</Text>
+          <Text className="ml-1 text-[15px] text-light-gray">+234</Text>
         </View>
         <NativeTextInput
           {...props}
           ref={phoneInputRef}
-          className="px-1 py-4 font-Sora-regular text-[15px] text-mid-gray  bg-sea-shell rounded-[4px]"
+          className="rounded-[4px] bg-sea-shell px-1 py-4 font-Sora-regular  text-[15px] text-mid-gray"
           selectionColor={colors.primary}
           placeholderTextColor={colors['light-gray']}
         />

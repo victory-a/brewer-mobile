@@ -8,14 +8,14 @@ const editIcon = require('../../assets/icon/edit.png');
 
 export function OrderDetails() {
   return (
-    <SafeAreaView className="bg-[#FDFDFD] flex-1 relative">
+    <SafeAreaView className="relative flex-1 bg-[#FDFDFD]">
       {/* delivery info */}
       <ScrollView showsVerticalScrollIndicator={false}>
         <ContainerView className="pt-5">
-          <Text className="text-secondary text-base font-semibold mb-4">Delivery Address</Text>
+          <Text className="mb-4 text-base font-semibold text-secondary">Delivery Address</Text>
 
-          <Text className="mb-1 text-sm text-mid-gray font-semibold">Jl. Kpg Sutoyo</Text>
-          <Text className="text-light-gray text-xs ">
+          <Text className="mb-1 text-sm font-semibold text-mid-gray">Jl. Kpg Sutoyo</Text>
+          <Text className="text-xs text-light-gray ">
             Kpg. Sutoyo No. 620, Bilzen, Tanjungbalai.
           </Text>
 
@@ -32,26 +32,26 @@ export function OrderDetails() {
       </ScrollView>
 
       {/* Payment summary */}
-      <View className="shadow-2xl rounded-t-3xl py-8 bg-white absolute w-full bottom-1">
+      <View className="absolute bottom-1 w-full rounded-t-3xl bg-white py-8 shadow-2xl">
         <ContainerView>
-          <Text className="text-secondary font-semibold text-base">Payment Summary</Text>
-          <View className="flex-row justify-between items-center mt-4">
+          <Text className="text-base font-semibold text-secondary">Payment Summary</Text>
+          <View className="mt-4 flex-row items-center justify-between">
             <Text>Price</Text>
             <Text>{formatCurrency(4.53)}</Text>
           </View>
-          <View className="flex-row justify-between items-center mt-4">
+          <View className="mt-4 flex-row items-center justify-between">
             <Text>Delivery Fee</Text>
             <View className="flex-row items-center space-x-2">
-              <Text className="text-secondary text-sm font-normal line-through">
+              <Text className="text-sm font-normal text-secondary line-through">
                 {formatCurrency(2.9)}
               </Text>
-              <Text className="text-secondary  font-semibold">{formatCurrency(1.0)}</Text>
+              <Text className="font-semibold  text-secondary">{formatCurrency(1.0)}</Text>
             </View>
           </View>
 
           <Divider />
 
-          <View className="flex-row justify-between items-center mb-7">
+          <View className="mb-7 flex-row items-center justify-between">
             <Text>Total Payment</Text>
             <Text>{formatCurrency(5.53)}</Text>
           </View>

@@ -5,5 +5,5 @@ interface IView extends ViewProps {
   className?: string;
 }
 export function ContainerView({ className, ...props }: IView) {
-  return <NativeView className={`w-[85%] mx-auto ${className}`} {...props} />;
+  return <NativeView className={`mx-auto w-[85%] ${className}`} {...props} />;
 }
