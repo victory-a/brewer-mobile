@@ -11,5 +11,6 @@
   "tabWidth": 2,
   "trailingComma": "none",
   "proseWrap": "always",
-  "htmlWhitespaceSensitivity": "css"
+  "htmlWhitespaceSensitivity": "css",
+  "plugins": ["prettier-plugin-tailwindcss"]
 }
