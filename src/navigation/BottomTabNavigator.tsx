@@ -13,7 +13,7 @@ const BottomTabs = createBottomTabNavigator();
 export default function BottomTabNavigator() {
   return (
     <BottomTabs.Navigator
-      initialRouteName="Home"
+      initialRouteName="Search"
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.primary,
@@ -33,7 +33,11 @@ export default function BottomTabNavigator() {
         component={SearchScreen}
         options={{
           ...renderIcon(SearchIcon, {}),
-          tabBarLabel: (props) => renderLabel({ ...props, label: 'Search' })
+          tabBarLabel: (props) => renderLabel({ ...props, label: 'Search' }),
+          headerShown: true,
+          headerTintColor: colors.secondary,
+          headerShadowVisible: false,
+          headerStyle: { backgroundColor: colors.white }
         }}
       />
       <BottomTabs.Screen

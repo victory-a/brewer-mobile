@@ -8,7 +8,7 @@ export type IconProps = {
   color?: string;
 };
 
-export const NGFlag: React.FC<IconProps> = ({ width = 18, height = 20, color = '' }) => {
+export const NGFlag = ({ width = 18, height = 20, color = '' }: IconProps) => {
   return (
     <Svg width={width} height={height} fill={color} viewBox="0 0 6 3" style={{ opacity: 0.8 }}>
       <Path fill="#008751" d="M0 0h6v3H0z" />
@@ -17,7 +17,7 @@ export const NGFlag: React.FC<IconProps> = ({ width = 18, height = 20, color = '
   );
 };
 
-export const ArrowDown: React.FC<IconProps> = ({ width = 18, height = 20, color = 'none' }) => {
+export const ArrowDown = ({ width = 18, height = 20, color = 'none' }: IconProps) => {
   return (
     <Svg width={width} height={height} viewBox="0 0 14 14" fill={color}>
       <Path
@@ -31,7 +31,7 @@ export const ArrowDown: React.FC<IconProps> = ({ width = 18, height = 20, color 
   );
 };
 
-export const HomeIcon: React.FC<IconProps> = ({ width = 18, height = 20, color = '#fff' }) => {
+export const HomeIcon = ({ width = 18, height = 20, color = '#fff' }: IconProps) => {
   return (
     <Svg width={width} height={height} viewBox="0 0 24 24" fill={color}>
       <Path
@@ -42,7 +42,7 @@ export const HomeIcon: React.FC<IconProps> = ({ width = 18, height = 20, color =
   );
 };
 
-export const OrdersIcon: React.FC<IconProps> = ({ width = 18, height = 20, color = '#fff' }) => {
+export const OrdersIcon = ({ width = 18, height = 20, color = '#fff' }: IconProps) => {
   return (
     <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
@@ -54,7 +54,7 @@ export const OrdersIcon: React.FC<IconProps> = ({ width = 18, height = 20, color
   );
 };
 
-export const SearchIcon: React.FC<IconProps> = ({ width = 18, height = 20, color = '#fff' }) => {
+export const SearchIcon = ({ width = 18, height = 20, color = '#fff' }: IconProps) => {
   return (
     <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
@@ -65,7 +65,7 @@ export const SearchIcon: React.FC<IconProps> = ({ width = 18, height = 20, color
   );
 };
 
-export const ProfileIcon: React.FC<IconProps> = ({ width = 18, height = 20, color = '#fff' }) => {
+export const ProfileIcon = ({ width = 18, height = 20, color = '#fff' }: IconProps) => {
   return (
     <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
@@ -76,7 +76,7 @@ export const ProfileIcon: React.FC<IconProps> = ({ width = 18, height = 20, colo
   );
 };
 
-export const BackIcon: React.FC<IconProps> = ({ width = 20, height = 20, color = '#fff' }) => {
+export const BackIcon = ({ width = 20, height = 20, color = '#fff' }: IconProps) => {
   return (
     <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
@@ -87,7 +87,7 @@ export const BackIcon: React.FC<IconProps> = ({ width = 20, height = 20, color =
   );
 };
 
-export const StarIcon: React.FC<IconProps> = ({ width = 20, height = 20, color = '#FBBE21' }) => {
+export const StarIcon = ({ width = 20, height = 20, color = '#FBBE21' }: IconProps) => {
   return (
     <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
@@ -98,11 +98,7 @@ export const StarIcon: React.FC<IconProps> = ({ width = 20, height = 20, color =
   );
 };
 
-export const TickIcon: React.FC<IconProps> = ({
-  width = 80,
-  height = 80,
-  color = colors.primary
-}) => {
+export const TickIcon = ({ width = 80, height = 80, color = colors.primary }: IconProps) => {
   return (
     <Svg width={width} height={height} viewBox="0 0 64 60" fill={color}>
       <Path
