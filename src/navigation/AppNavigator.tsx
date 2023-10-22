@@ -1,5 +1,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { CardStyleInterpolators } from '@react-navigation/stack';
 
 import BottomTabNavigator from './BottomTabNavigator';
 import SelectLocationModal from 'src/screens/Modals/SelectLocationModal';
@@ -11,7 +12,7 @@ const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Order-Completed"
+      initialRouteName="AppBottomTabs"
       screenOptions={{ headerShown: false, headerShadowVisible: false, headerTitle: '' }}
     >
       <Stack.Screen name="AppBottomTabs" component={BottomTabNavigator} />
