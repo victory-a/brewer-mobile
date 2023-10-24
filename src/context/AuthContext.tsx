@@ -12,7 +12,7 @@ interface Props {
 }
 
 function AuthProvider(props: Props) {
-  const [isAuthenticated, setIsAuthenticated] = React.useState(true);
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
 
   return <Context.Provider value={{ isAuthenticated, setIsAuthenticated }} {...props} />;
 }

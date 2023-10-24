@@ -13,7 +13,7 @@ const BottomTabs = createBottomTabNavigator();
 export default function BottomTabNavigator() {
   return (
     <BottomTabs.Navigator
-      initialRouteName="Profile"
+      initialRouteName="Home"
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.primary,
