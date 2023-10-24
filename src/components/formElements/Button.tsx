@@ -78,7 +78,7 @@ export const SelectButton = ({ value = '', isSelected, ...props }: ISelectButton
 
 type SoftButtonType = PressableProps & {
   label: string;
-  image: ImageSourcePropType;
+  image?: ImageSourcePropType;
   additionalClassName?: string;
 };
 export function SoftButton({ label, image, additionalClassName = '', ...props }: SoftButtonType) {
