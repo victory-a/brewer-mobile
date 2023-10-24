@@ -1,6 +1,5 @@
 import React from 'react';
 import { Image, SafeAreaView, ScrollView, View } from 'react-native';
-import { SvgXml } from 'react-native-svg';
 
 import { ContainerView, PhoneInput, Text, TextInput } from 'src/components';
 import { SolidButton, TextButton } from 'src/components/formElements/Button';
@@ -13,8 +12,8 @@ const ProfileScreen = () => {
   return (
     <SafeAreaView className="flex-1 bg-white">
       <ScrollView>
-        <ContainerView className="flex-1 pt-6">
-          <View className="mb-5 w-full items-center">
+        <ContainerView className="flex-1 pt-8">
+          <View className="mb-8 w-full items-center">
             <Image source={avatar} className="h-24 w-24 object-cover" />
           </View>
 
