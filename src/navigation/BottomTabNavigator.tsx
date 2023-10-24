@@ -59,11 +59,7 @@ export default function BottomTabNavigator() {
         component={ProfileScreen}
         options={{
           ...renderIcon(ProfileIcon, {}),
-          tabBarLabel: (props) => renderLabel({ ...props, label: 'Profile' }),
-          headerShown: true,
-          headerTintColor: colors.secondary,
-          headerShadowVisible: false,
-          headerStyle: { backgroundColor: colors.white }
+          tabBarLabel: (props) => renderLabel({ ...props, label: 'Profile' })
         }}
       />
     </BottomTabs.Navigator>
