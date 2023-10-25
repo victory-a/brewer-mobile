@@ -25,7 +25,7 @@ export const Welcome = () => {
 
         <SafeAreaView className="mx-auto mt-auto w-[85%] items-center">
           <View className="mb-1 w-full">
-            <SolidButton onPress={() => navigate('Register')}>Get Started</SolidButton>
+            <SolidButton onPress={() => navigate('Login')}>Get Started</SolidButton>
           </View>
         </SafeAreaView>
       </View>

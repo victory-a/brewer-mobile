@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { Login, Register, ValidateOTP, Welcome } from 'src/screens';
+import { Login, ValidateOTP, Welcome } from 'src/screens';
 import { colors } from 'src/styles/theme';
 
 const defaultOptions = {
@@ -15,7 +15,6 @@ const AuthNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="Welcome" screenOptions={defaultOptions}>
       <Stack.Screen name="Welcome" component={Welcome} />
-      <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen
         name="Validate-OTP"

@@ -8,7 +8,6 @@ import { OrderDetails } from './OrderDetails';
 import { OrderCompleted } from './OrderCompleted';
 
 import { Login } from './auth/Login';
-import { Register } from './auth/Register';
 import { ValidateOTP } from './auth/ValidateOTP';
 import { Welcome } from './auth/Welcome';
 
@@ -20,7 +19,6 @@ export {
   ProfileScreen,
   SearchScreen,
   Login,
-  Register,
   ValidateOTP,
   Welcome,
   OrderDetails,

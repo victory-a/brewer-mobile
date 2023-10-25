@@ -10,7 +10,7 @@ import {
 
 import { useAuthNavigation } from 'src/hooks/useTypedNavigation';
 
-import { Checkbox, ContainerView, SolidButton, Text, TextButton, TextInput } from 'src/components';
+import { Checkbox, ContainerView, SolidButton, Text, TextInput } from 'src/components';
 
 export const Login = () => {
   const { navigate } = useAuthNavigation();
@@ -61,10 +61,6 @@ export const Login = () => {
             <SolidButton className="mt-6" onPress={() => navigate('Validate-OTP')}>
               Login
             </SolidButton>
-
-            <TextButton onPress={() => navigate('Register')} className="mt-6">
-              Don&apos;t have an account? <Text>Register</Text>
-            </TextButton>
           </ContainerView>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
