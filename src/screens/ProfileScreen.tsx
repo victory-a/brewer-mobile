@@ -22,7 +22,7 @@ const ProfileScreen = () => {
           buttonclassName="my-5"
           onPress={() => setIsAuthenticated(false)}
         >
-          Sign out
+          Logout
         </TextButton>
 
         <View className="mb-3 mt-auto">
