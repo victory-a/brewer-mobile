@@ -10,8 +10,8 @@ const ProfileScreen = () => {
   return (
     <SafeAreaView className="flex-1 bg-white">
       <ContainerView className="flex-1 pt-8">
-        <TextInput value="Adnan" label="First Name" />
-        <TextInput value="Frimpong" label="Last Name" />
+        <TextInput placeholder="Adnan Frimpong" label="Name" value="" />
+        <TextInput value="pingpong98" label="Username" />
         <PhoneInput value="812 345 6789" label="mobile" />
         <TextInput value="adanan@example.com" label="Email" editable={false} />
 
