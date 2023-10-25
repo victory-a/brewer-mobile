@@ -44,6 +44,7 @@ export const ProductDetailScreen = () => {
           <Image
             source={product?.thumbnail ?? coffeebg1}
             className="mx-auto mt-2 h-[226] w-full max-w-[315] rounded-2xl bg-contain"
+            resizeMode="contain"
           />
           <Text className="mt-5 text-xl font-semibold text-secondary">{product?.title}</Text>
           <Text className="text-sm text-nobel">{product?.type}</Text>
