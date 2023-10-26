@@ -14,7 +14,7 @@ function CoffeeCard(product: ICoffeeCard) {
 
   return (
     <Pressable
-      className="mb-5 min-w-[152]"
+      className="mx-auto mb-5 min-w-[152]"
       onPress={() => navigate('Product-Detail-Screen', { product })}
     >
       <View className="rounded-lg bg-white" style={styles.shadow}>

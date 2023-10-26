@@ -1,5 +1,6 @@
-import { View, ScrollView, StatusBar, SafeAreaView, FlatList } from 'react-native';
 import React from 'react';
+import { View, ScrollView, StatusBar, SafeAreaView, RefreshControl } from 'react-native';
+import { FlashList } from '@shopify/flash-list';
 
 import { CoffeeCard, PromoBanner, ContainerView, SelectLocation } from 'src/components';
 import { colors } from 'src/styles/theme';
@@ -21,11 +22,27 @@ const coffeeList = [
 ];
 
 const HomeScreen = () => {
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 5000);
+  }, []);
+
   return (
     <SafeAreaView className="bg-coffee-brown">
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ backgroundColor: colors.white }}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            tintColor={colors.primary}
+          />
+        }
       >
         <StatusBar barStyle="light-content" />
         <View className="bg-coffee-brown">
@@ -35,13 +52,12 @@ const HomeScreen = () => {
           </ContainerView>
         </View>
 
-        <ContainerView className="mb-6 mt-[100px] flex-1">
-          <FlatList
+        <ContainerView className="mb-6 mt-[100px]">
+          <FlashList
             data={coffeeList}
             renderItem={({ item }) => <CoffeeCard {...item} />}
-            contentContainerStyle={{ alignItems: 'center' }}
+            estimatedItemSize={200}
             numColumns={2}
-            columnWrapperStyle={{ gap: 18 }}
           />
         </ContainerView>
       </ScrollView>

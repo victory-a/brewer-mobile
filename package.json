@@ -17,6 +17,7 @@
     "@react-navigation/native": "^6.1.8",
     "@react-navigation/native-stack": "^6.9.14",
     "@react-navigation/stack": "^6.3.18",
+    "@shopify/flash-list": "^1.6.2",
     "dayjs": "^1.11.10",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
