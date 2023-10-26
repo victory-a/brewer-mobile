@@ -58,7 +58,7 @@ export const Login = () => {
               />
             </View>
 
-            <SolidButton className="mt-6" onPress={() => navigate('Validate-OTP')}>
+            <SolidButton className="mt-8" onPress={() => navigate('Validate-OTP')}>
               Login
             </SolidButton>
           </ContainerView>
