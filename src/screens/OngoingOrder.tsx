@@ -1,4 +1,4 @@
-import { SafeAreaView, ScrollView } from 'react-native';
+import { SafeAreaView, ScrollView, View } from 'react-native';
 import React from 'react';
 import { FlashList } from '@shopify/flash-list';
 
@@ -17,19 +17,21 @@ const OngoingOrder = () => {
   return (
     <SafeAreaView className="flex-1 bg-white">
       {dummyOrder ? (
-        <ScrollView className="mt-5 px-2">
-          <FlashList
-            data={ongoingOrders}
-            renderItem={({ index, item }) => (
-              <OrderItem
-                key={index}
-                order={item}
-                ctaLabel="Proceed to checkout"
-                handlePress={() => navigate('Ongoing-Order-Details')}
-              />
-            )}
-            estimatedItemSize={10}
-          />
+        <ScrollView className="mt-5 h-full px-2">
+          <View className="min-h-[2]">
+            <FlashList
+              data={ongoingOrders}
+              renderItem={({ index, item }) => (
+                <OrderItem
+                  key={index}
+                  order={item}
+                  ctaLabel="Proceed to checkout"
+                  handlePress={() => navigate('Ongoing-Order-Details')}
+                />
+              )}
+              estimatedItemSize={10}
+            />
+          </View>
         </ScrollView>
       ) : (
         <EmptyCart headline="Your cart is empty" />

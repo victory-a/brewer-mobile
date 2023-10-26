@@ -52,7 +52,7 @@ const HomeScreen = () => {
           </ContainerView>
         </View>
 
-        <ContainerView className="mb-6 mt-[100px]">
+        <ContainerView className="mb-6 mt-[100px] h-full">
           <FlashList
             data={coffeeList}
             renderItem={({ index, item }) => <CoffeeCard key={index} {...item} />}

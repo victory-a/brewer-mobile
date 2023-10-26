@@ -1,8 +1,8 @@
-import { SafeAreaView, ScrollView } from 'react-native';
+import { SafeAreaView, ScrollView, View } from 'react-native';
 import React from 'react';
 import { FlashList } from '@shopify/flash-list';
 
-import { EmptyCart } from 'src/components';
+import { ContainerView, EmptyCart } from 'src/components';
 // import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { OrderItem } from 'src/components/OrderItem';
 
@@ -21,13 +21,20 @@ export function CompletedOrders() {
 
       {/* {dummyOrder ? (
         <ScrollView className="mt-5 px-2" showsVerticalScrollIndicator={false}>
-          <FlashList
-            data={completedOrders}
-            renderItem={({ index, item }) => (
-              <OrderItem key={index} order={item} ctaLabel="View Timeline" handlePress={() => {}} />
-            )}
-            estimatedItemSize={100}
-          />
+          <View className="min-h-[2]">
+            <FlashList
+              data={completedOrders}
+              renderItem={({ index, item }) => (
+                <OrderItem
+                  key={index}
+                  order={item}
+                  ctaLabel="View Timeline"
+                  handlePress={() => {}}
+                />
+              )}
+              estimatedItemSize={100}
+            />
+          </View>
         </ScrollView>
       ) : (
         <EmptyCart headline="We are waiting for your first order" />
