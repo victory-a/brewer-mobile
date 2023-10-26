@@ -1,5 +1,6 @@
 import { SafeAreaView, ScrollView } from 'react-native';
 import React from 'react';
+import { FlashList } from '@shopify/flash-list';
 
 import { EmptyCart } from 'src/components';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
@@ -9,6 +10,7 @@ const dummyOrder = {
   orderCode: '1255334',
   date: new Date()
 };
+const ongoingOrders = Array.from({ length: 5 }, () => dummyOrder);
 
 const OngoingOrder = () => {
   const { navigate } = useAppNavigation();
@@ -16,10 +18,17 @@ const OngoingOrder = () => {
     <SafeAreaView className="flex-1 bg-white">
       {dummyOrder ? (
         <ScrollView className="mt-5 px-2">
-          <OrderItem
-            order={dummyOrder}
-            ctaLabel="Proceed to checkout"
-            handlePress={() => navigate('Ongoing-Order-Details')}
+          <FlashList
+            data={ongoingOrders}
+            renderItem={({ index, item }) => (
+              <OrderItem
+                key={index}
+                order={item}
+                ctaLabel="Proceed to checkout"
+                handlePress={() => navigate('Ongoing-Order-Details')}
+              />
+            )}
+            estimatedItemSize={10}
           />
         </ScrollView>
       ) : (

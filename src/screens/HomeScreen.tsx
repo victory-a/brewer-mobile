@@ -55,7 +55,7 @@ const HomeScreen = () => {
         <ContainerView className="mb-6 mt-[100px]">
           <FlashList
             data={coffeeList}
-            renderItem={({ item }) => <CoffeeCard {...item} />}
+            renderItem={({ index, item }) => <CoffeeCard key={index} {...item} />}
             estimatedItemSize={200}
             numColumns={2}
           />

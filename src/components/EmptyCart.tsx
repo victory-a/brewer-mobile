@@ -8,7 +8,13 @@ import { Text } from './shared/Text';
 
 const emptyCart = require('../../assets/images/empty-cart.png');
 
-export function EmptyCart({ headline = '' }: { headline: string }) {
+export function EmptyCart({
+  headline = '',
+  dummyOrder = false
+}: {
+  headline: string;
+  dummyOrder?: boolean;
+}) {
   const { navigate } = useAppNavigation();
 
   return (
@@ -18,10 +24,11 @@ export function EmptyCart({ headline = '' }: { headline: string }) {
       <View className="mt-12 w-full max-w-[275]">
         <SolidButton onPress={() => navigate('Home')}>Place an Order 👀</SolidButton>
       </View>
-
-      <TextButton onPress={() => navigate('Ongoing-Order-Details')} className="mt-5">
-        View dummy order
-      </TextButton>
+      {dummyOrder && (
+        <TextButton onPress={() => navigate('Ongoing-Order-Details')} className="mt-5">
+          View dummy order
+        </TextButton>
+      )}
     </ContainerView>
   );
 }
