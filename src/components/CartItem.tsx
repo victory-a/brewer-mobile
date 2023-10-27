@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Image } from 'react-native';
+import { View } from 'react-native';
 
 import { Text } from './shared/Text';
 import { TextButton } from './formElements/Button';
+import { Image } from './shared/Image';
 
 const coffeebg1 = require('../../assets/images/coffee-1.png');
 
@@ -10,7 +11,11 @@ export function CartItem() {
   return (
     <View className="mb-4 flex-row items-center justify-between">
       <View className="flex-row items-center space-x-3">
-        <Image source={coffeebg1} className="h-[54] w-[54] rounded-2xl" resizeMode="contain" />
+        <Image
+          defaultSource={coffeebg1}
+          className="h-[54] w-[54] rounded-2xl"
+          resizeMode="contain"
+        />
 
         <View>
           <Text className="text-base font-semibold text-secondary">Cappucino</Text>

@@ -1,9 +1,10 @@
 import React from 'react';
-import { PressableProps, ActivityIndicator, ImageSourcePropType, View, Image } from 'react-native';
+import { PressableProps, ActivityIndicator, ImageSourcePropType, View } from 'react-native';
 
 import { Text } from '../shared/Text';
 import { colors } from 'src/styles/theme';
 import { Pressable } from '../shared/Pressable';
+import { Image } from '../shared/Image';
 
 interface ISolidButton extends PressableProps {
   buttonclassName?: string;
@@ -90,7 +91,7 @@ export function SoftButton({ label, image, additionalClassName = '', ...props }:
     >
       {image && (
         <View className="mr-1">
-          <Image source={image} />
+          <Image defaultSource={image as number} />
         </View>
       )}
       {label}

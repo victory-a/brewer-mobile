@@ -1,6 +1,6 @@
 import { useRoute, RouteProp } from '@react-navigation/native';
 import React from 'react';
-import { Image, SafeAreaView, StatusBar, ScrollView, View } from 'react-native';
+import { SafeAreaView, StatusBar, ScrollView, View } from 'react-native';
 
 import { StarIcon } from 'src/components/Icons';
 import {
@@ -9,7 +9,8 @@ import {
   TextButton,
   Text,
   ContainerView,
-  Divider
+  Divider,
+  Image
 } from 'src/components';
 
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
@@ -42,7 +43,7 @@ export const ProductDetailScreen = () => {
 
         <ContainerView className="relative mb-40 mt-2">
           <Image
-            source={product?.thumbnail ?? coffeebg1}
+            defaultSource={(product?.thumbnail as number) ?? (coffeebg1 as number)}
             className="mx-auto mt-2 h-[226] w-full max-w-[315] rounded-2xl bg-contain"
             resizeMode="contain"
           />
@@ -58,7 +59,7 @@ export const ProductDetailScreen = () => {
             </View>
 
             <View className="rounded-2xl bg-snow p-[10]">
-              <Image source={milk} />
+              <Image defaultSource={milk} />
             </View>
           </View>
 

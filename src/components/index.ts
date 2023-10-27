@@ -10,6 +10,7 @@ import { ContainerView } from './shared/ContainerView';
 import { Pressable } from './shared/Pressable';
 import { Divider } from './shared/Divider';
 import { Text } from './shared/Text';
+import { Image } from './shared/Image';
 import { CoffeeCard } from './CoffeeCard';
 import { PromoBanner } from './PromoBanner';
 import { SelectLocation } from './SelectLocation';
@@ -27,6 +28,7 @@ export {
   TextInput,
   ContainerView,
   Pressable,
+  Image,
   Text,
   PromoBanner,
   SelectLocation,

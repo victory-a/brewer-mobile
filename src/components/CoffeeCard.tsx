@@ -1,12 +1,12 @@
-import { View, Image, StyleSheet, Platform } from 'react-native';
 import React from 'react';
+import { View, StyleSheet, Platform } from 'react-native';
+
 import { Text } from './shared/Text';
 import { formatCurrency } from 'src/utils/amount';
 import { Pressable } from './shared/Pressable';
 import { ICoffeeCard } from 'model/product';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
-
-const coffeebg1 = require('../../assets/images/coffee-1.png');
+import { Image } from './shared/Image';
 
 function CoffeeCard(product: ICoffeeCard) {
   const { title, type, thumbnail, amount } = product;
@@ -18,7 +18,7 @@ function CoffeeCard(product: ICoffeeCard) {
       onPress={() => navigate('Product-Detail-Screen', { product })}
     >
       <View className="rounded-lg bg-white" style={styles.shadow}>
-        <Image source={thumbnail ?? coffeebg1} className="h-[100] w-full rounded-t-lg" />
+        <Image defaultSource={thumbnail as number} className="h-[100] w-full rounded-t-lg" />
         <View className="px-4 py-3">
           <Text className="text-sm font-semibold capitalize text-dark-lemon-green">{title}</Text>
           <Text className="mb-3 text-xs text-nobel">{type}</Text>
