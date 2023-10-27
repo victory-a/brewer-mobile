@@ -10,7 +10,7 @@ const dummyOrder = {
   orderCode: '1255334',
   date: new Date()
 };
-const ongoingOrders = Array.from({ length: 5 }, () => dummyOrder);
+const ongoingOrders = Array.from({ length: 1 }, () => dummyOrder);
 
 const OngoingOrder = () => {
   const { navigate } = useAppNavigation();
