@@ -70,7 +70,11 @@ export default function BottomTabNavigator() {
   );
 }
 
-function renderIcon(Icon: any, { width = 20, height = 20 }: { width?: number; height?: number }) {
+type IconComponent = React.ComponentType<IconProps>;
+function renderIcon(
+  Icon: IconComponent,
+  { width = 20, height = 20 }: { width?: number; height?: number }
+) {
   return {
     tabBarIcon: ({ color }: IconProps) => <Icon width={width} height={height} color={color} />
   };
