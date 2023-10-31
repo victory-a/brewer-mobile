@@ -1,5 +1,5 @@
-import { Text as NativeText, TextProps } from 'react-native';
 import React from 'react';
+import { Text as NativeText, TextProps } from 'react-native';
 
 interface IText extends TextProps {
   className?: string;

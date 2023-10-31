@@ -1,5 +1,5 @@
-import { View as NativeView, ViewProps } from 'react-native';
 import React from 'react';
+import { View as NativeView, ViewProps } from 'react-native';
 
 interface IView extends ViewProps {
   className?: string;

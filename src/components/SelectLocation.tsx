@@ -1,11 +1,11 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import { useAppNavigation } from 'src/hooks/useTypedNavigation';
-
 import { Pressable } from './shared/Pressable';
 import { Text } from './shared/Text';
 import { ArrowDown } from './Icons';
+
+import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 
 export function SelectLocation() {
   const { navigate } = useAppNavigation();

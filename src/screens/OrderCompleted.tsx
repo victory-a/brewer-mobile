@@ -1,7 +1,9 @@
 import React from 'react';
 import { SafeAreaView, View } from 'react-native';
+
 import { ContainerView, SolidButton, Text, TextButton } from 'src/components';
 import { TickIcon } from 'src/components/Icons';
+
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { formatCurrency } from 'src/utils/amount';
 

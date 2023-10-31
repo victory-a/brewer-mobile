@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextInput, TextInputProps, View } from 'react-native';
+
 import { colors } from 'src/styles/theme';
-import {} from '../Icons';
 
 const SearchInput = (props: TextInputProps) => {
   return (

@@ -3,7 +3,9 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 
 import { AuthNavigator } from 'navigation/AuthNavigator';
 import { AppNavigator } from 'navigation/AppNavigator';
+
 import { useAuth } from 'src/context/AuthContext';
+
 import { colors } from 'src/styles/theme';
 
 const RootNavigator = () => {

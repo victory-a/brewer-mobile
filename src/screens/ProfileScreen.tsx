@@ -3,6 +3,7 @@ import { SafeAreaView, View } from 'react-native';
 
 import { ContainerView, PhoneInput, Text, TextInput } from 'src/components';
 import { SolidButton, TextButton } from 'src/components/formElements/Button';
+
 import { useAuth } from 'src/context/AuthContext';
 
 const ProfileScreen = () => {

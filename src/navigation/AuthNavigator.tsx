@@ -2,6 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Login, ValidateOTP, Welcome } from 'src/screens';
+
 import { colors } from 'src/styles/theme';
 
 const defaultOptions = {

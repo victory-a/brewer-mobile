@@ -1,12 +1,15 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+import OrderTabNavigator from './OrderTabNavigator';
+
 import { HomeScreen, ProfileScreen, SearchScreen } from 'src/screens';
-import { colors } from 'src/styles/theme';
+
 import { HomeIcon, IconProps, OrdersIcon, ProfileIcon, SearchIcon } from 'src/components/Icons';
 import { Text } from 'src/components';
-import OrderTabNavigator from './OrderTabNavigator';
-import { StyleSheet } from 'react-native';
+
+import { colors } from 'src/styles/theme';
 
 const BottomTabs = createBottomTabNavigator();
 

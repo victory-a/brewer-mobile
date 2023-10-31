@@ -1,11 +1,11 @@
 import { View } from 'react-native';
 
-import { useAppNavigation } from 'src/hooks/useTypedNavigation';
-
 import { SolidButton, TextButton } from './formElements/Button';
 import { ContainerView } from './shared/ContainerView';
 import { Text } from './shared/Text';
 import { Image } from './shared/Image';
+
+import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 
 const emptyCart = require('../../assets/images/empty-cart.png');
 

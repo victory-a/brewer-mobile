@@ -1,5 +1,5 @@
-import { Pressable as NativePressable, PressableProps } from 'react-native';
 import React from 'react';
+import { Pressable as NativePressable, PressableProps } from 'react-native';
 
 interface IPressable extends PressableProps {
   activeOpacity?: number;

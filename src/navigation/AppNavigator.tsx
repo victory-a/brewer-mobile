@@ -4,8 +4,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BottomTabNavigator from './BottomTabNavigator';
 import SelectLocationModal from 'src/screens/Modals/SelectLocationModal';
 import { ProductDetailScreen } from 'src/screens/ProductDetailScreen';
-import { colors } from 'src/styles/theme';
 import { OrderCompleted, OrderDetails } from 'src/screens';
+
+import { colors } from 'src/styles/theme';
 
 const Stack = createNativeStackNavigator();
 const AppNavigator = () => {

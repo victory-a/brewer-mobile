@@ -3,8 +3,9 @@ import React from 'react';
 import { FlashList } from '@shopify/flash-list';
 
 import { EmptyCart } from 'src/components';
-import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { OrderItem } from 'src/components/OrderItem';
+
+import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 
 const dummyOrder = {
   orderCode: '1255334',

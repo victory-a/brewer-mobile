@@ -1,6 +1,8 @@
-import { View, SafeAreaView, ScrollView } from 'react-native';
 import React from 'react';
+import { View, SafeAreaView, ScrollView } from 'react-native';
+
 import { ContainerView, SoftButton, Text, CartItem, SolidButton, Divider } from 'src/components';
+
 import { formatCurrency } from 'src/utils/amount';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 

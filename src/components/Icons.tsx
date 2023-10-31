@@ -1,5 +1,6 @@
 import React from 'react';
-import { Svg, Path, G } from 'react-native-svg';
+import { Svg, Path } from 'react-native-svg';
+
 import { colors } from 'src/styles/theme';
 
 export type IconProps = {

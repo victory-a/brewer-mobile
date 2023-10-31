@@ -2,11 +2,13 @@ import React from 'react';
 import { View, StyleSheet, Platform } from 'react-native';
 
 import { Text } from './shared/Text';
-import { formatCurrency } from 'src/utils/amount';
 import { Pressable } from './shared/Pressable';
-import { ICoffeeCard } from 'model/product';
-import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { Image } from './shared/Image';
+
+import { useAppNavigation } from 'src/hooks/useTypedNavigation';
+
+import { formatCurrency } from 'src/utils/amount';
+import { ICoffeeCard } from 'model/product';
 
 function CoffeeCard(product: ICoffeeCard) {
   const { title, type, thumbnail, amount } = product;

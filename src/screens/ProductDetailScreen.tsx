@@ -1,6 +1,6 @@
-import { useRoute, RouteProp } from '@react-navigation/native';
 import React from 'react';
 import { SafeAreaView, StatusBar, ScrollView, View } from 'react-native';
+import { useRoute, RouteProp } from '@react-navigation/native';
 
 import { StarIcon } from 'src/components/Icons';
 import {

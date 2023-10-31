@@ -1,6 +1,7 @@
 import React from 'react';
-import { Pressable } from './shared/Pressable';
 import { ImageBackground, View } from 'react-native';
+
+import { Pressable } from './shared/Pressable';
 import { Text } from './shared/Text';
 
 const bg = require('../../assets/images/promo-bg.png');
