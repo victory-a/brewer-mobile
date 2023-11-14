@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRoute } from '@react-navigation/native';
 import {
   SafeAreaView,
   KeyboardAvoidingView,
@@ -13,8 +14,11 @@ import { parseTimeSecInMinsAndSec } from 'utils/time';
 
 import { Text, PinInput, SolidButton, TextButton, ContainerView } from 'src/components';
 import { useAuth } from 'src/context/AuthContext';
+import { useAuthNavigationRoute } from 'src/hooks/useTypedNavigation';
 
 export function ValidateOTP() {
+  const { params } = useAuthNavigationRoute();
+
   const timer = useCountDown(10);
   const parsedTime = parseTimeSecInMinsAndSec(timer);
 
@@ -37,7 +41,7 @@ export function ValidateOTP() {
               Verify your account
             </Text>
             <Text className="mt-4 text-sm text-dark-lemon-green">
-              Please enter the 4 digit code we sent to mobile number
+              Please enter the 4 digit code we sent to your email
             </Text>
             <View className="mt-8">
               <ContainerView className="w-full max-w-[260px]">
