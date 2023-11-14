@@ -19,14 +19,15 @@ export const SolidButton = ({
   loading = false,
   activityLoaderColor = colors.white,
   children,
+  disabled,
   ...props
 }: ISolidButton) => {
   return (
     <Pressable
       className={`${
-        loading ? 'bg-[#808080]' : 'bg-primary'
+        disabled ? 'bg-[#808080]' : 'bg-primary'
       } w-full rounded-lg py-3 shadow-sm ${buttonclassName}`}
-      disabled={loading}
+      disabled={disabled || loading}
       {...props}
     >
       {loading ? (
