@@ -3,7 +3,7 @@ import { ICoffeeCard } from './product';
 export type AuthNavigatorParams = {
   Welcome: undefined;
   Register: undefined;
-  'Validate-OTP': undefined;
+  'Validate-OTP': { email: string };
   Login: undefined;
 };
 
