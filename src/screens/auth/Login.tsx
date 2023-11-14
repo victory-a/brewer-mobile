@@ -5,26 +5,28 @@ import {
   SafeAreaView,
   View,
   Keyboard,
-  Platform
+  Platform,
+  Alert
 } from 'react-native';
 
 import { useAuthNavigation } from 'src/hooks/useTypedNavigation';
 
-import { Checkbox, ContainerView, SolidButton, Text, TextInput } from 'src/components';
+import { ContainerView, SolidButton, Text, TextInput } from 'src/components';
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export const Login = () => {
   const { navigate } = useAuthNavigation();
 
-  const [formValues, setFormValues] = React.useState({
-    username: '',
-    email: '',
-    rememberUser: false
-  });
+  const [email, setEmail] = React.useState('victoryasokomeh2@gmail.com');
 
-  function handleChange(field: string) {
-    return (value: string | number | boolean) => {
-      setFormValues((current) => ({ ...current, [field]: value }));
-    };
+  const isEmailValid = emailRegex.test(email);
+  function handleSubmit() {
+    if (isEmailValid) {
+      navigate('Validate-OTP', { email });
+    } else {
+      Alert.alert('Error', 'Please enter a valid email address.');
+    }
   }
 
   return (
@@ -37,28 +39,17 @@ export const Login = () => {
             {/* Form Container */}
             <View className="mt-8">
               <TextInput
-                label="Username"
-                value={formValues.username}
-                placeholder="Adnan"
-                onChangeText={handleChange('username')}
-                returnKeyType="next"
-              />
-              <TextInput
                 label="Email"
-                value={formValues.email}
-                placeholder="adanan@example.com"
-                onChangeText={handleChange('email')}
+                value={email}
+                placeholder="adnan@example.com"
+                onChangeText={setEmail}
                 returnKeyType="done"
                 keyboardType="email-address"
-              />
-              <Checkbox
-                rightText="Remember me"
-                onClick={() => handleChange('rememberUser')(!formValues.rememberUser)}
-                isChecked={formValues.rememberUser}
+                autoComplete="email"
               />
             </View>
 
-            <SolidButton className="mt-8" onPress={() => navigate('Validate-OTP')}>
+            <SolidButton className="mt-8" onPress={handleSubmit} disabled={!isEmailValid}>
               Login
             </SolidButton>
           </ContainerView>
