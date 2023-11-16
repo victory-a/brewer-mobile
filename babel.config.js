@@ -18,6 +18,7 @@ module.exports = {
           model: './src/model'
         }
       }
-    ]
+    ],
+    ['module:react-native-dotenv']
   ]
 };

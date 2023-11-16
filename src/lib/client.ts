@@ -1,6 +1,7 @@
 import { create } from 'apisauce';
+import { BASE_URL } from '@env';
 
 const client = create({
-  baseURL: '',
+  baseURL: BASE_URL,
   headers: { Accept: 'application/vnd.github.v3+json' }
 });

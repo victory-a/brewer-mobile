@@ -11,3 +11,6 @@ dist
 ios/
 android/
 *.config.js
+
+env.d.ts
+app.d.ts
