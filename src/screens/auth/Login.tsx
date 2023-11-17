@@ -30,7 +30,7 @@ export const Login = () => {
         .then(() => {
           navigate('Validate-OTP', { email });
         })
-        .catch(console.log),
+        .catch((err) => Alert.alert('Error', err.message)),
     false
   );
 

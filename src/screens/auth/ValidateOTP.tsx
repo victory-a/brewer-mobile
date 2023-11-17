@@ -5,7 +5,8 @@ import {
   View,
   TouchableWithoutFeedback,
   Keyboard,
-  Platform
+  Platform,
+  Alert
 } from 'react-native';
 
 import useCountDown from 'hooks/useCountDown';
@@ -31,13 +32,12 @@ export function ValidateOTP() {
   const { execute, isLoading } = useAsync(
     () =>
       validateOTP({ email: params?.email ?? '', otp: OTP })
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           setIsAuthenticated(true);
         })
-        .catch((res) => {
+        .catch((err) => {
           setOTP('');
-          console.log(res);
+          Alert.alert('Error', err.message);
         }),
     false
   );
@@ -45,10 +45,10 @@ export function ValidateOTP() {
   const { execute: executeResendRequest, isLoading: isLoadingResendRequest } = useAsync(
     () =>
       login({ email: params?.email ?? '' })
-        .then((res) => {
-          console.log(res);
+        .then(() => {
+          Alert.alert('Success', 'OTP has been sent to your email');
         })
-        .catch(console.log),
+        .catch((err) => Alert.alert('Error', err.message)),
     false
   );
 
