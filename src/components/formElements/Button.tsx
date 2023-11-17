@@ -25,7 +25,7 @@ export const SolidButton = ({
   return (
     <Pressable
       className={`${
-        disabled ? 'bg-[#808080]' : 'bg-primary'
+        disabled ? 'bg-faded-brown' : 'bg-primary'
       } w-full rounded-lg py-3 shadow-sm ${buttonclassName}`}
       disabled={disabled || loading}
       {...props}

@@ -10,6 +10,7 @@ export const colors = {
   'white-color': '#ddd',
   'gray-67': '#ABABAB',
   'coffee-brown': '#313131',
+  'faded-brown': '#c67c4e66',
   zambezi: '#5F5F5F',
   white: '#fff',
   black: '#000',

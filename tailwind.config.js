@@ -15,6 +15,7 @@ module.exports = {
         'white-color': '#ddd',
         'gray-67': '#ABABAB',
         'coffee-brown': '#313131',
+        'faded-brown': '#c67c4e66',
         nobel: '#9B9B9B',
         zambezi: '#5F5F5F',
         white: '#fff',
