@@ -16,9 +16,9 @@
       "navigation/*": ["./src/navigation/*"],
       "styles/*": ["./src/styles/*"],
       "utils/*": ["./src/utils/*"],
-      "model/*": ["./src/model/*"]
-    },
-    // "typeRoots": ["./src/types"]
+      "model/*": ["./src/model/*"],
+      "lib/*": ["./src/lib/*"]
+    }
   },
   "include": ["./.eslintrc.json", "App.tsx", "src/**/*.ts", "src/**/*.tsx", "types/*.d.ts"],
   "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]

@@ -11,6 +11,7 @@ interface UseAsync<T> {
   status: AsyncState<T>['status'];
   value: AsyncState<T>['value'];
   error: AsyncState<T>['error'];
+  isLoading: boolean;
 }
 
 const useAsync = <T>(asyncFunction: (props?: any) => Promise<T>, immediate = true): UseAsync<T> => {
@@ -42,7 +43,7 @@ const useAsync = <T>(asyncFunction: (props?: any) => Promise<T>, immediate = tru
   }, [execute, immediate]);
 
   const { value, status, error } = state;
-  return { execute, value, status, error };
+  return { execute, value, status, error, isLoading: status === 'pending' };
 };
 
 export default useAsync;

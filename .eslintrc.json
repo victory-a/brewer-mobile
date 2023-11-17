@@ -45,7 +45,8 @@
     "@typescript-eslint/no-floating-promise": ["off", { "ignoreVoid": true }],
     "@typescript-eslint/consistent-type-imports": "off",
     "@typescript-eslint/consistent-type-definitions": "off",
-    "@typescript-eslint/no-var-requires": 0
+    "@typescript-eslint/no-var-requires": 0,
+    "@typescript-eslint/no-floating-promises": 0
   },
   "settings": {
     "react": {

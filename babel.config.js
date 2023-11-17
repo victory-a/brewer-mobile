@@ -15,7 +15,8 @@ module.exports = {
           navigation: './src/navigation',
           styles: './src/styles',
           utils: './src/utils',
-          model: './src/model'
+          model: './src/model',
+          lib: './src/lib'
         }
       }
     ],

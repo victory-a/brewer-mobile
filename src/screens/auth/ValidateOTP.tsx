@@ -16,6 +16,9 @@ import { Text, PinInput, SolidButton, TextButton, ContainerView } from 'src/comp
 import { useAuth } from 'src/context/AuthContext';
 import { useAuthNavigationRoute } from 'src/hooks/useTypedNavigation';
 
+import { validateOTP, login } from 'src/lib/auth';
+import useAsync from 'src/hooks/useAsync';
+
 export function ValidateOTP() {
   const { params } = useAuthNavigationRoute();
 
@@ -26,11 +29,18 @@ export function ValidateOTP() {
 
   const [OTP, setOTP] = React.useState('');
 
-  function resendOTP() {}
+  const { execute, isLoading } = useAsync(
+    () =>
+      validateOTP({ email: params?.email ?? '', otp: OTP })
+        .then((res) => {
+          console.log(res);
+          setIsAuthenticated(true);
+        })
+        .catch(console.log),
+    false
+  );
 
-  function handleConfirm() {
-    setIsAuthenticated(true);
-  }
+  function resendOTP() {}
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -63,7 +73,12 @@ export function ValidateOTP() {
               )}
             </View>
 
-            <SolidButton className="mt-8" onPress={handleConfirm}>
+            <SolidButton
+              className="mt-8"
+              onPress={execute}
+              disabled={OTP.length < 4}
+              loading={isLoading}
+            >
               Confirm
             </SolidButton>
           </ContainerView>

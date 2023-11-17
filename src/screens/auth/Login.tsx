@@ -10,8 +10,10 @@ import {
 } from 'react-native';
 
 import { useAuthNavigation } from 'src/hooks/useTypedNavigation';
-
 import { ContainerView, SolidButton, Text, TextInput } from 'src/components';
+
+import { login } from 'src/lib/auth';
+import useAsync from 'src/hooks/useAsync';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -21,13 +23,16 @@ export const Login = () => {
   const [email, setEmail] = React.useState('victoryasokomeh2@gmail.com');
 
   const isEmailValid = emailRegex.test(email);
-  function handleSubmit() {
-    if (isEmailValid) {
-      navigate('Validate-OTP', { email });
-    } else {
-      Alert.alert('Error', 'Please enter a valid email address.');
-    }
-  }
+
+  const { execute, isLoading } = useAsync(
+    () =>
+      login({ email })
+        .then(() => {
+          navigate('Validate-OTP', { email });
+        })
+        .catch(console.log),
+    false
+  );
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -49,7 +54,12 @@ export const Login = () => {
               />
             </View>
 
-            <SolidButton className="mt-8" onPress={handleSubmit} disabled={!isEmailValid}>
+            <SolidButton
+              className="mt-8"
+              onPress={execute}
+              disabled={!isEmailValid}
+              loading={isLoading}
+            >
               Login
             </SolidButton>
           </ContainerView>
