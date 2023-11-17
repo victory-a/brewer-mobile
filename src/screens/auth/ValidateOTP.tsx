@@ -36,11 +36,22 @@ export function ValidateOTP() {
           console.log(res);
           setIsAuthenticated(true);
         })
-        .catch(console.log),
+        .catch((res) => {
+          setOTP('');
+          console.log(res);
+        }),
     false
   );
 
-  function resendOTP() {}
+  const { execute: executeResendRequest, isLoading: isLoadingResendRequest } = useAsync(
+    () =>
+      login({ email: params?.email ?? '' })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch(console.log),
+    false
+  );
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -65,7 +76,7 @@ export function ValidateOTP() {
               ) : (
                 <TextButton
                   className="mt-6"
-                  onPress={resendOTP}
+                  onPress={executeResendRequest}
                   labelClassName="underline text-dark-lemon-green"
                 >
                   Resend OTP
@@ -77,7 +88,7 @@ export function ValidateOTP() {
               className="mt-8"
               onPress={execute}
               disabled={OTP.length < 4}
-              loading={isLoading}
+              loading={isLoading || isLoadingResendRequest}
             >
               Confirm
             </SolidButton>
