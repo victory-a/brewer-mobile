@@ -87,7 +87,6 @@ interface IRenderLabel {
   label: string;
   focused: boolean;
   color: string;
-  children: string;
 }
 function renderLabel(props: IRenderLabel) {
   const { focused } = props;
