@@ -7,23 +7,24 @@ import { SolidButton, TextButton } from 'src/components/formElements/Button';
 import { useAuth } from 'src/context/AuthContext';
 
 const ProfileScreen = () => {
-  const { setIsAuthenticated } = useAuth();
+  const { logout, userDetails } = useAuth();
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} className=" bg-red-300">
       <SafeAreaView className="flex-1 bg-white">
         <ContainerView className="flex-1 pt-8">
-          <TextInput placeholder="Adnan Frimpong" label="Name" value="" />
-          <TextInput value="pingpong98" label="Username" />
-          <PhoneInput value="812 345 6789" label="mobile" />
-          <TextInput value="adanan@example.com" label="Email" editable={false} />
+          <TextInput placeholder="Adnan Frimpong" label="Name" value={userDetails?.name} />
+          <TextInput placeholder="pingpong98" label="Username" value={userDetails?.username} />
+          <PhoneInput placeholder="812 345 6789" label="mobile" value={userDetails?.mobile} />
+          <TextInput
+            placeholder="adanan@example.com"
+            label="Email"
+            editable={false}
+            value={userDetails?.email}
+          />
 
           <SolidButton buttonclassName="mt-6">Save</SolidButton>
 
-          <TextButton
-            labelClassName="text-red-500"
-            buttonclassName="my-5"
-            onPress={() => setIsAuthenticated(false)}
-          >
+          <TextButton labelClassName="text-red-500" buttonclassName="my-5" onPress={logout}>
             Logout
           </TextButton>
 

@@ -22,17 +22,18 @@ import useAsync from 'src/hooks/useAsync';
 export function ValidateOTP() {
   const { params } = useAuthNavigationRoute();
 
-  const timer = useCountDown(10);
+  const timer = useCountDown(30);
   const parsedTime = parseTimeSecInMinsAndSec(timer);
 
-  const { setIsAuthenticated } = useAuth();
+  const { setIsAuthenticated, setUserDetails } = useAuth();
 
   const [OTP, setOTP] = React.useState('');
 
   const { execute, isLoading } = useAsync(
     () =>
       validateOTP({ email: params?.email ?? '', otp: OTP })
-        .then(() => {
+        .then((res) => {
+          setUserDetails(res.data.user);
           setIsAuthenticated(true);
         })
         .catch((err) => {

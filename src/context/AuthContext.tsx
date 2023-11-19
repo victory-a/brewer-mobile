@@ -6,6 +6,7 @@ interface ContextProps {
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
   userDetails: null | IUser;
   setUserDetails: React.Dispatch<React.SetStateAction<null | IUser>>;
+  logout: () => void;
 }
 
 const Context = React.createContext<ContextProps | undefined>(undefined);
@@ -14,8 +15,17 @@ function AuthProvider(props: PropsWithChildren) {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
   const [userDetails, setUserDetails] = React.useState<null | IUser>(null);
 
-  const value = { isAuthenticated, setIsAuthenticated, userDetails, setUserDetails };
-  return <Context.Provider value={value} {...props} />;
+  function logout() {
+    setIsAuthenticated(false);
+    setUserDetails(null);
+  }
+
+  return (
+    <Context.Provider
+      value={{ isAuthenticated, setIsAuthenticated, userDetails, setUserDetails, logout }}
+      {...props}
+    />
+  );
 }
 
 function useAuth() {
