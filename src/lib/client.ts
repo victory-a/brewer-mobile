@@ -1,12 +1,25 @@
 import axios from 'axios';
 import { BASE_URL } from '@env';
 
+import { getToken } from 'src/utils/auth';
+
+const headers: Record<string, string> = {
+  Accept: 'application/vnd.github.v3+json'
+};
+
 const client = axios.create({
   baseURL: BASE_URL,
   timeout: 60000,
-  headers: {
-    Accept: 'application/vnd.github.v3+json'
-  }
+  headers
+});
+
+client.interceptors.request.use(async function (config) {
+  // const token = getToken();
+  // if (token) {
+  //   config.headers.token = token;
+  // }
+
+  return config;
 });
 
 client.interceptors.response.use(
@@ -14,7 +27,11 @@ client.interceptors.response.use(
     return response.data;
   },
   function (error) {
-    return Promise.reject(error.response.data);
+    if (error?.message === 'Network Error') {
+      return Promise.reject(error?.message);
+    } else {
+      return Promise.reject(error.response.data);
+    }
   }
 );
 

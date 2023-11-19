@@ -1,20 +1,21 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
+import { IUser } from 'src/model/auth';
 
 interface ContextProps {
   isAuthenticated: boolean;
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+  userDetails: null | IUser;
+  setUserDetails: React.Dispatch<React.SetStateAction<null | IUser>>;
 }
 
 const Context = React.createContext<ContextProps | undefined>(undefined);
 
-interface Props {
-  children: React.ReactNode;
-}
-
-function AuthProvider(props: Props) {
+function AuthProvider(props: PropsWithChildren) {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const [userDetails, setUserDetails] = React.useState<null | IUser>(null);
 
-  return <Context.Provider value={{ isAuthenticated, setIsAuthenticated }} {...props} />;
+  const value = { isAuthenticated, setIsAuthenticated, userDetails, setUserDetails };
+  return <Context.Provider value={value} {...props} />;
 }
 
 function useAuth() {

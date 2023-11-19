@@ -30,7 +30,10 @@ export const Login = () => {
         .then(() => {
           navigate('Validate-OTP', { email });
         })
-        .catch((err) => Alert.alert('Error', err.message)),
+        .catch((err) => {
+          console.log(err);
+          Alert.alert('Error', err.message);
+        }),
     false
   );
 
@@ -57,7 +60,7 @@ export const Login = () => {
             <SolidButton
               className="mt-8"
               onPress={execute}
-              disabled={!isEmailValid}
+              // disabled={!isEmailValid}
               loading={isLoading}
             >
               Login
