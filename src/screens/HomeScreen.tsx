@@ -4,6 +4,7 @@ import { FlashList } from '@shopify/flash-list';
 
 import { CoffeeCard, PromoBanner, ContainerView, SelectLocation } from 'src/components';
 import { colors } from 'src/styles/theme';
+import { getToken } from 'src/utils/auth';
 
 const coffeebg1 = require('../../assets/images/coffee-1.png');
 const coffeebg2 = require('../../assets/images/coffee-2.png');

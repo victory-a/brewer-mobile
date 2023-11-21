@@ -14,10 +14,10 @@ const client = axios.create({
 });
 
 client.interceptors.request.use(async function (config) {
-  // const token = getToken();
-  // if (token) {
-  //   config.headers.token = token;
-  // }
+  const token = await getToken();
+  if (token) {
+    config.headers.authorization = `Bearer ${token}`;
+  }
 
   return config;
 });

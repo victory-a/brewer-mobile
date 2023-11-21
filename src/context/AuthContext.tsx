@@ -1,9 +1,8 @@
 import React, { PropsWithChildren } from 'react';
 import { IUser } from 'src/model/auth';
+import { deleteToken } from 'src/utils/auth';
 
 interface ContextProps {
-  isAuthenticated: boolean;
-  setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
   userDetails: null | IUser;
   setUserDetails: React.Dispatch<React.SetStateAction<null | IUser>>;
   logout: () => void;
@@ -12,20 +11,14 @@ interface ContextProps {
 const Context = React.createContext<ContextProps | undefined>(undefined);
 
 function AuthProvider(props: PropsWithChildren) {
-  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
   const [userDetails, setUserDetails] = React.useState<null | IUser>(null);
 
-  function logout() {
-    setIsAuthenticated(false);
+  async function logout() {
+    await deleteToken();
     setUserDetails(null);
   }
 
-  return (
-    <Context.Provider
-      value={{ isAuthenticated, setIsAuthenticated, userDetails, setUserDetails, logout }}
-      {...props}
-    />
-  );
+  return <Context.Provider value={{ userDetails, setUserDetails, logout }} {...props} />;
 }
 
 function useAuth() {

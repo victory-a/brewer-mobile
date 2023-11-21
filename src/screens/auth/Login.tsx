@@ -5,36 +5,21 @@ import {
   SafeAreaView,
   View,
   Keyboard,
-  Platform,
-  Alert
+  Platform
 } from 'react-native';
 
-import { useAuthNavigation } from 'src/hooks/useTypedNavigation';
 import { ContainerView, SolidButton, Text, TextInput } from 'src/components';
 
-import { login } from 'src/lib/auth';
-import useAsync from 'src/hooks/useAsync';
+import { useLogin } from 'src/lib/hooks/auth';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export const Login = () => {
-  const { navigate } = useAuthNavigation();
-
   const [email, setEmail] = React.useState('victoryasokomeh2@gmail.com');
 
   const isEmailValid = emailRegex.test(email);
 
-  const { execute, isLoading } = useAsync(
-    () =>
-      login({ email })
-        .then(() => {
-          navigate('Validate-OTP', { email });
-        })
-        .catch((err) => {
-          Alert.alert('Error', err.message);
-        }),
-    false
-  );
+  const { login, isLoading } = useLogin({ email });
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -58,7 +43,7 @@ export const Login = () => {
 
             <SolidButton
               className="mt-8"
-              onPress={execute}
+              onPress={login}
               disabled={!isEmailValid}
               loading={isLoading}
             >

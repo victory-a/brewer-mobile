@@ -5,8 +5,7 @@ import {
   View,
   TouchableWithoutFeedback,
   Keyboard,
-  Platform,
-  Alert
+  Platform
 } from 'react-native';
 
 import useCountDown from 'hooks/useCountDown';
@@ -16,44 +15,24 @@ import { Text, PinInput, SolidButton, TextButton, ContainerView } from 'src/comp
 import { useAuth } from 'src/context/AuthContext';
 import { useAuthNavigationRoute } from 'src/hooks/useTypedNavigation';
 
-import { validateOTP, login } from 'src/lib/auth';
-import useAsync from 'src/hooks/useAsync';
-import { setStoken } from 'src/utils/auth';
+import { useLogin, useValidateOTP } from 'src/lib/hooks/auth';
 
 export function ValidateOTP() {
   const { params } = useAuthNavigationRoute();
 
-  const timer = useCountDown(30);
+  const timer = useCountDown(4);
   const parsedTime = parseTimeSecInMinsAndSec(timer);
 
-  const { setIsAuthenticated, setUserDetails } = useAuth();
+  const { setUserDetails } = useAuth();
 
   const [OTP, setOTP] = React.useState('');
 
-  const { execute, isLoading } = useAsync(
-    () =>
-      validateOTP({ email: params?.email ?? '', otp: OTP })
-        .then(async (res) => {
-          await setStoken(res.data.token);
-          setUserDetails(res.data.user);
-          setIsAuthenticated(true);
-        })
-        .catch((err) => {
-          setOTP('');
-          Alert.alert('Error', err.message);
-        }),
-    false
-  );
+  const { validateOTP, isLoading } = useValidateOTP({ setOTP, OTP, setUserDetails });
 
-  const { execute: executeResendRequest, isLoading: isLoadingResendRequest } = useAsync(
-    () =>
-      login({ email: params?.email ?? '' })
-        .then(() => {
-          Alert.alert('Success', 'OTP has been sent to your email');
-        })
-        .catch((err) => Alert.alert('Error', err.message)),
-    false
-  );
+  const { login: executeResendRequest, isLoading: isLoadingResendRequest } = useLogin({
+    email: params?.email ?? '',
+    isAResendOTPRequest: true
+  });
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -88,7 +67,7 @@ export function ValidateOTP() {
 
             <SolidButton
               className="mt-8"
-              onPress={execute}
+              onPress={validateOTP}
               disabled={OTP.length < 4}
               loading={isLoading || isLoadingResendRequest}
             >
