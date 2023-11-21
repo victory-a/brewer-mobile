@@ -18,6 +18,7 @@ import { useAuthNavigationRoute } from 'src/hooks/useTypedNavigation';
 
 import { validateOTP, login } from 'src/lib/auth';
 import useAsync from 'src/hooks/useAsync';
+import { setStoken } from 'src/utils/auth';
 
 export function ValidateOTP() {
   const { params } = useAuthNavigationRoute();
@@ -32,7 +33,8 @@ export function ValidateOTP() {
   const { execute, isLoading } = useAsync(
     () =>
       validateOTP({ email: params?.email ?? '', otp: OTP })
-        .then((res) => {
+        .then(async (res) => {
+          await setStoken(res.data.token);
           setUserDetails(res.data.user);
           setIsAuthenticated(true);
         })
