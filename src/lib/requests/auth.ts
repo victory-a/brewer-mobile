@@ -1,4 +1,4 @@
-import client from './client';
+import client from '../client';
 
 export function login({ email }: { email: string }) {
   return client.post('/auth/login', { email });

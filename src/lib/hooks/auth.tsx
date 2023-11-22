@@ -1,5 +1,5 @@
 import { Alert } from 'react-native';
-import { getUserDetails, login, validateOTP } from '../auth';
+import { getUserDetails, login, validateOTP } from '../requests/auth';
 
 import useAsync from 'src/hooks/useAsync';
 import { useAuthNavigation, useAuthNavigationRoute } from 'src/hooks/useTypedNavigation';
