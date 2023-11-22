@@ -23,8 +23,8 @@ function CoffeeCard(product: ICoffeeCard) {
         <Image defaultSource={thumbnail as number} className="h-[100] w-full rounded-t-lg" />
         <View className="px-4 py-3">
           <Text className="text-sm font-semibold capitalize text-dark-lemon-green">{title}</Text>
-          <Text className="mb-3 text-xs text-nobel">{type}</Text>
-          <Text className="text-base font-semibold text-dark-lemon-green">
+          <Text className="mb-2 text-xs text-nobel">{type}</Text>
+          <Text className="text-sm font-semibold text-dark-lemon-green">
             {formatCurrency(amount)}
           </Text>
         </View>
