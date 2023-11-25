@@ -28,11 +28,10 @@ client.interceptors.response.use(
     return response.data;
   },
   function (error) {
-    if (error?.message === 'Network Error') {
-      return Promise.reject(error?.message);
-    } else {
+    if (error?.response?.data?.message) {
       return Promise.reject(error.response.data);
     }
+    throw new Error('An Error Occured, try again');
   }
 );
 
