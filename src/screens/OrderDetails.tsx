@@ -15,6 +15,7 @@ export function OrderDetails() {
   function handlePayment() {
     navigate('Order-Completed');
   }
+
   return (
     <SafeAreaView className="relative flex-1 bg-[#FDFDFD]">
       {/* delivery info */}
