@@ -1,3 +1,4 @@
+import { IUpdateUser } from 'src/model/auth';
 import client from '../client';
 
 export function login({ email }: { email: string }) {
@@ -10,4 +11,12 @@ export function validateOTP({ email, otp }: { email: string; otp: string }) {
 
 export function getUserDetails() {
   return client.get('/auth/current-user');
+}
+
+export function updateUserDetails(payload: Partial<IUpdateUser>) {
+  return client.patch('/auth/update-user', payload);
+}
+
+export function logoutUser() {
+  return client.post('/auth/logout');
 }

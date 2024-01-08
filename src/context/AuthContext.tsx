@@ -1,4 +1,6 @@
 import React, { PropsWithChildren } from 'react';
+import { Alert } from 'react-native';
+import { logoutUser } from 'src/lib/requests/auth';
 import { IUser } from 'src/model/auth';
 import { deleteToken } from 'src/utils/auth';
 
@@ -14,8 +16,14 @@ function AuthProvider(props: PropsWithChildren) {
   const [userDetails, setUserDetails] = React.useState<null | IUser>(null);
 
   async function logout() {
-    await deleteToken();
-    setUserDetails(null);
+    try {
+      await logoutUser();
+      await deleteToken();
+      setUserDetails(null);
+    } catch (error) {
+      console.error(error);
+      Alert.alert('Failed to logout');
+    }
   }
 
   return <Context.Provider value={{ userDetails, setUserDetails, logout }} {...props} />;
