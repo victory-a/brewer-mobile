@@ -18,13 +18,17 @@ export function PhoneInput({ label, ...props }: IPhoneInput) {
         className="flex-row items-center rounded-[4px] border-white-color bg-sea-shell pl-2 pr-[0.5px]"
         style={{ borderWidth: 1, borderRightWidth: 1 }}
       >
-        <NGFlag />
+        <View className="flex-row items-center space-x-1">
+          <NGFlag />
+          <Text className="opacity-50">+234</Text>
+        </View>
         <NativeTextInput
           {...props}
           ref={phoneInputRef}
           className="rounded-[4px] bg-sea-shell px-1 py-4 font-Sora-regular  text-[15px] text-mid-gray"
           selectionColor={colors.primary}
           placeholderTextColor={colors['light-gray']}
+          maxLength={10}
         />
       </View>
     </Pressable>
