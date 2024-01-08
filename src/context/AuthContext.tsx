@@ -1,13 +1,12 @@
 import React, { PropsWithChildren } from 'react';
 import { Alert } from 'react-native';
-import { logoutUser } from 'src/lib/requests/auth';
 import { IUser } from 'src/model/auth';
 import { deleteToken } from 'src/utils/auth';
 
 interface ContextProps {
   userDetails: null | IUser;
   setUserDetails: React.Dispatch<React.SetStateAction<null | IUser>>;
-  logout: () => void;
+  removeUserFromStorage: () => void;
 }
 
 const Context = React.createContext<ContextProps | undefined>(undefined);
@@ -15,9 +14,8 @@ const Context = React.createContext<ContextProps | undefined>(undefined);
 function AuthProvider(props: PropsWithChildren) {
   const [userDetails, setUserDetails] = React.useState<null | IUser>(null);
 
-  async function logout() {
+  async function removeUserFromStorage() {
     try {
-      await logoutUser();
       await deleteToken();
       setUserDetails(null);
     } catch (error) {
@@ -26,7 +24,9 @@ function AuthProvider(props: PropsWithChildren) {
     }
   }
 
-  return <Context.Provider value={{ userDetails, setUserDetails, logout }} {...props} />;
+  return (
+    <Context.Provider value={{ userDetails, setUserDetails, removeUserFromStorage }} {...props} />
+  );
 }
 
 function useAuth() {

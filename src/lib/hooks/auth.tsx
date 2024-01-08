@@ -62,7 +62,7 @@ export function useValidateOTP({ setOTP, OTP, setUserDetails }: IuseValidateOTP)
 }
 
 export function useValidateCurrentUser() {
-  const { setUserDetails, logout } = useAuth();
+  const { setUserDetails, removeUserFromStorage } = useAuth();
 
   const { execute, isLoading } = useAsync(async () => {
     const token = await getToken();
@@ -71,7 +71,7 @@ export function useValidateCurrentUser() {
         .then((res) => {
           setUserDetails(res.data);
         })
-        .catch(logout);
+        .catch(removeUserFromStorage);
     }
   }, false);
 

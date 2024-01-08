@@ -1,15 +1,16 @@
 import React from 'react';
-import { Keyboard, SafeAreaView, TouchableWithoutFeedback, View } from 'react-native';
+import { Alert, Keyboard, SafeAreaView, TouchableWithoutFeedback, View } from 'react-native';
 
 import { ContainerView, PhoneInput, Text, TextInput } from 'src/components';
 import { SolidButton, TextButton } from 'src/components/formElements/Button';
 
 import { useAuth } from 'src/context/AuthContext';
 import { useUpdateUser } from 'src/lib/hooks/auth';
+import { logoutUser } from 'src/lib/requests/auth';
 import { stripNGCountryCode } from 'src/utils/phone';
 
 const ProfileScreen = () => {
-  const { logout, userDetails } = useAuth();
+  const { removeUserFromStorage, userDetails } = useAuth();
   const [formValues, setFormValues] = React.useState({
     name: userDetails?.name,
     username: userDetails?.username,
@@ -21,6 +22,15 @@ const ProfileScreen = () => {
   }
 
   const { updateUser, isLoading } = useUpdateUser(formValues);
+
+  function handleLogout() {
+    logoutUser()
+      .then(removeUserFromStorage)
+      .catch((err) => {
+        console.error(err);
+        Alert.alert('Failed to logout');
+      });
+  }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} className=" bg-red-300">
@@ -55,7 +65,7 @@ const ProfileScreen = () => {
             Save
           </SolidButton>
 
-          <TextButton labelClassName="text-red-500" buttonclassName="my-5" onPress={logout}>
+          <TextButton labelClassName="text-red-500" buttonclassName="my-5" onPress={handleLogout}>
             Logout
           </TextButton>
 
