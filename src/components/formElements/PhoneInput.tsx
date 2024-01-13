@@ -1,7 +1,9 @@
 import React from 'react';
 import { View, TextInput as NativeTextInput, TextInputProps, Pressable } from 'react-native';
 
+import useFocus from './useFocus';
 import { Text } from '../shared/Text';
+
 import { colors } from 'src/styles/theme';
 import { NGFlag } from '../Icons';
 
@@ -10,12 +12,15 @@ interface IPhoneInput extends TextInputProps {
 }
 export function PhoneInput({ label, ...props }: IPhoneInput) {
   const phoneInputRef = React.useRef<NativeTextInput | null>(null);
+  const { isFocused, handleFocus, handleBlur } = useFocus();
 
   return (
     <Pressable className="mb-4" onPress={() => phoneInputRef?.current?.focus()}>
       {label ? <Text className="mb-1 text-sm text-dark-lemon-green">{label}</Text> : null}
       <View
-        className="flex-row items-center rounded-[4px] border-white-color bg-sea-shell pl-2 pr-[0.5px]"
+        className={`flex-row items-center rounded-[4px] ${
+          isFocused ? 'border-primary' : 'border-white-color'
+        } bg-sea-shell pl-2 pr-[0.5px]`}
         style={{ borderWidth: 1, borderRightWidth: 1 }}
       >
         <View className="flex-row items-center space-x-1">
@@ -29,6 +34,8 @@ export function PhoneInput({ label, ...props }: IPhoneInput) {
           selectionColor={colors.primary}
           placeholderTextColor={colors['light-gray']}
           maxLength={10}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
       </View>
     </Pressable>
