@@ -4,7 +4,7 @@ import { getUserDetails, login, updateUserDetails, validateOTP } from '../reques
 import useAsync from 'src/hooks/useAsync';
 import { useAuthNavigation, useAuthNavigationRoute } from 'src/hooks/useTypedNavigation';
 import { getToken, setToken } from 'src/utils/auth';
-import { IUpdateUser, IUser } from 'src/model/auth';
+import { IUpdateUser } from 'src/model/auth';
 import { useAuth } from 'src/context/AuthContext';
 import { addNGCountryCode } from 'src/utils/phone';
 
@@ -38,11 +38,11 @@ export function useLogin({ email, isAResendOTPRequest = false }: IuseLogin) {
 interface IuseValidateOTP {
   OTP: string;
   setOTP: (val: string) => void;
-  setUserDetails: (user: IUser) => void;
 }
 
-export function useValidateOTP({ setOTP, OTP, setUserDetails }: IuseValidateOTP) {
+export function useValidateOTP({ setOTP, OTP }: IuseValidateOTP) {
   const { params } = useAuthNavigationRoute();
+  const { setUserDetails } = useAuth();
 
   const { execute, isLoading } = useAsync(
     () =>

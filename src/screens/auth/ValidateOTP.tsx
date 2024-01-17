@@ -12,7 +12,6 @@ import useCountDown from 'hooks/useCountDown';
 import { parseTimeSecInMinsAndSec } from 'utils/time';
 
 import { Text, PinInput, SolidButton, TextButton, ContainerView } from 'src/components';
-import { useAuth } from 'src/context/AuthContext';
 import { useAuthNavigationRoute } from 'src/hooks/useTypedNavigation';
 
 import { useLogin, useValidateOTP } from 'src/lib/hooks/auth';
@@ -23,11 +22,9 @@ export function ValidateOTP() {
   const timer = useCountDown(4);
   const parsedTime = parseTimeSecInMinsAndSec(timer);
 
-  const { setUserDetails } = useAuth();
-
   const [OTP, setOTP] = React.useState('');
 
-  const { validateOTP, isLoading } = useValidateOTP({ setOTP, OTP, setUserDetails });
+  const { validateOTP, isLoading } = useValidateOTP({ setOTP, OTP });
 
   const { login: executeResendRequest, isLoading: isLoadingResendRequest } = useLogin({
     email: params?.email ?? '',
