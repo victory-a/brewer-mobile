@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 
 import { AuthNavigator } from 'navigation/AuthNavigator';
@@ -13,15 +13,19 @@ import { useValidateCurrentUser } from 'src/lib/hooks/auth';
 const RootNavigator = () => {
   const { userDetails } = useAuth();
 
-  const { validateCurrentUser, isLoading } = useValidateCurrentUser();
+  const { validateCurrentUser, isLoading, firstAttempt } = useValidateCurrentUser();
 
   React.useEffect(() => {
     validateCurrentUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (isLoading) {
-    return <View className="flex-1 bg-black"></View>; // we can add a loading page here
+  if (isLoading || firstAttempt) {
+    return (
+      <View className="flex-1 items-center justify-center bg-coffee-brown">
+        <ActivityIndicator color={colors.primary} size="small" />
+      </View>
+    );
   }
 
   return (

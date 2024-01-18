@@ -1,3 +1,4 @@
+import React from 'react';
 import { Alert } from 'react-native';
 import { getUserDetails, login, updateUserDetails, validateOTP } from '../requests/auth';
 
@@ -63,6 +64,7 @@ export function useValidateOTP({ setOTP, OTP }: IuseValidateOTP) {
 
 export function useValidateCurrentUser() {
   const { setUserDetails, removeUserFromStorage } = useAuth();
+  const [firstAttempt, setFirstAttempt] = React.useState(true);
 
   const { execute, isLoading } = useAsync(async () => {
     const token = await getToken();
@@ -71,13 +73,17 @@ export function useValidateCurrentUser() {
         .then((res) => {
           setUserDetails(res.data);
         })
-        .catch(removeUserFromStorage);
+        .catch(removeUserFromStorage)
+        .finally(() => setFirstAttempt(false));
+    } else {
+      setFirstAttempt(false);
     }
   }, false);
 
   return {
     validateCurrentUser: execute,
-    isLoading
+    isLoading,
+    firstAttempt
   };
 }
 
