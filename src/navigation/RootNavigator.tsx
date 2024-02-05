@@ -13,7 +13,7 @@ import { useValidateCurrentUser } from 'src/lib/hooks/auth';
 const RootNavigator = () => {
   const { userDetails } = useAuth();
 
-  const { validateCurrentUser, isLoading, firstAttempt } = useValidateCurrentUser();
+  const { validateCurrentUser, firstAttempt, isLoading } = useValidateCurrentUser();
 
   React.useEffect(() => {
     validateCurrentUser();
