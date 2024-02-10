@@ -20,7 +20,7 @@ const RootNavigator = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (isLoading || firstAttempt) {
+  if (firstAttempt || isLoading) {
     return (
       <View className="flex-1 items-center justify-center bg-coffee-brown">
         <ActivityIndicator color={colors.primary} size="small" />
