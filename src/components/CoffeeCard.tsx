@@ -10,22 +10,21 @@ import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { formatCurrency } from 'src/utils/amount';
 import { ICoffeeCard } from 'model/product';
 
-function CoffeeCard(product: ICoffeeCard) {
-  const { title, type, thumbnail, amount } = product;
+function CoffeeCard({ name, variant, image, basePrice, id }: ICoffeeCard) {
   const { navigate } = useAppNavigation();
 
   return (
     <Pressable
       className="mx-auto mb-5 min-w-[152]"
-      onPress={() => navigate('Product-Detail-Screen', { product })}
+      onPress={() => navigate('Product-Detail-Screen', { productID: id })}
     >
       <View className="rounded-lg bg-white" style={styles.shadow}>
-        <Image defaultSource={thumbnail as number} className="h-[100] w-full rounded-t-lg" />
+        <Image defaultSource={image as number} className="h-[100] w-full rounded-t-lg" />
         <View className="px-4 py-3">
-          <Text className="text-sm font-semibold capitalize text-dark-lemon-green">{title}</Text>
-          <Text className="mb-2 text-xs text-nobel">{type}</Text>
+          <Text className="text-sm font-semibold capitalize text-dark-lemon-green">{name}</Text>
+          <Text className="mb-2 text-xs text-nobel">{variant}</Text>
           <Text className="text-sm font-semibold text-dark-lemon-green">
-            {formatCurrency(amount)}
+            {formatCurrency(basePrice)}
           </Text>
         </View>
       </View>

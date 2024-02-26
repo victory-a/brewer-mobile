@@ -10,7 +10,7 @@ export type AppNavigatorParams = {
   AppBottomTabs: undefined;
   'View-Order-Modal': undefined;
   'Select-Location-Modal': undefined;
-  'Product-Detail-Screen': { product: ICoffeeCard };
+  'Product-Detail-Screen': { productID: number };
   'Ongoing-Order-Details': undefined;
   'Order-Completed': undefined;
   Home: undefined;

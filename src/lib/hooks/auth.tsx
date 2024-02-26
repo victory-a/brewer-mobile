@@ -1,6 +1,6 @@
 import React from 'react';
 import { Alert } from 'react-native';
-import { getUserDetails, login, updateUserDetails, validateOTP } from '../requests/auth';
+import { getUserDetails, login, updateUserDetails, validateOTP } from '../requests/auth.request';
 
 import useAsync from 'src/hooks/useAsync';
 import { useAuthNavigation, useAuthNavigationRoute } from 'src/hooks/useTypedNavigation';
@@ -17,20 +17,18 @@ interface IuseLogin {
 export function useLogin({ email, isAResendOTPRequest = false }: IuseLogin) {
   const { navigate } = useAuthNavigation();
 
-  const { execute, isLoading } = useAsync(
-    () =>
-      login({ email })
-        .then(() => {
-          if (isAResendOTPRequest) {
-            Alert.alert('Success', 'OTP has been sent to your email');
-          } else {
-            navigate('Validate-OTP', { email });
-          }
-        })
-        .catch((err) => {
-          Alert.alert('Error', err.message);
-        }),
-    false
+  const { execute, isLoading } = useAsync(() =>
+    login({ email })
+      .then(() => {
+        if (isAResendOTPRequest) {
+          Alert.alert('Success', 'OTP has been sent to your email');
+        } else {
+          navigate('Validate-OTP', { email });
+        }
+      })
+      .catch((err) => {
+        Alert.alert('Error', err.message);
+      })
   );
 
   return { login: execute, isLoading };
@@ -45,18 +43,16 @@ export function useValidateOTP({ setOTP, OTP }: IuseValidateOTP) {
   const { params } = useAuthNavigationRoute();
   const { setUserDetails } = useAuth();
 
-  const { execute, isLoading } = useAsync(
-    () =>
-      validateOTP({ email: params?.email ?? '', otp: OTP })
-        .then(async (res) => {
-          await setToken(res.data.token);
-          setUserDetails(res.data.user);
-        })
-        .catch((err) => {
-          setOTP('');
-          Alert.alert('Error', err.message);
-        }),
-    false
+  const { execute, isLoading } = useAsync(() =>
+    validateOTP({ email: params?.email ?? '', otp: OTP })
+      .then(async (res) => {
+        await setToken(res.data.token);
+        setUserDetails(res.data.user);
+      })
+      .catch((err) => {
+        setOTP('');
+        Alert.alert('Error', err.message);
+      })
   );
 
   return { validateOTP: execute, isLoading };
@@ -78,7 +74,7 @@ export function useValidateCurrentUser() {
     } else {
       setFirstAttempt(false);
     }
-  }, false);
+  });
 
   return {
     validateCurrentUser: execute,
@@ -96,12 +92,10 @@ export function useUpdateUser(userDetails: Partial<IUpdateUser>) {
     payload.mobile = addNGCountryCode(userDetails.mobile);
   }
 
-  const { execute, isLoading } = useAsync(
-    () =>
-      updateUserDetails(payload)
-        .then(validateCurrentUser)
-        .catch((err) => Alert.alert('Error', err.message)),
-    false
+  const { execute, isLoading } = useAsync(() =>
+    updateUserDetails(payload)
+      .then(validateCurrentUser)
+      .catch((err) => Alert.alert('Error', err.message))
   );
 
   return {

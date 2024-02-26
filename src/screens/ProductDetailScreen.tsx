@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SafeAreaView, StatusBar, ScrollView, View } from 'react-native';
 import { useRoute, RouteProp } from '@react-navigation/native';
 
@@ -16,6 +16,7 @@ import {
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { AppNavigatorParams } from 'src/model/navigation.model';
 import { formatCurrency } from 'src/utils/amount';
+import { useAProduct, useGetProducts } from 'src/lib/hooks/product.hooks';
 
 const coffeebg1 = require('../../assets/images/coffee-1.png');
 
@@ -26,13 +27,20 @@ export const ProductDetailScreen = () => {
   const { params } = useRoute<RouteProp<AppNavigatorParams>>();
 
   React.useLayoutEffect(() => {
-    if (!params?.product) {
+    if (!params?.productID) {
       navigation.navigate('AppBottomTabs');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params?.product]);
+  }, [params?.productID]);
 
-  const product = params?.product;
+  const { isLoading, execute, product } = useAProduct();
+
+  React.useEffect(() => {
+    if (params?.productID) {
+      execute(params?.productID);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params?.productID]);
 
   if (!product) return;
 
@@ -43,19 +51,18 @@ export const ProductDetailScreen = () => {
 
         <ContainerView className="relative mb-40 mt-2">
           <Image
-            defaultSource={(product?.thumbnail as number) ?? (coffeebg1 as number)}
+            defaultSource={(coffeebg1 as number) ?? (coffeebg1 as number)}
+            // defaultSource={(product?.image as number) ?? (coffeebg1 as number)}
             className="mx-auto mt-2 h-[226] w-full max-w-[315] rounded-2xl bg-contain"
             resizeMode="contain"
           />
-          <Text className="mt-5 text-xl font-semibold text-secondary">{product?.title}</Text>
-          <Text className="text-sm text-nobel">{product?.type}</Text>
+          <Text className="mt-5 text-xl font-semibold text-secondary">{product?.name}</Text>
+          <Text className="text-sm text-nobel">{product?.variant}</Text>
 
           <View className="mt-2 flex-row items-center justify-between ">
             <View className="flex-row">
               <StarIcon />
-              <Text>
-                4.8 <Text>(230)</Text>
-              </Text>
+              <Text>{product.rating}</Text>
             </View>
 
             <Image defaultSource={milk} className="h-[20] w-[20]" resizeMode="contain" />
@@ -64,10 +71,7 @@ export const ProductDetailScreen = () => {
           <Divider additionalClassName="my-5" />
 
           <Text className="mb-2 text-base font-semibold text-secondary">Description</Text>
-          <Text className="text-sm leading-[1.02] text-nobel">
-            A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee
-            and 85ml of fresh milk.
-          </Text>
+          <Text className="text-sm leading-[1.02] text-nobel">{product.description}</Text>
 
           <SelectSize />
         </ContainerView>

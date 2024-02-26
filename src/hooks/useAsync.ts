@@ -14,7 +14,10 @@ interface UseAsync<T> {
   isLoading: boolean;
 }
 
-const useAsync = <T>(asyncFunction: (props?: any) => Promise<T>, immediate = true): UseAsync<T> => {
+const useAsync = <T>(
+  asyncFunction: (props?: any) => Promise<T>,
+  immediate = false
+): UseAsync<T> => {
   const [state, setState] = useState<AsyncState<T>>({
     status: 'idle',
     value: null,

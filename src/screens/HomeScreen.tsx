@@ -4,32 +4,28 @@ import { FlashList } from '@shopify/flash-list';
 
 import { CoffeeCard, PromoBanner, ContainerView, SelectLocation } from 'src/components';
 import { colors } from 'src/styles/theme';
-import { getToken } from 'src/utils/auth';
+import { useGetProducts } from 'src/lib/hooks/product.hooks';
 
 const coffeebg1 = require('../../assets/images/coffee-1.png');
 const coffeebg2 = require('../../assets/images/coffee-2.png');
 const coffeebg3 = require('../../assets/images/coffee-3.png');
 const coffeebg4 = require('../../assets/images/coffee-4.png');
 
-const coffeeList = [
-  { title: 'Cappucino', type: 'with Chocolate', thumbnail: coffeebg1, amount: 25 },
-  { title: 'Cappucino', type: 'with Oat Milk', thumbnail: coffeebg2, amount: 25 },
-  { title: 'Cappucino', type: 'with goat Milk', thumbnail: coffeebg3, amount: 25 },
-  { title: 'Cappucino', type: 'with lamb Milk', thumbnail: coffeebg4, amount: 25 },
-  { title: 'Cappucino', type: 'with goat Milk', thumbnail: coffeebg3, amount: 25 },
-  { title: 'Cappucino', type: 'with Oat Milk', thumbnail: coffeebg2, amount: 25 },
-  { title: 'Cappucino', type: 'with lamb Milk', thumbnail: coffeebg4, amount: 25 },
-  { title: 'Cappucino', type: 'with Chocolate', thumbnail: coffeebg1, amount: 25 }
-];
-
 const HomeScreen = () => {
   const [refreshing, setRefreshing] = React.useState(false);
 
+  const { isLoading, products, execute } = useGetProducts();
+  console.log({ products });
+
+  React.useEffect(() => {
+    execute();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
-    setTimeout(() => {
-      setRefreshing(false);
-    }, 5000);
+    execute().finally(() => setRefreshing(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -55,8 +51,20 @@ const HomeScreen = () => {
 
         <ContainerView className="mb-6 mt-[100px] h-full">
           <FlashList
-            data={coffeeList}
-            renderItem={({ index, item }) => <CoffeeCard key={index} {...item} />}
+            data={products}
+            renderItem={({ index, item }) => (
+              <CoffeeCard
+                key={index}
+                {...{
+                  id: item.id,
+                  name: item.name,
+                  basePrice: item.basePrice,
+                  variant: item.variant,
+                  image: coffeebg1
+                  // image: item.image
+                }}
+              />
+            )}
             estimatedItemSize={200}
             numColumns={2}
           />
