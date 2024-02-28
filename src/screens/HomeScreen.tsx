@@ -15,7 +15,6 @@ const HomeScreen = () => {
   const [refreshing, setRefreshing] = React.useState(false);
 
   const { isLoading, products, execute } = useGetProducts();
-  console.log({ products });
 
   React.useEffect(() => {
     execute();

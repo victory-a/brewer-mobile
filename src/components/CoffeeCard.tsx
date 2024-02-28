@@ -8,9 +8,11 @@ import { Image } from './shared/Image';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 
 import { formatCurrency } from 'src/utils/amount';
-import { ICoffeeCard } from 'model/product';
+import { IProduct } from 'model/product';
 
-function CoffeeCard({ name, variant, image, basePrice, id }: ICoffeeCard) {
+type PartialProductDetails = Pick<IProduct, 'id' | 'image' | 'name' | 'basePrice' | 'variant'>;
+
+function CoffeeCard({ name, variant, image, basePrice, id }: PartialProductDetails) {
   const { navigate } = useAppNavigation();
 
   return (
