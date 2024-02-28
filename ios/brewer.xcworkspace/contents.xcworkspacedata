@@ -10,4 +10,7 @@
    <FileRef
       location = "group:Brewer.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:brewer.xcodeproj">
+   </FileRef>
 </Workspace>

@@ -1,22 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { SafeAreaView, StatusBar, ScrollView, View } from 'react-native';
 import { useRoute, RouteProp } from '@react-navigation/native';
 
 import { StarIcon } from 'src/components/Icons';
-import {
-  SelectButton,
-  SolidButton,
-  TextButton,
-  Text,
-  ContainerView,
-  Divider,
-  Image
-} from 'src/components';
+import { Text, ContainerView, Divider, Image } from 'src/components';
 
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { AppNavigatorParams } from 'src/model/navigation.model';
-import { formatCurrency } from 'src/utils/amount';
-import { useAProduct, useGetProducts } from 'src/lib/hooks/product.hooks';
+import { useAProduct } from 'src/lib/hooks/product.hooks';
+import { sizes } from 'src/model/product';
+import { SelectSize } from 'src/components/SelectSize';
+import { TotalDisplay } from 'src/components/TotalDisplay';
 
 const coffeebg1 = require('../../assets/images/coffee-1.png');
 
@@ -42,7 +36,9 @@ export const ProductDetailScreen = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params?.productID]);
 
-  if (!product) return;
+  const [selectedSize, setSelectedSize] = React.useState<sizes>('small');
+
+  if (isLoading) return <Text>Loading....</Text>;
 
   return (
     <SafeAreaView className="relative flex-1 bg-white">
@@ -62,7 +58,7 @@ export const ProductDetailScreen = () => {
           <View className="mt-2 flex-row items-center justify-between ">
             <View className="flex-row">
               <StarIcon />
-              <Text>{product.rating}</Text>
+              <Text>{product?.rating}</Text>
             </View>
 
             <Image defaultSource={milk} className="h-[20] w-[20]" resizeMode="contain" />
@@ -71,90 +67,25 @@ export const ProductDetailScreen = () => {
           <Divider additionalClassName="my-5" />
 
           <Text className="mb-2 text-base font-semibold text-secondary">Description</Text>
-          <Text className="text-sm leading-[1.02] text-nobel">{product.description}</Text>
+          <Text className="text-sm leading-[1.02] text-nobel">{product?.description}</Text>
 
-          <SelectSize />
+          <SelectSize
+            selectedSize={selectedSize}
+            setSelectedSize={setSelectedSize}
+            sizes={product?.sizes}
+          />
         </ContainerView>
       </ScrollView>
 
-      <TotalDisplay />
+      <TotalDisplay
+        {...{
+          selectedSize,
+          basePrice: product?.basePrice,
+          small: product?.small,
+          medium: product?.medium,
+          large: product?.large
+        }}
+      />
     </SafeAreaView>
   );
 };
-
-function TotalDisplay() {
-  const [quantity, setQuantity] = React.useState(1);
-  const total = 4.53;
-  const { navigate } = useAppNavigation();
-
-  function handleRemove() {
-    if (quantity === 1) {
-      navigate('AppBottomTabs');
-      return;
-    }
-    setQuantity((curr) => (curr > 0 ? curr - 1 : curr));
-  }
-
-  function handleAdd() {
-    setQuantity((curr) => curr + 1);
-  }
-
-  return (
-    <View className="absolute bottom-3 w-full border-t-[0.3px] border-lighter-gray bg-white py-6">
-      <ContainerView className="items-center">
-        <View className="w-full flex-1 flex-row space-x-6">
-          <View className="flex-[50%] flex-row items-center justify-between">
-            <TextButton
-              className="rounded-lg bg-[#F3F3F3] px-4 py-2"
-              labelClassName="text-secondary font-semibold text-lg"
-              onPress={handleRemove}
-            >
-              -
-            </TextButton>
-            <Text>{quantity}</Text>
-            <TextButton
-              className="rounded-lg bg-[#F3F3F3] px-4 py-2"
-              labelClassName="text-primary font-semibold text-xl"
-              onPress={handleAdd}
-            >
-              +
-            </TextButton>
-          </View>
-          <View className="flex-[50%]">
-            <SolidButton onPress={() => navigate('AppBottomTabs')}>
-              Add {quantity > 0 ? formatCurrency(total * quantity) : 'to Cart '}
-            </SolidButton>
-          </View>
-        </View>
-      </ContainerView>
-    </View>
-  );
-}
-
-function SelectSize() {
-  const [selectedSize, setSelectedSize] = React.useState('S');
-
-  return (
-    <>
-      <Text className="mt-5 text-base font-semibold text-secondary">Size</Text>
-
-      <View className="mt-3 flex-row justify-between">
-        <SelectButton
-          value="S"
-          isSelected={selectedSize === 'S'}
-          onPress={() => setSelectedSize('S')}
-        />
-        <SelectButton
-          value="M"
-          isSelected={selectedSize === 'M'}
-          onPress={() => setSelectedSize('M')}
-        />
-        <SelectButton
-          value="L"
-          isSelected={selectedSize === 'L'}
-          onPress={() => setSelectedSize('L')}
-        />
-      </View>
-    </>
-  );
-}

@@ -13,3 +13,5 @@ export interface IProduct {
   medium: number;
   large: number;
 }
+
+export type sizes = 'small' | 'medium' | 'large';
