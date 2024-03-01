@@ -5,11 +5,7 @@ import { Text } from './shared/Text';
 import { formatDatetime } from 'src/utils/time';
 import { TextButton } from './formElements/Button';
 import { Divider } from './shared/Divider';
-
-interface IOrder {
-  orderCode: string;
-  date: Date;
-}
+import { IOrder } from 'src/model/order.model';
 
 interface IOrderItem {
   order: IOrder;
@@ -22,10 +18,10 @@ export function OrderItem({ order, ctaLabel, handlePress, containerClass = '' }:
   return (
     <View className={containerClass}>
       <Pressable className="py-2" onPress={handlePress} hitSlop={1} activeOpacity={0.6}>
-        <Text className="text-base font-semibold">Order #{order.orderCode}</Text>
+        <Text className="text-base font-semibold">Order #{order.id}</Text>
 
         <View className="flex-row justify-between">
-          <Text className="mt-1 text-sm">{formatDatetime(order.date)}</Text>
+          <Text className="mt-1 text-sm">{formatDatetime(order.createdAt)}</Text>
           <TextButton
             labelClassName="text-dark-lemon-green text-xs"
             buttonclassName="bg-transparent"

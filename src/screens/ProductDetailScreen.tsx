@@ -8,7 +8,7 @@ import { Text, ContainerView, Divider, Image } from 'src/components';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { AppNavigatorParams } from 'src/model/navigation.model';
 import { useAProduct } from 'src/lib/hooks/product.hooks';
-import { sizes } from 'src/model/product';
+import { sizes } from 'src/model/product.model';
 import { SelectSize } from 'src/components/SelectSize';
 import { TotalDisplay } from 'src/components/TotalDisplay';
 

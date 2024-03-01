@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { sizes } from '../model/product';
+import { sizes } from '../model/product.model';
 import { SelectButton, Text } from 'src/components';
 
 interface ISelectSize {

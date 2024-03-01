@@ -1,14 +1,14 @@
 import axios from 'axios';
 import { BASE_URL } from '@env';
 
-import { getToken } from 'src/utils/auth';
+import { deleteToken, getToken } from 'src/utils/auth';
 
 const headers: Record<string, string> = {
   Accept: 'application/vnd.github.v3+json'
 };
 
 const client = axios.create({
-  // baseURL: 'https://27ca-197-210-77-90.ngrok-free.app',
+  // baseURL: 'https://d35c-197-210-77-127.ngrok-free.app',
   baseURL: BASE_URL,
   timeout: 60000,
   headers
@@ -28,6 +28,11 @@ client.interceptors.response.use(
     return response.data;
   },
   function (error) {
+    if (error.request.status === 401) {
+      deleteToken();
+      return Promise.reject(error.response.data);
+    }
+
     if (error?.response?.data?.message) {
       return Promise.reject(error.response.data);
     }

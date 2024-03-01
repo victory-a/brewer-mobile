@@ -7,14 +7,11 @@ import { colors } from 'src/styles/theme';
 import { useGetProducts } from 'src/lib/hooks/product.hooks';
 
 const coffeebg1 = require('../../assets/images/coffee-1.png');
-const coffeebg2 = require('../../assets/images/coffee-2.png');
-const coffeebg3 = require('../../assets/images/coffee-3.png');
-const coffeebg4 = require('../../assets/images/coffee-4.png');
 
 const HomeScreen = () => {
   const [refreshing, setRefreshing] = React.useState(false);
 
-  const { isLoading, products, execute } = useGetProducts();
+  const { products = [], execute } = useGetProducts();
 
   React.useEffect(() => {
     execute();
