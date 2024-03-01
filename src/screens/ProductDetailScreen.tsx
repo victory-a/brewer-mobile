@@ -18,7 +18,7 @@ const milk = require('../../assets/icon/milk.png');
 
 export const ProductDetailScreen = () => {
   const navigation = useAppNavigation();
-  const { params } = useRoute<RouteProp<AppNavigatorParams>>();
+  const { params } = useRoute<RouteProp<AppNavigatorParams, 'Product-Detail-Screen'>>();
 
   React.useLayoutEffect(() => {
     if (!params?.productID) {

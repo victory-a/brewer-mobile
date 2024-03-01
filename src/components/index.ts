@@ -17,6 +17,8 @@ import { SelectLocation } from './SelectLocation';
 import { CartItem } from './CartItem';
 
 import { LoadingSpinner } from './shared/Loaders';
+import { TotalDisplay } from './TotalDisplay';
+import { SelectSize } from './SelectSize';
 
 export {
   TextButton,
@@ -38,5 +40,7 @@ export {
   EmptyCart,
   CartItem,
   Divider,
-  LoadingSpinner
+  LoadingSpinner,
+  TotalDisplay,
+  SelectSize
 };
