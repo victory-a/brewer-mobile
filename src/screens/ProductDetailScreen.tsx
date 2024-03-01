@@ -7,7 +7,7 @@ import { Text, ContainerView, Divider, Image } from 'src/components';
 
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { AppNavigatorParams } from 'src/model/navigation.model';
-import { useAProduct } from 'src/lib/hooks/product.hooks';
+import { useGetAProduct } from 'src/lib/hooks/product.hooks';
 import { sizes } from 'src/model/product.model';
 import { SelectSize } from 'src/components/SelectSize';
 import { TotalDisplay } from 'src/components/TotalDisplay';
@@ -27,7 +27,7 @@ export const ProductDetailScreen = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params?.productID]);
 
-  const { isLoading, execute, product } = useAProduct();
+  const { isLoading, execute, product } = useGetAProduct();
 
   React.useEffect(() => {
     if (params?.productID) {

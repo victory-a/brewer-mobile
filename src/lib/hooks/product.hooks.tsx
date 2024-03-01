@@ -22,7 +22,7 @@ export function useGetProducts() {
   };
 }
 
-export function useAProduct() {
+export function useGetAProduct() {
   const { navigate } = useAppNavigation();
   const { isLoading, value, execute } = useAsync(
     (id: number) =>
