@@ -3,7 +3,7 @@ import { Alert } from 'react-native';
 import { getOrders } from '../requests/order.requests';
 
 import useAsync from 'src/hooks/useAsync';
-import { IAllOrders, IOrder } from 'src/model/order.model';
+import { IOrder } from 'src/model/order.model';
 
 export function useGetOrders(orderStatus?: IOrder['status']) {
   const { isLoading, value, execute } = useAsync(
@@ -17,6 +17,6 @@ export function useGetOrders(orderStatus?: IOrder['status']) {
   return {
     execute,
     isLoading,
-    orders: value?.orders as IAllOrders[]
+    orders: value?.orders as IOrder[]
   };
 }
