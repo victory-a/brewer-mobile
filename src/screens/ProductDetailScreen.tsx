@@ -8,7 +8,7 @@ import { Text, ContainerView, Divider, Image } from 'src/components';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { AppNavigatorParams } from 'src/model/navigation.model';
 import { useGetAProduct } from 'src/lib/hooks/product.hooks';
-import { sizes } from 'src/model/product.model';
+import { ISizes } from 'src/model/product.model';
 import { SelectSize } from 'src/components/SelectSize';
 import { TotalDisplay } from 'src/components/TotalDisplay';
 
@@ -36,7 +36,7 @@ export const ProductDetailScreen = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params?.productID]);
 
-  const [selectedSize, setSelectedSize] = React.useState<sizes>('small');
+  const [selectedSize, setSelectedSize] = React.useState<ISizes>('small');
 
   if (isLoading) return <Text>Loading....</Text>;
 

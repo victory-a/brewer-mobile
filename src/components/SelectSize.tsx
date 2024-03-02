@@ -1,12 +1,12 @@
 import React from 'react';
 import { View } from 'react-native';
-import { sizes } from '../model/product.model';
+import { ISizes } from '../model/product.model';
 import { SelectButton, Text } from 'src/components';
 
 interface ISelectSize {
-  selectedSize: sizes;
-  setSelectedSize: (size: sizes) => void;
-  sizes: sizes[];
+  selectedSize: ISizes;
+  setSelectedSize: (size: ISizes) => void;
+  sizes: ISizes[];
 }
 
 export function SelectSize({ selectedSize, setSelectedSize, sizes }: ISelectSize) {
