@@ -5,7 +5,6 @@ import { getOrder, getOrders } from '../requests/order.requests';
 import useAsync from 'src/hooks/useAsync';
 import { IOrderList, ISingleOrder } from 'src/model/order.model';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
-import { useCart } from 'src/context/CartContext';
 
 export function useGetOrders(orderStatus?: IOrderList['status']) {
   const { isLoading, value, execute } = useAsync(
