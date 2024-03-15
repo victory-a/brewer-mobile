@@ -22,6 +22,7 @@ const OrderTabNavigator = () => {
             tabBarLabel: ({ focused }) => <Label name={route.name} focused={focused} />
           })}
         >
+          <Tabs.Screen name="Cart" component={OngoingOrder} />
           <Tabs.Screen name="Ongoing" component={OngoingOrder} />
           <Tabs.Screen name="Completed" component={CompletedOrders} />
         </Tabs.Navigator>
@@ -56,6 +57,6 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 4,
     borderRadius: 10,
-    width: '47.8%'
+    width: '31%'
   }
 });
