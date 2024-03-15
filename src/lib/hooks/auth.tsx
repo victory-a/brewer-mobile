@@ -12,10 +12,9 @@ import { addNGCountryCode } from 'src/utils/phone';
 interface IuseLogin {
   email: string;
   isAResendOTPRequest?: boolean;
-  clearOTP: () => void;
 }
 
-export function useLogin({ email, isAResendOTPRequest = false, clearOTP }: IuseLogin) {
+export function useLogin({ email, isAResendOTPRequest = false }: IuseLogin) {
   const { navigate } = useAuthNavigation();
 
   const { execute, isLoading } = useAsync(() =>
@@ -23,7 +22,6 @@ export function useLogin({ email, isAResendOTPRequest = false, clearOTP }: IuseL
       .then(() => {
         if (isAResendOTPRequest) {
           Alert.alert('Success', 'OTP has been sent to your email');
-          clearOTP();
         } else {
           navigate('Validate-OTP', { email });
         }

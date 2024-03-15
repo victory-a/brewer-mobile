@@ -28,8 +28,7 @@ export function ValidateOTP() {
 
   const { login: executeResendRequest, isLoading: isLoadingResendRequest } = useLogin({
     email: params?.email ?? '',
-    isAResendOTPRequest: true,
-    clearOTP: () => setOTP('')
+    isAResendOTPRequest: true
   });
 
   return (

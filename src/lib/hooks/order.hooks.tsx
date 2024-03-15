@@ -25,13 +25,11 @@ export function useGetOrders(orderStatus?: IOrderList['status']) {
 
 export function useGetAnOrder() {
   const { navigate } = useAppNavigation();
-  const { initializeCart } = useCart();
 
   const { isLoading, execute, value } = useAsync(
     (id: number) =>
       getOrder(id)
         .then((res) => {
-          initializeCart(res.data);
           return res.data;
         })
         .catch((err) => {

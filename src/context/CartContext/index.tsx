@@ -1,13 +1,13 @@
 import React, { PropsWithChildren } from 'react';
-import { Alert } from 'react-native';
-import { IOrderProduct, ISingleOrder } from 'src/model/order.model';
-import { CartReducer, ICartState, actions, initialState } from './reducer.cart';
+import { CartReducer, actions, initialState } from './reducer.cart';
+import { ICartProduct, ICartState } from 'src/model/order.model';
 
 interface ContextProps {
   state: ICartState;
-  increase: (payload: { productID: number }) => void;
-  decrease: (payload: { productID: number }) => void;
-  initializeCart: (payload: ISingleOrder) => void;
+  addItem: (payload: { product: ICartProduct }) => void;
+  increase: (payload: { id: number }) => void;
+  decrease: (payload: { id: number }) => void;
+  initializeCart: (payload: { products: ICartProduct[] }) => void;
   clearCart: () => void;
 }
 
@@ -16,27 +16,35 @@ const Context = React.createContext<ContextProps | undefined>(undefined);
 export function CartProvider(props: PropsWithChildren) {
   const [state, dispatch] = React.useReducer(CartReducer, initialState);
 
-  function increase(payload: { productID: number }) {
+  function addItem(payload: { product: ICartProduct }) {
+    dispatch({ type: actions.ADD_ITEM, payload });
+  }
+
+  function increase(payload: { id: number }) {
     dispatch({ type: actions.INCREASE_QUANTITY, payload });
   }
 
-  function decrease(payload: { productID: number }) {
+  function decrease(payload: { id: number }) {
     dispatch({ type: actions.DECREASE_QUANTITY, payload });
   }
 
-  function initializeCart(payload: ISingleOrder) {
-    console.log({ payload });
-    const { products, ...rest } = payload;
-
-    dispatch({ type: actions.INITIALIZE, payload: { products, order: { ...rest } } });
+  function initializeCart(payload: { products: ICartProduct[] }) {
+    dispatch({ type: actions.INITIALIZE, payload });
   }
 
   function clearCart() {
-    dispatch({ type: actions.CLEAR_CART, payload: initialState });
+    dispatch({ type: actions.CLEAR_CART });
+  }
+
+  function setDeliveryAmount(amount: number) {
+    dispatch({ type: actions.SET_DELIVERY_PRICE, payload: { amount } });
   }
 
   return (
-    <Context.Provider value={{ state, increase, decrease, initializeCart, clearCart }} {...props} />
+    <Context.Provider
+      value={{ state, addItem, increase, decrease, initializeCart, clearCart }}
+      {...props}
+    />
   );
 }
 

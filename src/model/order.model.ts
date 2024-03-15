@@ -9,16 +9,24 @@ export interface IOrderList {
   status: OrderStatus;
 }
 
-export interface IOrderProduct {
-  productId: number;
+export interface IProduct {
+  id: number;
   name: string;
   size: ISizes;
   quantity: number;
   image: string;
   basePrice: number;
-  selectedSizePrice: number;
   variant: string;
+  small: number;
+  medium: number;
+  large: number;
 }
+
+export interface ICartProduct extends IProduct {
+  quantity: number;
+  selectedSize: ISizes;
+}
+
 export interface ISingleOrder {
   id: number;
   createdAt: Date;
@@ -26,5 +34,14 @@ export interface ISingleOrder {
   address: string;
   totalPrice: number;
   status: OrderStatus;
-  products: IOrderProduct[];
+  products: IProduct[];
+}
+
+export interface ICartState extends ICartSum {
+  products: ICartProduct[];
+}
+export interface ICartSum {
+  deliveryPrice: number;
+  computedProductsTotal: number;
+  computedGrandTotal: number;
 }
