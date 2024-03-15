@@ -54,8 +54,14 @@ export const TextButton = ({
   ...props
 }: ITextButton) => {
   return (
-    <Pressable className={` bg-white ${buttonclassName}`} hitSlop={hitSlop} {...props}>
-      <Text className={`text-center text-sm text-gray-67 ${labelClassName}`}>{children}</Text>
+    <Pressable className={` bg-white ${buttonclassName} `} hitSlop={hitSlop} {...props}>
+      <Text
+        className={`text-center text-sm text-gray-67 ${labelClassName} ${
+          props.disabled && 'opacity-20'
+        }`}
+      >
+        {children}
+      </Text>
     </Pressable>
   );
 };

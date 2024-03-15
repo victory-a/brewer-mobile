@@ -19,7 +19,7 @@ import { useLogin, useValidateOTP } from 'src/lib/hooks/auth';
 export function ValidateOTP() {
   const { params } = useAuthNavigationRoute();
 
-  const timer = useCountDown(4);
+  const timer = useCountDown(90);
   const parsedTime = parseTimeSecInMinsAndSec(timer);
 
   const [OTP, setOTP] = React.useState('');

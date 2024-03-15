@@ -16,6 +16,10 @@ import { PromoBanner } from './PromoBanner';
 import { SelectLocation } from './SelectLocation';
 import { CartItem } from './CartItem';
 
+import { LoadingSpinner } from './shared/Loaders';
+import { TotalDisplay } from './TotalDisplay';
+import { SelectSize } from './SelectSize';
+
 export {
   TextButton,
   SolidButton,
@@ -35,5 +39,8 @@ export {
   CoffeeCard,
   EmptyCart,
   CartItem,
-  Divider
+  Divider,
+  LoadingSpinner,
+  TotalDisplay,
+  SelectSize
 };

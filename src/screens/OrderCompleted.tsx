@@ -43,7 +43,7 @@ export const OrderCompleted = () => {
             labelClassName="text-secondary"
             hitSlop={2}
           >
-            Back home
+            Back Home
           </TextButton>
         </View>
       </ContainerView>

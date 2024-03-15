@@ -1,3 +1,5 @@
+export type ISizes = 'small' | 'medium' | 'large';
+
 export interface IProduct {
   id: number;
   name: string;
@@ -7,11 +9,9 @@ export interface IProduct {
   createdAt: Date;
   updatedAt: Date;
   description: string;
-  sizes: ['small' | 'medium' | 'large']; // CHABNGE TO OBJECT FROM BACKEND
+  sizes: ISizes[];
   rating: number;
   small: number;
   medium: number;
   large: number;
 }
-
-export type sizes = 'small' | 'medium' | 'large';

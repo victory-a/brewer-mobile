@@ -1,4 +1,4 @@
-import { SafeAreaView, ScrollView, View } from 'react-native';
+import { SafeAreaView, ScrollView, View, RefreshControl } from 'react-native';
 import React from 'react';
 import { FlashList } from '@shopify/flash-list';
 
@@ -6,31 +6,53 @@ import { EmptyCart } from 'src/components';
 import { OrderItem } from 'src/components/OrderItem';
 
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
+import { useGetOrders } from 'src/lib/hooks/order.hooks';
 
-const dummyOrder = {
-  orderCode: '1255334',
-  date: new Date()
-};
-const ongoingOrders = Array.from({ length: 1 }, () => dummyOrder);
+import { colors } from 'src/styles/theme';
 
 const OngoingOrder = () => {
   const { navigate } = useAppNavigation();
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const { execute, isLoading, orders = [] } = useGetOrders('pending');
+
+  React.useEffect(() => {
+    execute();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    execute().finally(() => setRefreshing(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <SafeAreaView className="flex-1 bg-white">
-      {dummyOrder ? (
-        <ScrollView className="mt-5 h-full px-2">
+      {orders.length > 0 ? (
+        <ScrollView
+          className="mt-5 h-full px-2"
+          showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing || isLoading}
+              onRefresh={onRefresh}
+              tintColor={colors['white-color']}
+            />
+          }
+        >
           <View className="min-h-[2]">
             <FlashList
-              data={ongoingOrders}
+              data={orders}
               renderItem={({ index, item }) => (
                 <OrderItem
                   key={index}
                   order={item}
                   ctaLabel="Proceed to checkout"
-                  handlePress={() => navigate('Ongoing-Order-Details')}
+                  handlePress={() => navigate('Ongoing-Order-Details', { orderId: item.id })}
                 />
               )}
-              estimatedItemSize={10}
+              estimatedItemSize={20}
             />
           </View>
         </ScrollView>

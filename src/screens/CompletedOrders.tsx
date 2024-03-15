@@ -2,40 +2,40 @@ import { RefreshControl, SafeAreaView, ScrollView, View } from 'react-native';
 import React from 'react';
 import { FlashList } from '@shopify/flash-list';
 
-import { ContainerView, EmptyCart } from 'src/components';
-// import { useAppNavigation } from 'src/hooks/useTypedNavigation';
+import { EmptyCart } from 'src/components';
 import { OrderItem } from 'src/components/OrderItem';
+import { useGetOrders } from 'src/lib/hooks/order.hooks';
+
+import { useAppNavigation } from 'src/hooks/useTypedNavigation';
+
 import { colors } from 'src/styles/theme';
 
-const dummyOrder = {
-  orderCode: '1255334',
-  date: new Date()
-};
-
-const completedOrders = Array.from({ length: 5 }, () => dummyOrder);
-
 export function CompletedOrders() {
-  // const { navigate } = useAppNavigation();
+  const { navigate } = useAppNavigation();
   const [refreshing, setRefreshing] = React.useState(false);
+
+  const { execute, isLoading, orders = [] } = useGetOrders('completed');
+
+  React.useEffect(() => {
+    execute();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
-    setTimeout(() => {
-      setRefreshing(false);
-    }, 5000);
+    execute().finally(() => setRefreshing(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <SafeAreaView className="flex-1 bg-white">
-      <EmptyCart headline="We are waiting for your first order" />
-
-      {/* {dummyOrder ? (
+      {orders.length > 0 ? (
         <ScrollView
           className="mt-5 px-2"
           showsVerticalScrollIndicator={false}
           refreshControl={
             <RefreshControl
-              refreshing={refreshing}
+              refreshing={refreshing || isLoading}
               onRefresh={onRefresh}
               tintColor={colors['white-color']}
             />
@@ -43,22 +43,22 @@ export function CompletedOrders() {
         >
           <View className="min-h-[2]">
             <FlashList
-              data={completedOrders}
+              data={orders}
               renderItem={({ index, item }) => (
                 <OrderItem
                   key={index}
                   order={item}
                   ctaLabel="View Timeline"
-                  handlePress={() => {}}
+                  handlePress={() => navigate('Completed-Order-Details', { orderId: item.id })}
                 />
               )}
-              estimatedItemSize={100}
+              estimatedItemSize={20}
             />
           </View>
         </ScrollView>
       ) : (
         <EmptyCart headline="We are waiting for your first order" />
-      )} */}
+      )}
     </SafeAreaView>
   );
 }
