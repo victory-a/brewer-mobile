@@ -1,11 +1,11 @@
 import { ICartProduct, ICartState, ICartSum } from 'src/model/order.model';
-import { storeData } from 'src/utils/storage';
+import { storeJSONData, getData, getJSONData, storeData } from 'src/utils/storage';
 
 export const initialState = {
-  deliveryPrice: 0,
   computedProductsTotal: 0,
   computedGrandTotal: 0,
-  products: []
+  deliveryPrice: getData('DELIVERY') ?? 0,
+  products: getJSONData('CART_PRODUCTS') ?? []
 };
 
 export const actions = {
@@ -19,10 +19,6 @@ export const actions = {
 } as const;
 
 type IAction =
-  | {
-      type: 'INITIALIZE';
-      payload: { products: ICartProduct[] };
-    }
   | { type: 'SET_DELIVERY_PRICE'; payload: { amount: number } }
   | {
       type: 'INCREASE_QUANTITY' | 'DECREASE_QUANTITY' | 'REMOVE_ITEM';
@@ -34,14 +30,9 @@ type IAction =
     }
   | { type: 'CLEAR_CART' };
 
-// interface IPersistCart {
-//   products: ICartProduct[];
-//   deliveryPrice: number;
-// }
-
 function computeSum(state: ICartState): ICartSum {
-  storeData('CART_PRODUCTS', state.products);
-  storeData('DELIVERY', state.deliveryPrice);
+  storeJSONData('CART_PRODUCTS', state.products);
+  storeData('DELIVERY', state.deliveryPrice.toString());
 
   return {
     deliveryPrice: 0,
@@ -53,10 +44,6 @@ function computeSum(state: ICartState): ICartSum {
 export function CartReducer(state: ICartState, action: IAction) {
   const { products, ...rest } = state;
   switch (action.type) {
-    case actions.INITIALIZE: {
-      return { ...action.payload, ...computeSum(state) };
-    }
-
     case actions.ADD_ITEM: {
       const updatedCartProducts = [...state.products];
       updatedCartProducts.push(action.payload.product);
