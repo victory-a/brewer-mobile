@@ -47,7 +47,7 @@ const AppNavigator = () => {
             headerShown: true,
             headerBackVisible: true,
             headerTintColor: colors.secondary,
-            headerTitle: 'Cart'
+            headerTitle: 'Cart Details'
           }}
         />
         <Stack.Screen name="Order-Completed" component={OrderCompleted} />
