@@ -10,8 +10,8 @@ export function getOrder(id: number) {
   return client.get(`/order/${id}`);
 }
 
-export function createOrder() {
-  return client.post('/order');
+export function createOrder(payload: any) {
+  return client.post('/order/create', payload);
 }
 
 export function updateOrder(id: number) {

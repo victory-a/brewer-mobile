@@ -1,6 +1,6 @@
 import { Alert } from 'react-native';
 
-import { getOrder, getOrders } from '../requests/order.requests';
+import { createOrder, getOrder, getOrders } from '../requests/order.requests';
 
 import useAsync from 'src/hooks/useAsync';
 import { IOrderList, ISingleOrder } from 'src/model/order.model';
@@ -39,4 +39,22 @@ export function useGetAnOrder() {
   );
 
   return { execute, isLoading, order: value as ISingleOrder };
+}
+
+export function useCreateOrder() {
+  const { navigate } = useAppNavigation();
+
+  const { execute, isLoading } = useAsync(async (payload) => {
+    createOrder(payload)
+      .then((res) => {
+        navigate('Home');
+        Alert.alert('Order Created SuccessFully 🥳🥳');
+      })
+      .catch((err) => Alert.alert('Error', err.message));
+  });
+
+  return {
+    execute,
+    isLoading
+  };
 }

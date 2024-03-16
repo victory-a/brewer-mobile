@@ -2,13 +2,22 @@ import React from 'react';
 import { View, SafeAreaView, ScrollView } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/native';
 
-import { ContainerView, SoftButton, Text, CartItem, SolidButton, Divider } from 'src/components';
+import {
+  ContainerView,
+  SoftButton,
+  Text,
+  CartItem,
+  SolidButton,
+  Divider,
+  TextButton
+} from 'src/components';
 import { AppNavigatorParams } from 'src/model/navigation.model';
 import { formatCurrency } from 'src/utils/amount';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { useGetAnOrder } from 'src/lib/hooks/order.hooks';
 import { FlashList } from '@shopify/flash-list';
 import { useCart } from 'src/context/CartContext';
+import { OrderDetailItem } from 'src/components/OrderDetailItem';
 
 const documentIcon = require('../../assets/icon/document.png');
 const editIcon = require('../../assets/icon/edit.png');
@@ -24,7 +33,7 @@ export function OrderDetails() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params?.orderId]);
 
-  const { execute, isLoading } = useGetAnOrder();
+  const { execute, isLoading, order } = useGetAnOrder();
 
   React.useEffect(() => {
     if (params?.orderId) {
@@ -57,8 +66,8 @@ export function OrderDetails() {
 
           <View className="mb-72 min-h-[2] ">
             <FlashList
-              data={state.products}
-              renderItem={({ index, item }) => <CartItem key={index} index={index} {...item} />}
+              data={order?.products}
+              renderItem={({ index, item }) => <OrderDetailItem key={index} product={item} />}
               estimatedItemSize={20}
             />
           </View>
@@ -90,7 +99,7 @@ export function OrderDetails() {
             <Text>{formatCurrency(5.53)}</Text>
           </View>
 
-          <SolidButton onPress={handlePayment}>Make Payment 💸</SolidButton>
+          <SolidButton onPress={handlePayment}> Mark As Completed</SolidButton>
         </ContainerView>
       </View>
     </SafeAreaView>

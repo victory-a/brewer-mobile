@@ -9,16 +9,18 @@ import { ICartProduct } from 'src/model/order.model';
 
 const coffeebg1 = require('../../assets/images/coffee-1.png');
 
-export function CartItem(props: ICartProduct & { index: number }) {
+export function CartItem(props: ICartProduct & { index: number; orderCreated: boolean }) {
   const { increase, decrease, remove } = useCart();
 
   return (
     <View className="mb-4 w-full">
       <View className="mb-1 flex-row justify-between">
         <Text className="text-base font-semibold">Pack {props.index + 1}</Text>
-        <TextButton labelClassName="text-red-300" onPress={() => remove({ id: props.id })}>
-          Remove
-        </TextButton>
+        {!props.orderCreated ? (
+          <TextButton labelClassName="text-red-300" onPress={() => remove({ id: props.id })}>
+            Remove
+          </TextButton>
+        ) : null}
       </View>
 
       <View className=" flex-row items-center justify-between">
@@ -38,24 +40,26 @@ export function CartItem(props: ICartProduct & { index: number }) {
           </View>
         </View>
 
-        <View className="flex-row items-center justify-between space-x-4">
-          <TextButton
-            className="h-[33] w-[33] items-center justify-center rounded-full border border-whisper bg-white align-middle"
-            labelClassName="text-primary font-semibold text-lg"
-            onPress={() => decrease({ id: props.id })}
-            disabled={props.quantity === 1}
-          >
-            -
-          </TextButton>
-          <Text>{props.quantity}</Text>
-          <TextButton
-            className="h-[33] w-[33] flex-row items-center justify-center rounded-full border border-whisper bg-white align-middle"
-            labelClassName="text-primary font-semibold text-xl"
-            onPress={() => increase({ id: props.id })}
-          >
-            +
-          </TextButton>
-        </View>
+        {!props.orderCreated ? (
+          <View className="flex-row items-center justify-between space-x-4">
+            <TextButton
+              className="h-[33] w-[33] items-center justify-center rounded-full border border-whisper bg-white align-middle"
+              labelClassName="text-primary font-semibold text-lg"
+              onPress={() => decrease({ id: props.id })}
+              disabled={props.quantity === 1}
+            >
+              -
+            </TextButton>
+            <Text>{props.quantity}</Text>
+            <TextButton
+              className="h-[33] w-[33] flex-row items-center justify-center rounded-full border border-whisper bg-white align-middle"
+              labelClassName="text-primary font-semibold text-xl"
+              onPress={() => increase({ id: props.id })}
+            >
+              +
+            </TextButton>
+          </View>
+        ) : null}
       </View>
     </View>
   );

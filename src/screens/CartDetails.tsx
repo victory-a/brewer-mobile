@@ -7,15 +7,25 @@ import { formatCurrency } from 'src/utils/amount';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { FlashList } from '@shopify/flash-list';
 import { useCart } from 'src/context/CartContext';
+import { useCreateOrder } from 'src/lib/hooks/order.hooks';
 
 const documentIcon = require('../../assets/icon/document.png');
 const editIcon = require('../../assets/icon/edit.png');
 
 export function CartDetails() {
-  const { navigate } = useAppNavigation();
+  const { execute, isLoading } = useCreateOrder();
 
   function handlePayment() {
-    navigate('Order-Completed');
+    const payload = {
+      address: '123 Main St, City, Country',
+      products: state.products.map((product) => ({
+        productId: product.id,
+        quantity: product.quantity,
+        size: product.selectedSize
+      }))
+    };
+
+    execute(payload);
   }
 
   const { state } = useCart();
@@ -71,7 +81,9 @@ export function CartDetails() {
             <Text>{formatCurrency(5.53)}</Text>
           </View>
 
-          <SolidButton onPress={handlePayment}>Make Payment 💸</SolidButton>
+          <SolidButton onPress={handlePayment} loading={isLoading}>
+            {isLoading ? 'Processing...' : 'Make Payment 💸'}
+          </SolidButton>
         </ContainerView>
       </View>
     </SafeAreaView>
