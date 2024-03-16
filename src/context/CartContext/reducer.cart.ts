@@ -1,10 +1,19 @@
 import { ICartProduct, ICartState, ICartSum } from 'src/model/order.model';
+import { storeJSONData, getData, getJSONData, storeData, clearAll } from 'src/utils/storage';
+
+function getPersistedProducts() {
+  const products = getJSONData('CART_PRODUCTS').then((val) => val);
+  if (Array.isArray(products)) {
+    return products as ICartProduct[];
+  }
+  return [];
+}
 
 export const initialState = {
-  deliveryPrice: 0,
   computedProductsTotal: 0,
   computedGrandTotal: 0,
-  products: []
+  deliveryPrice: 0.5,
+  products: getPersistedProducts()
 };
 
 export const actions = {
@@ -13,16 +22,16 @@ export const actions = {
   DECREASE_QUANTITY: 'DECREASE_QUANTITY',
   CLEAR_CART: 'CLEAR_CART',
   ADD_ITEM: 'ADD_ITEM',
-  SET_DELIVERY_PRICE: 'SET_DELIVERY_PRICE'
+  SET_DELIVERY_PRICE: 'SET_DELIVERY_PRICE',
+  REMOVE_ITEM: 'REMOVE_ITEM'
 } as const;
 
 type IAction =
-  | {
-      type: 'INITIALIZE';
-      payload: { products: ICartProduct[] };
-    }
   | { type: 'SET_DELIVERY_PRICE'; payload: { amount: number } }
-  | { type: 'INCREASE_QUANTITY' | 'DECREASE_QUANTITY'; payload: { id: number } }
+  | {
+      type: 'INCREASE_QUANTITY' | 'DECREASE_QUANTITY' | 'REMOVE_ITEM';
+      payload: { id: number };
+    }
   | {
       type: 'ADD_ITEM';
       payload: { product: ICartProduct };
@@ -30,8 +39,10 @@ type IAction =
   | { type: 'CLEAR_CART' };
 
 function computeSum(state: ICartState): ICartSum {
+  storeJSONData('CART_PRODUCTS', state.products);
+
   return {
-    deliveryPrice: 0,
+    deliveryPrice: state.deliveryPrice,
     computedProductsTotal: 0,
     computedGrandTotal: 0
   };
@@ -40,16 +51,13 @@ function computeSum(state: ICartState): ICartSum {
 export function CartReducer(state: ICartState, action: IAction) {
   const { products, ...rest } = state;
   switch (action.type) {
-    case actions.INITIALIZE:
-      return { ...action.payload, ...computeSum(state) };
-
     case actions.ADD_ITEM: {
       const updatedCartProducts = [...state.products];
       updatedCartProducts.push(action.payload.product);
 
       return {
         ...state,
-        ...computeSum({ products: updatedCartProducts, ...rest }),
+        ...computeSum({ ...rest, products: updatedCartProducts }),
         products: updatedCartProducts
       };
     }
@@ -65,7 +73,7 @@ export function CartReducer(state: ICartState, action: IAction) {
 
       return {
         ...state,
-        ...computeSum({ products: updatedCartProducts, ...rest }),
+        ...computeSum({ ...rest, products: updatedCartProducts }),
         products: updatedCartProducts
       };
     }
@@ -82,8 +90,18 @@ export function CartReducer(state: ICartState, action: IAction) {
 
       return {
         ...state,
-        ...computeSum({ products: productsClone, ...rest }),
+        ...computeSum({ ...rest, products: productsClone }),
         products: productsClone
+      };
+    }
+
+    case actions.REMOVE_ITEM: {
+      const updatedProducts = state.products.filter((product) => product.id !== action.payload.id);
+
+      return {
+        ...state,
+        ...computeSum({ ...rest, products: updatedProducts }),
+        products: updatedProducts
       };
     }
 
@@ -97,7 +115,7 @@ export function CartReducer(state: ICartState, action: IAction) {
     case actions.CLEAR_CART: {
       return {
         ...state,
-        ...computeSum({ products: [], ...rest })
+        ...computeSum({ ...rest, products: [] })
       };
     }
 

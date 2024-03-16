@@ -8,9 +8,9 @@ import { Text, ContainerView, Divider, Image } from 'src/components';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { AppNavigatorParams } from 'src/model/navigation.model';
 import { useGetAProduct } from 'src/lib/hooks/product.hooks';
-import { ISizes } from 'src/model/product.model';
 import { SelectSize } from 'src/components/SelectSize';
 import { TotalDisplay } from 'src/components/TotalDisplay';
+import { ISizes } from 'src/model/order.model';
 
 const coffeebg1 = require('../../assets/images/coffee-1.png');
 
@@ -77,15 +77,7 @@ export const ProductDetailScreen = () => {
         </ContainerView>
       </ScrollView>
 
-      <TotalDisplay
-        {...{
-          selectedSize,
-          basePrice: product?.basePrice,
-          small: product?.small,
-          medium: product?.medium,
-          large: product?.large
-        }}
-      />
+      {product ? <TotalDisplay product={product} selectedSize={selectedSize} /> : null}
     </SafeAreaView>
   );
 };

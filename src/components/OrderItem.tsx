@@ -5,10 +5,10 @@ import { Text } from './shared/Text';
 import { formatDatetime } from 'src/utils/time';
 import { TextButton } from './formElements/Button';
 import { Divider } from './shared/Divider';
-import { IOrder } from 'src/model/order.model';
+import { IOrderList, ISingleOrder } from 'src/model/order.model';
 
 interface IOrderItem {
-  order: IOrder;
+  order: IOrderList;
   handlePress: () => void;
   ctaLabel: string;
   containerClass?: string;

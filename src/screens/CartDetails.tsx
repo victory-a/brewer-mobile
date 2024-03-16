@@ -2,40 +2,32 @@ import React from 'react';
 import { View, SafeAreaView, ScrollView } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/native';
 
-import { ContainerView, SoftButton, Text, SolidButton, Divider } from 'src/components';
-import { AppNavigatorParams } from 'src/model/navigation.model';
+import { ContainerView, SoftButton, Text, CartItem, SolidButton, Divider } from 'src/components';
 import { formatCurrency } from 'src/utils/amount';
-import { useAppNavigation } from 'src/hooks/useTypedNavigation';
-import { useGetAnOrder } from 'src/lib/hooks/order.hooks';
 import { FlashList } from '@shopify/flash-list';
-import { OrderDetailItem } from 'src/components/OrderDetailItem';
+import { useCart } from 'src/context/CartContext';
+import { useCreateOrder } from 'src/lib/hooks/order.hooks';
 
 const documentIcon = require('../../assets/icon/document.png');
 const editIcon = require('../../assets/icon/edit.png');
 
-export function OrderDetails() {
-  const { navigate } = useAppNavigation();
-  const { params } = useRoute<RouteProp<AppNavigatorParams, 'Ongoing-Order-Details'>>();
-
-  React.useLayoutEffect(() => {
-    if (!params?.orderId) {
-      navigate('Orders');
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params?.orderId]);
-
-  const { execute, order } = useGetAnOrder();
-
-  React.useEffect(() => {
-    if (params?.orderId) {
-      execute(params?.orderId);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params?.orderId]);
+export function CartDetails() {
+  const { execute, isLoading } = useCreateOrder();
 
   function handlePayment() {
-    navigate('Order-Completed');
+    const payload = {
+      address: '123 Main St, City, Country',
+      products: state.products.map((product) => ({
+        productId: product.id,
+        quantity: product.quantity,
+        size: product.selectedSize
+      }))
+    };
+
+    execute(payload);
   }
+
+  const { state } = useCart();
 
   return (
     <SafeAreaView className="relative flex-1 bg-[#FDFDFD]">
@@ -55,8 +47,10 @@ export function OrderDetails() {
 
           <View className="mb-72 min-h-[2] ">
             <FlashList
-              data={order?.products}
-              renderItem={({ index, item }) => <OrderDetailItem key={index} product={item} />}
+              data={state.products}
+              renderItem={({ index, item }) => (
+                <CartItem key={index} index={index} product={item} />
+              )}
               estimatedItemSize={20}
             />
           </View>
@@ -88,11 +82,13 @@ export function OrderDetails() {
             <Text>{formatCurrency(5.53)}</Text>
           </View>
 
-          <SolidButton onPress={handlePayment}> Mark As Completed</SolidButton>
+          <SolidButton onPress={handlePayment} loading={isLoading}>
+            {isLoading ? 'Processing...' : 'Make Payment 💸'}
+          </SolidButton>
         </ContainerView>
       </View>
     </SafeAreaView>
   );
 }
 
-export default OrderDetails;
+export default CartDetails;

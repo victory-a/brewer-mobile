@@ -1,4 +1,4 @@
-import { ISizes } from './product.model';
+export type ISizes = 'small' | 'medium' | 'large';
 
 export type OrderStatus = 'pending' | 'completed' | 'cancelled';
 
@@ -12,11 +12,14 @@ export interface IOrderList {
 export interface IProduct {
   id: number;
   name: string;
-  size: ISizes;
-  quantity: number;
-  image: string;
-  basePrice: number;
   variant: string;
+  basePrice: number;
+  image: HTMLImageElement;
+  createdAt: Date;
+  updatedAt: Date;
+  description: string;
+  sizes: ISizes[];
+  rating: number;
   small: number;
   medium: number;
   large: number;
@@ -27,6 +30,16 @@ export interface ICartProduct extends IProduct {
   selectedSize: ISizes;
 }
 
+export interface ISingleOrderProduct {
+  name: string;
+  productId: number;
+  size: ISizes;
+  quantity: number;
+  image: string;
+  basePrice: number;
+  unitPrice: number;
+  variant: string;
+}
 export interface ISingleOrder {
   id: number;
   createdAt: Date;
@@ -34,7 +47,7 @@ export interface ISingleOrder {
   address: string;
   totalPrice: number;
   status: OrderStatus;
-  products: IProduct[];
+  products: ISingleOrderProduct[];
 }
 
 export interface ICartState extends ICartSum {

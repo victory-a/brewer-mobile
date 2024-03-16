@@ -8,7 +8,7 @@ import { Image } from './shared/Image';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 
 import { formatCurrency } from 'src/utils/amount';
-import { IProduct } from 'src/model/product.model';
+import { IProduct } from 'src/model/order.model';
 
 type PartialProductDetails = Pick<IProduct, 'id' | 'image' | 'name' | 'basePrice' | 'variant'>;
 

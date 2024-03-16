@@ -12,6 +12,7 @@ export type AppNavigatorParams = {
   'Ongoing-Order-Details': { orderId: number };
   'Completed-Order-Details': { orderId: number };
   'Order-Completed': undefined;
+  'Cart-Details': undefined;
   Home: undefined;
   Search: undefined;
   Orders: undefined;

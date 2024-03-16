@@ -7,7 +7,7 @@ interface ContextProps {
   addItem: (payload: { product: ICartProduct }) => void;
   increase: (payload: { id: number }) => void;
   decrease: (payload: { id: number }) => void;
-  initializeCart: (payload: { products: ICartProduct[] }) => void;
+  remove: (payload: { id: number }) => void;
   clearCart: () => void;
   setDeliveryAmount: (payload: { amount: number }) => void;
 }
@@ -29,8 +29,8 @@ export function CartProvider(props: PropsWithChildren) {
     dispatch({ type: actions.DECREASE_QUANTITY, payload });
   }
 
-  function initializeCart(payload: { products: ICartProduct[] }) {
-    dispatch({ type: actions.INITIALIZE, payload });
+  function remove(payload: { id: number }) {
+    dispatch({ type: actions.REMOVE_ITEM, payload });
   }
 
   function clearCart() {
@@ -43,7 +43,7 @@ export function CartProvider(props: PropsWithChildren) {
 
   return (
     <Context.Provider
-      value={{ state, addItem, increase, decrease, initializeCart, clearCart, setDeliveryAmount }}
+      value={{ state, addItem, increase, decrease, clearCart, setDeliveryAmount, remove }}
       {...props}
     />
   );

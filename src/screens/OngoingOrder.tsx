@@ -48,7 +48,7 @@ const OngoingOrder = () => {
                 <OrderItem
                   key={index}
                   order={item}
-                  ctaLabel="Proceed to checkout"
+                  ctaLabel="View Order"
                   handlePress={() => navigate('Ongoing-Order-Details', { orderId: item.id })}
                 />
               )}
