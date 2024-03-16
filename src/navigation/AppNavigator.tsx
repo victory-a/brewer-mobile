@@ -8,6 +8,7 @@ import { ProductDetailScreen } from 'src/screens/ProductDetailScreen';
 import { OrderCompleted, OrderDetails } from 'src/screens';
 
 import { colors } from 'src/styles/theme';
+import CartDetails from 'src/screens/CartDetails';
 
 const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
@@ -37,6 +38,16 @@ const AppNavigator = () => {
             headerBackVisible: true,
             headerTintColor: colors.secondary,
             headerTitle: 'Order Details'
+          }}
+        />
+        <Stack.Screen
+          name="Cart-Details"
+          component={CartDetails}
+          options={{
+            headerShown: true,
+            headerBackVisible: true,
+            headerTintColor: colors.secondary,
+            headerTitle: 'Cart'
           }}
         />
         <Stack.Screen name="Order-Completed" component={OrderCompleted} />

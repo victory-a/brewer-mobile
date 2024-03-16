@@ -2,22 +2,28 @@ import React from 'react';
 import { View } from 'react-native';
 
 import { SolidButton, TextButton, Text, ContainerView } from 'src/components';
+import { useCart } from 'src/context/CartContext';
 
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
+import { IProduct, ISizes } from 'src/model/order.model';
 import { formatCurrency } from 'src/utils/amount';
 
-export function TotalDisplay(props: any) {
+interface ITotalDisplay {
+  product: IProduct;
+  selectedSize: ISizes;
+}
+
+export function TotalDisplay({ product, selectedSize }: ITotalDisplay) {
   const { navigate } = useAppNavigation();
 
-  const { selectedSize } = props;
   const [quantity, setQuantity] = React.useState(1);
 
   function handleRemove() {
     if (quantity === 1) {
       navigate('AppBottomTabs');
-      return;
+    } else {
+      setQuantity((curr) => (curr > 0 ? curr - 1 : curr));
     }
-    setQuantity((curr) => (curr > 0 ? curr - 1 : curr));
   }
 
   function handleAdd() {
@@ -26,16 +32,23 @@ export function TotalDisplay(props: any) {
 
   function computeUnitPrice() {
     let total = 0;
-    const addition = props[selectedSize];
+    const addition = product[selectedSize];
     if (addition) {
-      total = (Number(props.basePrice) + Number(addition)) * quantity;
+      total = (Number(product.basePrice) + Number(addition)) * quantity;
     } else {
-      total = Number(props.basePrice) * quantity;
+      total = Number(product.basePrice) * quantity;
     }
     return total;
   }
 
   const total = computeUnitPrice();
+
+  const { addItem } = useCart();
+
+  function handleAddToCart() {
+    addItem({ product: { ...product, quantity, selectedSize } });
+    navigate('AppBottomTabs');
+  }
 
   return (
     <View className="absolute bottom-3 w-full border-t-[0.3px] border-lighter-gray bg-white py-6">
@@ -59,7 +72,7 @@ export function TotalDisplay(props: any) {
             </TextButton>
           </View>
           <View className="flex-[50%]">
-            <SolidButton onPress={() => navigate('AppBottomTabs')}>
+            <SolidButton onPress={handleAddToCart}>
               Add {quantity > 0 ? formatCurrency(total) : 'to Cart '}
             </SolidButton>
           </View>

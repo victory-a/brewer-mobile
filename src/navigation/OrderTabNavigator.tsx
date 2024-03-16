@@ -6,6 +6,7 @@ import { CompletedOrders } from '../screens/CompletedOrders';
 import { OngoingOrder } from '../screens/OngoingOrder';
 import { ContainerView, Text } from 'src/components';
 import { colors } from 'src/styles/theme';
+import { ViewCart } from 'src/screens/ViewCart';
 
 const Tabs = createMaterialTopTabNavigator();
 const OrderTabNavigator = () => {
@@ -22,7 +23,7 @@ const OrderTabNavigator = () => {
             tabBarLabel: ({ focused }) => <Label name={route.name} focused={focused} />
           })}
         >
-          <Tabs.Screen name="Cart" component={OngoingOrder} />
+          <Tabs.Screen name="Cart" component={ViewCart} />
           <Tabs.Screen name="Ongoing" component={OngoingOrder} />
           <Tabs.Screen name="Completed" component={CompletedOrders} />
         </Tabs.Navigator>

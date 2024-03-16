@@ -100,7 +100,8 @@ export function CartReducer(state: ICartState, action: IAction) {
 
       return {
         ...state,
-        ...computeSum({ ...rest, products: updatedProducts })
+        ...computeSum({ ...rest, products: updatedProducts }),
+        products: updatedProducts
       };
     }
 

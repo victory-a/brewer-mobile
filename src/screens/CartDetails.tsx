@@ -3,35 +3,16 @@ import { View, SafeAreaView, ScrollView } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/native';
 
 import { ContainerView, SoftButton, Text, CartItem, SolidButton, Divider } from 'src/components';
-import { AppNavigatorParams } from 'src/model/navigation.model';
 import { formatCurrency } from 'src/utils/amount';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
-import { useGetAnOrder } from 'src/lib/hooks/order.hooks';
 import { FlashList } from '@shopify/flash-list';
 import { useCart } from 'src/context/CartContext';
 
 const documentIcon = require('../../assets/icon/document.png');
 const editIcon = require('../../assets/icon/edit.png');
 
-export function OrderDetails() {
+export function CartDetails() {
   const { navigate } = useAppNavigation();
-  const { params } = useRoute<RouteProp<AppNavigatorParams, 'Ongoing-Order-Details'>>();
-
-  React.useLayoutEffect(() => {
-    if (!params?.orderId) {
-      navigate('Orders');
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params?.orderId]);
-
-  const { execute, isLoading } = useGetAnOrder();
-
-  React.useEffect(() => {
-    if (params?.orderId) {
-      execute(params?.orderId);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params?.orderId]);
 
   function handlePayment() {
     navigate('Order-Completed');
@@ -97,4 +78,4 @@ export function OrderDetails() {
   );
 }
 
-export default OrderDetails;
+export default CartDetails;
