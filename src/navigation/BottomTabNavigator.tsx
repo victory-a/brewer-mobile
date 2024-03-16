@@ -10,10 +10,14 @@ import { HomeIcon, IconProps, OrdersIcon, ProfileIcon, SearchIcon } from 'src/co
 import { Text } from 'src/components';
 
 import { colors } from 'src/styles/theme';
+import { useCart } from 'src/context/CartContext';
 
 const BottomTabs = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
+  const { state } = useCart();
+  const productsCount = state.products.length;
+
   return (
     <BottomTabs.Navigator
       initialRouteName="Home"
@@ -49,7 +53,7 @@ export default function BottomTabNavigator() {
         options={{
           ...renderIcon(OrdersIcon, {}),
           tabBarLabel: (props) => renderLabel({ ...props, label: 'Orders' }),
-          tabBarBadge: 3,
+          tabBarBadge: productsCount || undefined,
           headerStyle: { backgroundColor: colors.white },
           tabBarBadgeStyle: styles.tabBarBadgeStyle,
           headerShown: true,

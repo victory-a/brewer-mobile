@@ -1,11 +1,19 @@
 import { ICartProduct, ICartState, ICartSum } from 'src/model/order.model';
-import { storeJSONData, getData, getJSONData, storeData } from 'src/utils/storage';
+import { storeJSONData, getData, getJSONData, storeData, clearAll } from 'src/utils/storage';
+
+function getPersistedProducts() {
+  const products = getJSONData('CART_PRODUCTS').then((val) => val);
+  if (Array.isArray(products)) {
+    return products as ICartProduct[];
+  }
+  return [];
+}
 
 export const initialState = {
   computedProductsTotal: 0,
   computedGrandTotal: 0,
-  deliveryPrice: getData('DELIVERY') ?? 0,
-  products: getJSONData('CART_PRODUCTS') ?? []
+  deliveryPrice: 0.5,
+  products: getPersistedProducts()
 };
 
 export const actions = {
@@ -32,10 +40,9 @@ type IAction =
 
 function computeSum(state: ICartState): ICartSum {
   storeJSONData('CART_PRODUCTS', state.products);
-  storeData('DELIVERY', state.deliveryPrice.toString());
 
   return {
-    deliveryPrice: 0,
+    deliveryPrice: state.deliveryPrice,
     computedProductsTotal: 0,
     computedGrandTotal: 0
   };
