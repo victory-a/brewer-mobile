@@ -4,7 +4,6 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 
 import { ContainerView, SoftButton, Text, CartItem, SolidButton, Divider } from 'src/components';
 import { formatCurrency } from 'src/utils/amount';
-import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { FlashList } from '@shopify/flash-list';
 import { useCart } from 'src/context/CartContext';
 import { useCreateOrder } from 'src/lib/hooks/order.hooks';
@@ -49,7 +48,9 @@ export function CartDetails() {
           <View className="mb-72 min-h-[2] ">
             <FlashList
               data={state.products}
-              renderItem={({ index, item }) => <CartItem key={index} index={index} {...item} />}
+              renderItem={({ index, item }) => (
+                <CartItem key={index} index={index} product={item} />
+              )}
               estimatedItemSize={20}
             />
           </View>

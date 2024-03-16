@@ -2,21 +2,12 @@ import React from 'react';
 import { View, SafeAreaView, ScrollView } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/native';
 
-import {
-  ContainerView,
-  SoftButton,
-  Text,
-  CartItem,
-  SolidButton,
-  Divider,
-  TextButton
-} from 'src/components';
+import { ContainerView, SoftButton, Text, SolidButton, Divider } from 'src/components';
 import { AppNavigatorParams } from 'src/model/navigation.model';
 import { formatCurrency } from 'src/utils/amount';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { useGetAnOrder } from 'src/lib/hooks/order.hooks';
 import { FlashList } from '@shopify/flash-list';
-import { useCart } from 'src/context/CartContext';
 import { OrderDetailItem } from 'src/components/OrderDetailItem';
 
 const documentIcon = require('../../assets/icon/document.png');
@@ -33,7 +24,7 @@ export function OrderDetails() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params?.orderId]);
 
-  const { execute, isLoading, order } = useGetAnOrder();
+  const { execute, order } = useGetAnOrder();
 
   React.useEffect(() => {
     if (params?.orderId) {
@@ -45,8 +36,6 @@ export function OrderDetails() {
   function handlePayment() {
     navigate('Order-Completed');
   }
-
-  const { state } = useCart();
 
   return (
     <SafeAreaView className="relative flex-1 bg-[#FDFDFD]">
