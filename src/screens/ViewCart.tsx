@@ -1,7 +1,7 @@
 import { SafeAreaView, ScrollView, View } from 'react-native';
 import React from 'react';
 
-import { Divider, EmptyCart, Pressable, Text } from 'src/components';
+import { Divider, EmptyCart, Pressable, Text, TextButton } from 'src/components';
 
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 
@@ -10,7 +10,7 @@ import { useCart } from 'src/context/CartContext';
 const ViewCart = () => {
   const { navigate } = useAppNavigation();
 
-  const { state } = useCart();
+  const { state, clearCart } = useCart();
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -37,6 +37,13 @@ const ViewCart = () => {
                 </Text>
               </Pressable>
               <Divider additionalClassName="my-2" />
+              <TextButton
+                className="mt-4"
+                labelClassName=" text-center text-xs text-red-ish"
+                onPress={clearCart}
+              >
+                Clear cart
+              </TextButton>
             </View>
           </View>
         </ScrollView>

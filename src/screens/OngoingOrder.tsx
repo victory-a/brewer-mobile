@@ -57,7 +57,7 @@ const OngoingOrder = () => {
           </View>
         </ScrollView>
       ) : (
-        <EmptyCart headline="Your cart is empty" />
+        <EmptyCart headline="Waiting on your order" />
       )}
     </SafeAreaView>
   );

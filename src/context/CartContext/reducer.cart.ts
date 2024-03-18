@@ -115,7 +115,8 @@ export function CartReducer(state: ICartState, action: IAction) {
     case actions.CLEAR_CART: {
       return {
         ...state,
-        ...computeSum({ ...rest, products: [] })
+        ...computeSum({ ...rest, products: [] }),
+        products: []
       };
     }
 
