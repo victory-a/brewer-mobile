@@ -1,19 +1,11 @@
 import { ICartProduct, ICartState, ICartSum } from 'src/model/order.model';
-import { storeJSONData, getData, getJSONData, storeData, clearAll } from 'src/utils/storage';
-
-function getPersistedProducts() {
-  const products = getJSONData('CART_PRODUCTS').then((val) => val);
-  if (Array.isArray(products)) {
-    return products as ICartProduct[];
-  }
-  return [];
-}
+import { storeJSONData } from 'src/utils/storage';
 
 export const initialState = {
   computedProductsTotal: 0,
   computedGrandTotal: 0,
-  deliveryPrice: 0.5,
-  products: getPersistedProducts()
+  deliveryPrice: 0,
+  products: []
 };
 
 export const actions = {
@@ -27,6 +19,7 @@ export const actions = {
 } as const;
 
 type IAction =
+  | { type: 'INITIALIZE'; payload: { products: ICartProduct[] } }
   | { type: 'SET_DELIVERY_PRICE'; payload: { amount: number } }
   | {
       type: 'INCREASE_QUANTITY' | 'DECREASE_QUANTITY' | 'REMOVE_ITEM';
@@ -38,7 +31,7 @@ type IAction =
     }
   | { type: 'CLEAR_CART' };
 
-function computeSum(state: ICartState): ICartSum {
+function computeSumAndPersist(state: ICartState): ICartSum {
   storeJSONData('CART_PRODUCTS', state.products);
 
   return {
@@ -51,13 +44,21 @@ function computeSum(state: ICartState): ICartSum {
 export function CartReducer(state: ICartState, action: IAction) {
   const { products, ...rest } = state;
   switch (action.type) {
+    case actions.INITIALIZE: {
+      return {
+        ...state,
+        ...computeSumAndPersist({ ...state, products: action.payload.products }),
+        products: action.payload.products
+      };
+    }
+
     case actions.ADD_ITEM: {
       const updatedCartProducts = [...state.products];
       updatedCartProducts.push(action.payload.product);
 
       return {
         ...state,
-        ...computeSum({ ...rest, products: updatedCartProducts }),
+        ...computeSumAndPersist({ ...rest, products: updatedCartProducts }),
         products: updatedCartProducts
       };
     }
@@ -73,7 +74,7 @@ export function CartReducer(state: ICartState, action: IAction) {
 
       return {
         ...state,
-        ...computeSum({ ...rest, products: updatedCartProducts }),
+        ...computeSumAndPersist({ ...rest, products: updatedCartProducts }),
         products: updatedCartProducts
       };
     }
@@ -90,7 +91,7 @@ export function CartReducer(state: ICartState, action: IAction) {
 
       return {
         ...state,
-        ...computeSum({ ...rest, products: productsClone }),
+        ...computeSumAndPersist({ ...rest, products: productsClone }),
         products: productsClone
       };
     }
@@ -100,7 +101,7 @@ export function CartReducer(state: ICartState, action: IAction) {
 
       return {
         ...state,
-        ...computeSum({ ...rest, products: updatedProducts }),
+        ...computeSumAndPersist({ ...rest, products: updatedProducts }),
         products: updatedProducts
       };
     }
@@ -108,14 +109,14 @@ export function CartReducer(state: ICartState, action: IAction) {
     case actions.SET_DELIVERY_PRICE: {
       return {
         ...state,
-        ...computeSum({ ...state, deliveryPrice: action.payload.amount })
+        ...computeSumAndPersist({ ...state, deliveryPrice: action.payload.amount })
       };
     }
 
     case actions.CLEAR_CART: {
       return {
         ...state,
-        ...computeSum({ ...rest, products: [] }),
+        ...computeSumAndPersist({ ...rest, products: [] }),
         products: []
       };
     }

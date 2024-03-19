@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import { CartReducer, actions, initialState } from './reducer.cart';
 import { ICartProduct, ICartState } from 'src/model/order.model';
+import { getJSONData } from 'src/utils/storage';
 
 interface ContextProps {
   state: ICartState;
@@ -16,6 +17,17 @@ const Context = React.createContext<ContextProps | undefined>(undefined);
 
 export function CartProvider(props: PropsWithChildren) {
   const [state, dispatch] = React.useReducer(CartReducer, initialState);
+
+  React.useEffect(() => {
+    async function fetchPersistedProducts() {
+      const products: ICartProduct[] = await getJSONData('CART_PRODUCTS');
+      if (products !== null) {
+        dispatch({ type: 'INITIALIZE', payload: { products } });
+      }
+    }
+
+    fetchPersistedProducts();
+  }, []);
 
   function addItem(payload: { product: ICartProduct }) {
     dispatch({ type: actions.ADD_ITEM, payload });
