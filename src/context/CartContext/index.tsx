@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import { CartReducer, actions, initialState } from './reducer.cart';
 import { ICartProduct, ICartState } from 'src/model/order.model';
-import { getJSONData } from 'src/utils/storage';
+import { getJSONData } from 'src/utils';
 
 interface ContextProps {
   state: ICartState;

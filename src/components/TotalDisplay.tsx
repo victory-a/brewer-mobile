@@ -6,8 +6,7 @@ import { useCart } from 'src/context/CartContext';
 
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { IProduct, ISizes } from 'src/model/order.model';
-import { formatCurrency } from 'src/utils/amount';
-import { generateUUID } from 'src/utils/string';
+import { generateUUID, formatCurrency } from 'src/utils';
 
 interface ITotalDisplay {
   product: IProduct;

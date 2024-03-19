@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { BASE_URL } from '@env';
 
-import { deleteToken, getToken } from 'src/utils/auth';
+import { deleteToken, getToken } from 'src/utils';
 
 const headers: Record<string, string> = {
   Accept: 'application/vnd.github.v3+json'

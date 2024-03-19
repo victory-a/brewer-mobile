@@ -1,5 +1,5 @@
 import { ICartProduct, ICartState, ICartSum } from 'src/model/order.model';
-import { storeJSONData } from 'src/utils/storage';
+import { storeJSONData } from 'src/utils';
 
 export const initialState = {
   computedProductsTotal: 0,

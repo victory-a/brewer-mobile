@@ -4,10 +4,9 @@ import { getUserDetails, login, updateUserDetails, validateOTP } from '../reques
 
 import useAsync from 'src/hooks/useAsync';
 import { useAuthNavigation, useAuthNavigationRoute } from 'src/hooks/useTypedNavigation';
-import { getToken, setToken } from 'src/utils/auth';
+import { getToken, setToken, addNGCountryCode } from 'src/utils';
 import { IUpdateUser } from 'src/model/auth';
 import { useAuth } from 'src/context/AuthContext';
-import { addNGCountryCode } from 'src/utils/phone';
 
 interface IuseLogin {
   email: string;

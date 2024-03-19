@@ -5,7 +5,7 @@ import { ContainerView, SolidButton, Text, TextButton } from 'src/components';
 import { TickIcon } from 'src/components/Icons';
 
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
-import { formatCurrency } from 'src/utils/amount';
+import { formatCurrency } from 'src/utils';
 
 export const OrderCompleted = () => {
   const { navigate } = useAppNavigation();

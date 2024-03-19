@@ -3,7 +3,7 @@ import { View, SafeAreaView, ScrollView } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/native';
 
 import { ContainerView, SoftButton, Text, CartItem, SolidButton, Divider } from 'src/components';
-import { formatCurrency } from 'src/utils/amount';
+import { formatCurrency } from 'src/utils';
 import { FlashList } from '@shopify/flash-list';
 import { useCart } from 'src/context/CartContext';
 import { useCreateOrder } from 'src/lib/hooks/order.hooks';

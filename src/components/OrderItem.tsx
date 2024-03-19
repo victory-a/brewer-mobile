@@ -2,10 +2,10 @@ import { View } from 'react-native';
 
 import { Pressable } from './shared/Pressable';
 import { Text } from './shared/Text';
-import { formatDatetime } from 'src/utils/time';
+import { formatDatetime } from 'src/utils';
 import { TextButton } from './formElements/Button';
 import { Divider } from './shared/Divider';
-import { IOrderList, ISingleOrder } from 'src/model/order.model';
+import { IOrderList } from 'src/model/order.model';
 
 interface IOrderItem {
   order: IOrderList;

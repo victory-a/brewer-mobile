@@ -4,7 +4,7 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 
 import { ContainerView, SoftButton, Text, SolidButton, Divider } from 'src/components';
 import { AppNavigatorParams } from 'src/model/navigation.model';
-import { formatCurrency } from 'src/utils/amount';
+import { formatCurrency } from 'src/utils';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { useGetAnOrder } from 'src/lib/hooks/order.hooks';
 import { FlashList } from '@shopify/flash-list';

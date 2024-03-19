@@ -7,7 +7,7 @@ import { SolidButton, TextButton } from 'src/components/formElements/Button';
 import { useAuth } from 'src/context/AuthContext';
 import { useUpdateUser } from 'src/lib/hooks/auth';
 import { logoutUser } from 'src/lib/requests/auth.request';
-import { stripNGCountryCode } from 'src/utils/phone';
+import { stripNGCountryCode } from 'src/utils';
 
 const ProfileScreen = () => {
   const { removeUserFromStorage, userDetails } = useAuth();
