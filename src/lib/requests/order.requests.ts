@@ -14,6 +14,6 @@ export function createOrder(payload: any) {
   return client.post('/order/create', payload);
 }
 
-export function updateOrder(id: number) {
-  return client.patch(`/order/${id}`);
+export function updateOrder(payload: { id: number; status: OrderStatus }) {
+  return client.patch(`/order/${payload.id}`, { order_status: payload.status });
 }

@@ -1,9 +1,9 @@
 import { Alert } from 'react-native';
 
-import { createOrder, getOrder, getOrders } from '../requests/order.requests';
+import { createOrder, getOrder, getOrders, updateOrder } from '../requests/order.requests';
 
 import useAsync from 'src/hooks/useAsync';
-import { IOrderList, ISingleOrder } from 'src/model/order.model';
+import { IOrderList, ISingleOrder, OrderStatus } from 'src/model/order.model';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { useCart } from 'src/context/CartContext';
 
@@ -52,6 +52,23 @@ export function useCreateOrder() {
         navigate('Home');
         clearCart();
         Alert.alert('Order Created SuccessFully 🥳🥳');
+      })
+      .catch((err) => Alert.alert('Error', err.message));
+  });
+
+  return {
+    execute,
+    isLoading
+  };
+}
+
+export function useUpdateOrder(payload: { id: number; status: OrderStatus }) {
+  const { navigate } = useAppNavigation();
+  const { execute, isLoading } = useAsync(async () => {
+    updateOrder(payload)
+      .then((res) => {
+        navigate('Order-Completed', { orderId: res.data.id });
+        Alert.alert('Order Completed SuccessFully 🥳🥳');
       })
       .catch((err) => Alert.alert('Error', err.message));
   });

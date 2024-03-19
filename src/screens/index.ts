@@ -5,6 +5,7 @@ export * from './ProductDetailScreen';
 export * from './auth/ProfileScreen';
 export * from './SearchScreen';
 export * from './OrderDetails';
+export * from './CompletedOrderDetails';
 export * from './OrderCompleted';
 export * from './CartDetails';
 export * from './ViewCart';
