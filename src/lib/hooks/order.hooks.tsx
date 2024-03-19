@@ -5,6 +5,7 @@ import { createOrder, getOrder, getOrders } from '../requests/order.requests';
 import useAsync from 'src/hooks/useAsync';
 import { IOrderList, ISingleOrder } from 'src/model/order.model';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
+import { useCart } from 'src/context/CartContext';
 
 export function useGetOrders(orderStatus?: IOrderList['status']) {
   const { isLoading, value, execute } = useAsync(
@@ -43,11 +44,13 @@ export function useGetAnOrder() {
 
 export function useCreateOrder() {
   const { navigate } = useAppNavigation();
+  const { clearCart } = useCart();
 
   const { execute, isLoading } = useAsync(async (payload) => {
     createOrder(payload)
-      .then((res) => {
+      .then(() => {
         navigate('Home');
+        clearCart();
         Alert.alert('Order Created SuccessFully 🥳🥳');
       })
       .catch((err) => Alert.alert('Error', err.message));

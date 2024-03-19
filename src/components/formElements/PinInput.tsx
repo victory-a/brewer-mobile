@@ -36,7 +36,7 @@ const PinInput = ({
   );
 };
 
-export default PinInput;
+export { PinInput };
 
 const styles = StyleSheet.create({
   containerStyle: {

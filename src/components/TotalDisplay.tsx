@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Alert, View } from 'react-native';
 
 import { SolidButton, TextButton, Text, ContainerView } from 'src/components';
 import { useCart } from 'src/context/CartContext';
@@ -51,6 +51,7 @@ export function TotalDisplay({ product, selectedSize }: ITotalDisplay) {
 
     addItem({ product: { ...product, quantity, selectedSize, temporaryUUID } });
     navigate('AppBottomTabs');
+    Alert.alert('Product Added to Cart 😊');
   }
 
   return (

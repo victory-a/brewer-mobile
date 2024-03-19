@@ -9,7 +9,8 @@ import {
   Image,
   SelectSize,
   TotalDisplay,
-  StarIcon
+  StarIcon,
+  LoadingSpinner
 } from 'src/components';
 
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
@@ -43,7 +44,7 @@ export const ProductDetailScreen = () => {
 
   const [selectedSize, setSelectedSize] = React.useState<ISizes>('small');
 
-  if (isLoading) return <Text>Loading....</Text>;
+  if (isLoading) return <LoadingSpinner />;
 
   return (
     <SafeAreaView className="relative flex-1 bg-white">
