@@ -78,7 +78,7 @@ export function CartDetails() {
           <Divider />
 
           <View className="mb-7 flex-row items-center justify-between">
-            <Text>Total Payment</Text>
+            <Text>Grand Total</Text>
             <Text className="font-semibold">{formatCurrency(5.53)}</Text>
           </View>
 

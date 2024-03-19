@@ -23,7 +23,7 @@ type IAction =
   | { type: 'SET_DELIVERY_PRICE'; payload: { amount: number } }
   | {
       type: 'INCREASE_QUANTITY' | 'DECREASE_QUANTITY' | 'REMOVE_ITEM';
-      payload: { id: number };
+      payload: { temporaryUUID: string };
     }
   | {
       type: 'ADD_ITEM';
@@ -65,7 +65,7 @@ export function CartReducer(state: ICartState, action: IAction) {
 
     case actions.INCREASE_QUANTITY: {
       const updatedCartProducts = state.products.map((item) => {
-        if (item.id === action.payload.id) {
+        if (item.temporaryUUID === action.payload.temporaryUUID) {
           return { ...item, quantity: item.quantity + 1 };
         }
 
@@ -80,7 +80,9 @@ export function CartReducer(state: ICartState, action: IAction) {
     }
 
     case actions.DECREASE_QUANTITY: {
-      const targetProductIndex = state.products.findIndex((item) => item.id === action.payload.id);
+      const targetProductIndex = state.products.findIndex(
+        (item) => item.temporaryUUID === action.payload.temporaryUUID
+      );
 
       const targetProduct = state.products[targetProductIndex];
       const productsClone = [...state.products];
@@ -97,7 +99,9 @@ export function CartReducer(state: ICartState, action: IAction) {
     }
 
     case actions.REMOVE_ITEM: {
-      const updatedProducts = state.products.filter((product) => product.id !== action.payload.id);
+      const updatedProducts = state.products.filter(
+        (product) => product.temporaryUUID !== action.payload.temporaryUUID
+      );
 
       return {
         ...state,

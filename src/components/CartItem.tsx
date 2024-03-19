@@ -16,7 +16,10 @@ export function CartItem({ product, index }: { index: number; product: ICartProd
     <View className="mb-4 w-full">
       <View className="mb-1 flex-row justify-between">
         <Text className="text-base font-semibold">Pack {index + 1}</Text>
-        <TextButton labelClassName="text-red-300" onPress={() => remove({ id: product.id })}>
+        <TextButton
+          labelClassName="text-red-300"
+          onPress={() => remove({ temporaryUUID: product.temporaryUUID })}
+        >
           Remove
         </TextButton>
       </View>
@@ -42,7 +45,7 @@ export function CartItem({ product, index }: { index: number; product: ICartProd
           <TextButton
             className="h-[33] w-[33] items-center justify-center rounded-full border border-whisper bg-white align-middle"
             labelClassName="text-primary font-semibold text-lg"
-            onPress={() => decrease({ id: product.id })}
+            onPress={() => decrease({ temporaryUUID: product.temporaryUUID })}
             disabled={product.quantity === 1}
           >
             -
@@ -51,7 +54,7 @@ export function CartItem({ product, index }: { index: number; product: ICartProd
           <TextButton
             className="h-[33] w-[33] flex-row items-center justify-center rounded-full border border-whisper bg-white align-middle"
             labelClassName="text-primary font-semibold text-xl"
-            onPress={() => increase({ id: product.id })}
+            onPress={() => increase({ temporaryUUID: product.temporaryUUID })}
           >
             +
           </TextButton>

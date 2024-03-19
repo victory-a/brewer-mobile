@@ -7,6 +7,7 @@ import { useCart } from 'src/context/CartContext';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { IProduct, ISizes } from 'src/model/order.model';
 import { formatCurrency } from 'src/utils/amount';
+import { generateUUID } from 'src/utils/string';
 
 interface ITotalDisplay {
   product: IProduct;
@@ -46,7 +47,10 @@ export function TotalDisplay({ product, selectedSize }: ITotalDisplay) {
   const { addItem } = useCart();
 
   function handleAddToCart() {
-    addItem({ product: { ...product, quantity, selectedSize } });
+    // Cart can contain multiple instances of same product with same id and different variants, we differentiate the instances using temporaryUUID
+    const temporaryUUID = generateUUID();
+
+    addItem({ product: { ...product, quantity, selectedSize, temporaryUUID } });
     navigate('AppBottomTabs');
   }
 
