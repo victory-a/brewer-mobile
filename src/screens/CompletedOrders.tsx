@@ -2,8 +2,7 @@ import { RefreshControl, SafeAreaView, ScrollView, View } from 'react-native';
 import React from 'react';
 import { FlashList } from '@shopify/flash-list';
 
-import { EmptyCart } from 'src/components';
-import { OrderItem } from 'src/components/OrderItem';
+import { EmptyCart, OrderItem } from 'src/components';
 import { useGetOrders } from 'src/lib/hooks/order.hooks';
 
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';

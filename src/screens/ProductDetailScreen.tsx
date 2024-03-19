@@ -2,14 +2,19 @@ import React from 'react';
 import { SafeAreaView, StatusBar, ScrollView, View } from 'react-native';
 import { useRoute, RouteProp } from '@react-navigation/native';
 
-import { StarIcon } from 'src/components/Icons';
-import { Text, ContainerView, Divider, Image } from 'src/components';
+import {
+  Text,
+  ContainerView,
+  Divider,
+  Image,
+  SelectSize,
+  TotalDisplay,
+  StarIcon
+} from 'src/components';
 
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { AppNavigatorParams } from 'src/model/navigation.model';
 import { useGetAProduct } from 'src/lib/hooks/product.hooks';
-import { SelectSize } from 'src/components/SelectSize';
-import { TotalDisplay } from 'src/components/TotalDisplay';
 import { ISizes } from 'src/model/order.model';
 
 const coffeebg1 = require('../../assets/images/coffee-1.png');

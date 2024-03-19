@@ -6,8 +6,7 @@ import OrderTabNavigator from './OrderTabNavigator';
 
 import { HomeScreen, ProfileScreen, SearchScreen } from 'src/screens';
 
-import { HomeIcon, IconProps, OrdersIcon, ProfileIcon, SearchIcon } from 'src/components/Icons';
-import { Text } from 'src/components';
+import { Text, HomeIcon, IconProps, OrdersIcon, ProfileIcon, SearchIcon } from 'src/components';
 
 import { colors } from 'src/styles/theme';
 import { useCart } from 'src/context/CartContext';

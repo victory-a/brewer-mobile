@@ -1,8 +1,14 @@
 import React from 'react';
 import { Alert, Keyboard, SafeAreaView, TouchableWithoutFeedback, View } from 'react-native';
 
-import { ContainerView, PhoneInput, Text, TextInput } from 'src/components';
-import { SolidButton, TextButton } from 'src/components/formElements/Button';
+import {
+  ContainerView,
+  PhoneInput,
+  Text,
+  TextInput,
+  SolidButton,
+  TextButton
+} from 'src/components';
 
 import { useAuth } from 'src/context/AuthContext';
 import { useUpdateUser } from 'src/lib/hooks/auth';

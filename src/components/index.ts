@@ -1,46 +1,25 @@
-import { TextButton, SolidButton, SelectButton, SoftButton } from './formElements/Button';
-import { Checkbox } from './formElements/Checkbox';
-import { PhoneInput } from './formElements/PhoneInput';
-import PinInput from './formElements/PinInput';
-import { SearchInput } from './formElements/SearchInput';
-import { TextInput } from './formElements/TextInput';
-import { EmptyCart } from './EmptyCart';
+export * from './formElements/Button';
+export * from './formElements/Checkbox';
+export * from './formElements/PhoneInput';
+export * from './formElements/PinInput';
+export * from './formElements/SearchInput';
+export * from './formElements/TextInput';
+export * from './EmptyCart';
 
-import { ContainerView } from './shared/ContainerView';
-import { Pressable } from './shared/Pressable';
-import { Divider } from './shared/Divider';
-import { Text } from './shared/Text';
-import { Image } from './shared/Image';
-import { CoffeeCard } from './CoffeeCard';
-import { PromoBanner } from './PromoBanner';
-import { SelectLocation } from './SelectLocation';
-import { CartItem } from './CartItem';
+export * from './shared/ContainerView';
+export * from './shared/Pressable';
+export * from './shared/Divider';
+export * from './shared/Text';
+export * from './shared/Image';
+export * from './CoffeeCard';
+export * from './PromoBanner';
+export * from './SelectLocation';
+export * from './CartItem';
 
-import { LoadingSpinner } from './shared/Loaders';
-import { TotalDisplay } from './TotalDisplay';
-import { SelectSize } from './SelectSize';
+export * from './shared/Loaders';
+export * from './TotalDisplay';
+export * from './SelectSize';
+export * from './OrderItem';
+export * from './OrderDetailItem';
 
-export {
-  TextButton,
-  SolidButton,
-  SelectButton,
-  SoftButton,
-  Checkbox,
-  PhoneInput,
-  PinInput,
-  SearchInput,
-  TextInput,
-  ContainerView,
-  Pressable,
-  Image,
-  Text,
-  PromoBanner,
-  SelectLocation,
-  CoffeeCard,
-  EmptyCart,
-  CartItem,
-  Divider,
-  LoadingSpinner,
-  TotalDisplay,
-  SelectSize
-};
+export * from './Icons';

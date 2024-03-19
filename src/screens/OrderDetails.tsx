@@ -2,13 +2,19 @@ import React from 'react';
 import { View, SafeAreaView, ScrollView } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/native';
 
-import { ContainerView, SoftButton, Text, SolidButton, Divider } from 'src/components';
+import {
+  ContainerView,
+  SoftButton,
+  Text,
+  SolidButton,
+  Divider,
+  OrderDetailItem
+} from 'src/components';
 import { AppNavigatorParams } from 'src/model/navigation.model';
 import { formatCurrency } from 'src/utils';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { useGetAnOrder } from 'src/lib/hooks/order.hooks';
 import { FlashList } from '@shopify/flash-list';
-import { OrderDetailItem } from 'src/components/OrderDetailItem';
 
 const documentIcon = require('../../assets/icon/document.png');
 const editIcon = require('../../assets/icon/edit.png');
