@@ -1,14 +1,36 @@
 import React from 'react';
 import { SafeAreaView, View } from 'react-native';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { AppNavigatorParams } from 'src/model/navigation.model';
 
-import { ContainerView, SolidButton, Text, TextButton } from 'src/components';
-import { TickIcon } from 'src/components/Icons';
+import {
+  ContainerView,
+  LoadingSpinner,
+  SolidButton,
+  Text,
+  TextButton,
+  TickIcon
+} from 'src/components';
 
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
-import { formatCurrency } from 'src/utils/amount';
+import { useGetAnOrder } from 'src/lib/hooks/order.hooks';
+import { formatCurrency } from 'src/utils';
 
 export const OrderCompleted = () => {
+  const { params } = useRoute<RouteProp<AppNavigatorParams, 'Order-Completed'>>();
+
   const { navigate } = useAppNavigation();
+
+  const { execute, order, isLoading: isLoadingOrder } = useGetAnOrder();
+
+  React.useEffect(() => {
+    if (params?.orderId) {
+      execute(params?.orderId);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params?.orderId]);
+
+  if (isLoadingOrder) return <LoadingSpinner />;
 
   return (
     <SafeAreaView className="flex-1">
@@ -23,7 +45,7 @@ export const OrderCompleted = () => {
           <Text className="text-center text-base font-semibold text-secondary">Summary</Text>
           <View className="mt-2 flex-row items-center justify-between">
             <Text>Price</Text>
-            <Text>{formatCurrency(4.53)}</Text>
+            <Text>{formatCurrency(order?.totalPrice)}</Text>
           </View>
           <View className="mt-2 w-full flex-row items-center justify-between">
             <Text>Delivery </Text>
@@ -31,11 +53,18 @@ export const OrderCompleted = () => {
           </View>
           <View className="mt-2 w-full flex-row items-center justify-between">
             <Text className="font-semibold ">Total </Text>
-            <Text className="font-semibold  text-secondary">{formatCurrency(5.53)}</Text>
+            <Text className="font-semibold  text-secondary">
+              {formatCurrency(order?.totalPrice)}
+            </Text>
           </View>
         </View>
         <View className="mb-2 mt-auto w-full">
-          <SolidButton className="mb-5">View Order</SolidButton>
+          <SolidButton
+            className="mb-5"
+            onPress={() => navigate('Completed-Order-Details', { orderId: params.orderId })}
+          >
+            View Order
+          </SolidButton>
 
           <TextButton
             onPress={() => navigate('Home')}

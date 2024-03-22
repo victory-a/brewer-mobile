@@ -2,8 +2,7 @@ import { SafeAreaView, ScrollView, View, RefreshControl } from 'react-native';
 import React from 'react';
 import { FlashList } from '@shopify/flash-list';
 
-import { EmptyCart } from 'src/components';
-import { OrderItem } from 'src/components/OrderItem';
+import { EmptyCart, LoadingSpinner, OrderItem } from 'src/components';
 
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { useGetOrders } from 'src/lib/hooks/order.hooks';
@@ -26,6 +25,8 @@ const OngoingOrder = () => {
     execute().finally(() => setRefreshing(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (isLoading) return <LoadingSpinner />;
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -57,7 +58,7 @@ const OngoingOrder = () => {
           </View>
         </ScrollView>
       ) : (
-        <EmptyCart headline="Your cart is empty" />
+        <EmptyCart headline="Waiting on your order" />
       )}
     </SafeAreaView>
   );

@@ -1,26 +1,15 @@
-import { HomeScreen } from './HomeScreen';
-import { CompletedOrders } from './CompletedOrders';
-import { OngoingOrder } from './OngoingOrder';
-import { ProductDetailScreen } from './ProductDetailScreen';
-import { ProfileScreen } from './auth/ProfileScreen';
-import { SearchScreen } from './SearchScreen';
-import { OrderDetails } from './OrderDetails';
-import { OrderCompleted } from './OrderCompleted';
+export * from './HomeScreen';
+export * from './CompletedOrders';
+export * from './OngoingOrder';
+export * from './ProductDetailScreen';
+export * from './auth/ProfileScreen';
+export * from './SearchScreen';
+export * from './OrderDetails';
+export * from './CompletedOrderDetails';
+export * from './OrderCompleted';
+export * from './CartDetails';
+export * from './ViewCart';
 
-import { Login } from './auth/Login';
-import { ValidateOTP } from './auth/ValidateOTP';
-import { Welcome } from './auth/Welcome';
-
-export {
-  HomeScreen,
-  CompletedOrders,
-  OngoingOrder,
-  ProductDetailScreen,
-  ProfileScreen,
-  SearchScreen,
-  Login,
-  ValidateOTP,
-  Welcome,
-  OrderDetails,
-  OrderCompleted
-};
+export * from './auth/Login';
+export * from './auth/ValidateOTP';
+export * from './auth/Welcome';

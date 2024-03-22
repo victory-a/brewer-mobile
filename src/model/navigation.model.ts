@@ -11,7 +11,7 @@ export type AppNavigatorParams = {
   'Product-Detail-Screen': { productID: number };
   'Ongoing-Order-Details': { orderId: number };
   'Completed-Order-Details': { orderId: number };
-  'Order-Completed': undefined;
+  'Order-Completed': { orderId: number };
   'Cart-Details': undefined;
   Home: undefined;
   Search: undefined;

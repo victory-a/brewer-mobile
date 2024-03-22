@@ -4,11 +4,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { CartProvider } from 'src/context/CartContext';
 import BottomTabNavigator from './BottomTabNavigator';
 import SelectLocationModal from 'src/screens/Modals/SelectLocationModal';
-import { ProductDetailScreen } from 'src/screens/ProductDetailScreen';
-import { OrderCompleted, OrderDetails } from 'src/screens';
+import {
+  OrderCompleted,
+  OrderDetails,
+  ProductDetailScreen,
+  CompletedOrderDetails,
+  CartDetails
+} from 'src/screens';
 
 import { colors } from 'src/styles/theme';
-import CartDetails from 'src/screens/CartDetails';
 
 const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
@@ -33,6 +37,16 @@ const AppNavigator = () => {
         <Stack.Screen
           name="Ongoing-Order-Details"
           component={OrderDetails}
+          options={{
+            headerShown: true,
+            headerBackVisible: true,
+            headerTintColor: colors.secondary,
+            headerTitle: 'Order Details'
+          }}
+        />
+        <Stack.Screen
+          name="Completed-Order-Details"
+          component={CompletedOrderDetails}
           options={{
             headerShown: true,
             headerBackVisible: true,

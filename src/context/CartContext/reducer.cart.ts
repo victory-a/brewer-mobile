@@ -1,19 +1,11 @@
 import { ICartProduct, ICartState, ICartSum } from 'src/model/order.model';
-import { storeJSONData, getData, getJSONData, storeData, clearAll } from 'src/utils/storage';
-
-function getPersistedProducts() {
-  const products = getJSONData('CART_PRODUCTS').then((val) => val);
-  if (Array.isArray(products)) {
-    return products as ICartProduct[];
-  }
-  return [];
-}
+import { storeJSONData } from 'src/utils';
 
 export const initialState = {
   computedProductsTotal: 0,
   computedGrandTotal: 0,
-  deliveryPrice: 0.5,
-  products: getPersistedProducts()
+  deliveryPrice: 0,
+  products: []
 };
 
 export const actions = {
@@ -27,10 +19,11 @@ export const actions = {
 } as const;
 
 type IAction =
+  | { type: 'INITIALIZE'; payload: { products: ICartProduct[] } }
   | { type: 'SET_DELIVERY_PRICE'; payload: { amount: number } }
   | {
       type: 'INCREASE_QUANTITY' | 'DECREASE_QUANTITY' | 'REMOVE_ITEM';
-      payload: { id: number };
+      payload: { temporaryUUID: string };
     }
   | {
       type: 'ADD_ITEM';
@@ -38,7 +31,7 @@ type IAction =
     }
   | { type: 'CLEAR_CART' };
 
-function computeSum(state: ICartState): ICartSum {
+function computeSumAndPersist(state: ICartState): ICartSum {
   storeJSONData('CART_PRODUCTS', state.products);
 
   return {
@@ -51,20 +44,28 @@ function computeSum(state: ICartState): ICartSum {
 export function CartReducer(state: ICartState, action: IAction) {
   const { products, ...rest } = state;
   switch (action.type) {
+    case actions.INITIALIZE: {
+      return {
+        ...state,
+        ...computeSumAndPersist({ ...state, products: action.payload.products }),
+        products: action.payload.products
+      };
+    }
+
     case actions.ADD_ITEM: {
       const updatedCartProducts = [...state.products];
       updatedCartProducts.push(action.payload.product);
 
       return {
         ...state,
-        ...computeSum({ ...rest, products: updatedCartProducts }),
+        ...computeSumAndPersist({ ...rest, products: updatedCartProducts }),
         products: updatedCartProducts
       };
     }
 
     case actions.INCREASE_QUANTITY: {
       const updatedCartProducts = state.products.map((item) => {
-        if (item.id === action.payload.id) {
+        if (item.temporaryUUID === action.payload.temporaryUUID) {
           return { ...item, quantity: item.quantity + 1 };
         }
 
@@ -73,13 +74,15 @@ export function CartReducer(state: ICartState, action: IAction) {
 
       return {
         ...state,
-        ...computeSum({ ...rest, products: updatedCartProducts }),
+        ...computeSumAndPersist({ ...rest, products: updatedCartProducts }),
         products: updatedCartProducts
       };
     }
 
     case actions.DECREASE_QUANTITY: {
-      const targetProductIndex = state.products.findIndex((item) => item.id === action.payload.id);
+      const targetProductIndex = state.products.findIndex(
+        (item) => item.temporaryUUID === action.payload.temporaryUUID
+      );
 
       const targetProduct = state.products[targetProductIndex];
       const productsClone = [...state.products];
@@ -90,17 +93,19 @@ export function CartReducer(state: ICartState, action: IAction) {
 
       return {
         ...state,
-        ...computeSum({ ...rest, products: productsClone }),
+        ...computeSumAndPersist({ ...rest, products: productsClone }),
         products: productsClone
       };
     }
 
     case actions.REMOVE_ITEM: {
-      const updatedProducts = state.products.filter((product) => product.id !== action.payload.id);
+      const updatedProducts = state.products.filter(
+        (product) => product.temporaryUUID !== action.payload.temporaryUUID
+      );
 
       return {
         ...state,
-        ...computeSum({ ...rest, products: updatedProducts }),
+        ...computeSumAndPersist({ ...rest, products: updatedProducts }),
         products: updatedProducts
       };
     }
@@ -108,14 +113,15 @@ export function CartReducer(state: ICartState, action: IAction) {
     case actions.SET_DELIVERY_PRICE: {
       return {
         ...state,
-        ...computeSum({ ...state, deliveryPrice: action.payload.amount })
+        ...computeSumAndPersist({ ...state, deliveryPrice: action.payload.amount })
       };
     }
 
     case actions.CLEAR_CART: {
       return {
         ...state,
-        ...computeSum({ ...rest, products: [] })
+        ...computeSumAndPersist({ ...rest, products: [] }),
+        products: []
       };
     }
 

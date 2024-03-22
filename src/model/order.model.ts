@@ -26,6 +26,7 @@ export interface IProduct {
 }
 
 export interface ICartProduct extends IProduct {
+  temporaryUUID: string;
   quantity: number;
   selectedSize: ISizes;
 }

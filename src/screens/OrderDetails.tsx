@@ -2,13 +2,20 @@ import React from 'react';
 import { View, SafeAreaView, ScrollView } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/native';
 
-import { ContainerView, SoftButton, Text, SolidButton, Divider } from 'src/components';
+import {
+  ContainerView,
+  SoftButton,
+  Text,
+  SolidButton,
+  Divider,
+  OrderDetailItem,
+  LoadingSpinner
+} from 'src/components';
 import { AppNavigatorParams } from 'src/model/navigation.model';
-import { formatCurrency } from 'src/utils/amount';
+import { formatCurrency } from 'src/utils';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
-import { useGetAnOrder } from 'src/lib/hooks/order.hooks';
+import { useGetAnOrder, useUpdateOrder } from 'src/lib/hooks/order.hooks';
 import { FlashList } from '@shopify/flash-list';
-import { OrderDetailItem } from 'src/components/OrderDetailItem';
 
 const documentIcon = require('../../assets/icon/document.png');
 const editIcon = require('../../assets/icon/edit.png');
@@ -24,7 +31,7 @@ export function OrderDetails() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params?.orderId]);
 
-  const { execute, order } = useGetAnOrder();
+  const { execute, order, isLoading: isLoadingOrder } = useGetAnOrder();
 
   React.useEffect(() => {
     if (params?.orderId) {
@@ -33,9 +40,15 @@ export function OrderDetails() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params?.orderId]);
 
-  function handlePayment() {
-    navigate('Order-Completed');
+  const { execute: updateOrder, isLoading } = useUpdateOrder({
+    id: order?.id,
+    status: 'completed'
+  });
+  function markAsCompleted() {
+    updateOrder();
   }
+
+  if (isLoadingOrder) return <LoadingSpinner />;
 
   return (
     <SafeAreaView className="relative flex-1 bg-[#FDFDFD]">
@@ -77,22 +90,22 @@ export function OrderDetails() {
               <Text className="text-sm font-normal text-secondary line-through">
                 {formatCurrency(2.9)}
               </Text>
-              <Text className="font-semibold  text-secondary">{formatCurrency(1.0)}</Text>
+              <Text className="font-normal  text-secondary">{formatCurrency(1.0)}</Text>
             </View>
           </View>
 
           <Divider />
 
           <View className="mb-7 flex-row items-center justify-between">
-            <Text>Total Payment</Text>
-            <Text>{formatCurrency(5.53)}</Text>
+            <Text>Grand Total</Text>
+            <Text className="font-semibold">{formatCurrency(5.53)}</Text>
           </View>
 
-          <SolidButton onPress={handlePayment}> Mark As Completed</SolidButton>
+          <SolidButton onPress={markAsCompleted} loading={isLoading}>
+            Mark As Completed
+          </SolidButton>
         </ContainerView>
       </View>
     </SafeAreaView>
   );
 }
-
-export default OrderDetails;
