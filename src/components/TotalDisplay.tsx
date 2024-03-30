@@ -1,5 +1,6 @@
 import React from 'react';
 import { Alert, View } from 'react-native';
+import Toast from 'react-native-toast-message';
 
 import { SolidButton, TextButton, Text, ContainerView } from 'src/components';
 import { useCart } from 'src/context/CartContext';
@@ -7,6 +8,7 @@ import { useCart } from 'src/context/CartContext';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { IProduct, ISizes } from 'src/model/order.model';
 import { generateUUID, formatCurrency } from 'src/utils';
+import { displayToast } from 'src/utils/toast';
 
 interface ITotalDisplay {
   product: IProduct;
@@ -50,8 +52,8 @@ export function TotalDisplay({ product, selectedSize }: ITotalDisplay) {
     const temporaryUUID = generateUUID();
 
     addItem({ product: { ...product, quantity, selectedSize, temporaryUUID } });
+    displayToast({ message: 'Product Added to Cart 😊' });
     navigate('AppBottomTabs');
-    Alert.alert('Product Added to Cart 😊');
   }
 
   return (

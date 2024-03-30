@@ -6,13 +6,14 @@ import useAsync from 'src/hooks/useAsync';
 import { IOrderList, ISingleOrder, OrderStatus } from 'src/model/order.model';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { useCart } from 'src/context/CartContext';
+import { displayToast } from 'src/utils/toast';
 
 export function useGetOrders(orderStatus?: IOrderList['status']) {
   const { isLoading, value, execute } = useAsync(
     () =>
       getOrders(orderStatus)
         .then((res) => res.data)
-        .catch((err) => Alert.alert('Error', err.message)),
+        .catch((err) => displayToast({ type: 'error', message: err.message })),
     false
   );
 
@@ -34,7 +35,7 @@ export function useGetAnOrder() {
         })
         .catch((err) => {
           navigate('Orders');
-          Alert.alert('Error', err.message);
+          displayToast({ type: 'error', message: err.message });
         }),
     false
   );
@@ -51,9 +52,9 @@ export function useCreateOrder() {
       .then(() => {
         navigate('Home');
         clearCart();
-        Alert.alert('Order Created SuccessFully 🥳🥳');
+        displayToast({ message: 'Order Created SuccessFully 🥳🥳' });
       })
-      .catch((err) => Alert.alert('Error', err.message));
+      .catch((err) => displayToast({ type: 'error', message: err.message }));
   });
 
   return {
@@ -68,9 +69,9 @@ export function useUpdateOrder(payload: { id: number; status: OrderStatus }) {
     updateOrder(payload)
       .then((res) => {
         navigate('Order-Completed', { orderId: res.data.id });
-        Alert.alert('Order Completed SuccessFully 🥳🥳');
+        displayToast({ message: 'Order Updated SuccessFully' });
       })
-      .catch((err) => Alert.alert('Error', err.message));
+      .catch((err) => displayToast({ type: 'error', message: err.message }));
   });
 
   return {

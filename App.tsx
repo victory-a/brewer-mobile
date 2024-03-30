@@ -4,6 +4,7 @@ import SplashScreen from 'react-native-splash-screen';
 import { AuthProvider } from 'src/context/AuthContext';
 
 import { RootNavigator } from 'navigation/RootNavigator';
+import Toast from 'react-native-toast-message';
 
 function App() {
   React.useEffect(() => {
@@ -11,9 +12,12 @@ function App() {
   }, []);
 
   return (
-    <AuthProvider>
-      <RootNavigator />
-    </AuthProvider>
+    <>
+      <AuthProvider>
+        <RootNavigator />
+      </AuthProvider>
+      <Toast topOffset={60} visibilityTime={1500} />
+    </>
   );
 }
 

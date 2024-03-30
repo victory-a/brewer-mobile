@@ -14,6 +14,7 @@ import { useAuth } from 'src/context/AuthContext';
 import { useUpdateUser } from 'src/lib/hooks/auth';
 import { logoutUser } from 'src/lib/requests/auth.request';
 import { stripNGCountryCode } from 'src/utils';
+import { displayToast } from 'src/utils/toast';
 
 const ProfileScreen = () => {
   const { removeUserFromStorage, userDetails } = useAuth();
@@ -34,7 +35,7 @@ const ProfileScreen = () => {
       .then(removeUserFromStorage)
       .catch((err) => {
         console.error(err);
-        Alert.alert('Failed to logout');
+        displayToast({ type: 'error', message: 'Failed to logout' });
       });
   }
 
