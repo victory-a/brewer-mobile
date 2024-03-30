@@ -1,5 +1,4 @@
 import React, { PropsWithChildren } from 'react';
-import { Alert } from 'react-native';
 import { IUser } from 'src/model/auth';
 import { deleteToken } from 'src/utils';
 import { displayToast } from 'src/utils/toast';

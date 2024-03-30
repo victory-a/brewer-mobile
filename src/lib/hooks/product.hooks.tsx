@@ -1,5 +1,3 @@
-import { Alert } from 'react-native';
-
 import { getAProduct, getProducts } from '../requests/product.request';
 
 import useAsync from 'src/hooks/useAsync';

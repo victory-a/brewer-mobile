@@ -1,5 +1,3 @@
-import { Alert } from 'react-native';
-
 import { createOrder, getOrder, getOrders, updateOrder } from '../requests/order.requests';
 
 import useAsync from 'src/hooks/useAsync';
