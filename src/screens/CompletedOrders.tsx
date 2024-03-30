@@ -1,6 +1,7 @@
 import { RefreshControl, SafeAreaView, ScrollView, View } from 'react-native';
 import React from 'react';
 import { FlashList } from '@shopify/flash-list';
+import { useFocusEffect } from '@react-navigation/native';
 
 import { EmptyCart, LoadingSpinner, OrderItem } from 'src/components';
 import { useGetOrders } from 'src/lib/hooks/order.hooks';
@@ -15,10 +16,11 @@ export function CompletedOrders() {
 
   const { execute, isLoading, orders = [] } = useGetOrders('completed');
 
-  React.useEffect(() => {
-    execute();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  useFocusEffect(
+    React.useCallback(() => {
+      execute();
+    }, [])
+  );
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
