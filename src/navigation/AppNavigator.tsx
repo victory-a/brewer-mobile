@@ -3,7 +3,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { CartProvider } from 'src/context/CartContext';
 import BottomTabNavigator from './BottomTabNavigator';
-import SelectLocationModal from 'src/screens/Modals/SelectLocationModal';
 import {
   OrderCompleted,
   OrderDetails,
@@ -33,7 +32,6 @@ const AppNavigator = () => {
             headerTitle: 'Product Details'
           }}
         />
-        <Stack.Screen name="Select-Location-Modal" component={SelectLocationModal} />
         <Stack.Screen
           name="Ongoing-Order-Details"
           component={OrderDetails}

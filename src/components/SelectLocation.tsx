@@ -11,7 +11,7 @@ export function SelectLocation() {
   const { navigate } = useAppNavigation();
 
   return (
-    <Pressable hitSlop={5} onPress={() => navigate('Select-Location-Modal')}>
+    <Pressable hitSlop={5}>
       <Text className="text-sm text-light-gray">Location</Text>
       <View className="flex-row items-center">
         <Text className="mr-1 font-semibold text-[#DDDDDD]">Utako, Abuja</Text>
