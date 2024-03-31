@@ -28,8 +28,6 @@ const OngoingOrder = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (isLoading) return <LoadingSpinner />;
-
   return (
     <SafeAreaView className="flex-1 bg-white">
       {orders.length > 0 ? (
