@@ -17,7 +17,7 @@ export function CartItem({ product, index }: { index: number; product: ICartProd
       <View className="mb-1 flex-row justify-between">
         <Text className="text-base font-semibold">Pack {index + 1}</Text>
         <TextButton
-          labelClassName="text-red-300"
+          labelClassName="text-red-ish"
           onPress={() => remove({ temporaryUUID: product.temporaryUUID })}
         >
           Remove

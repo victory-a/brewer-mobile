@@ -67,7 +67,6 @@ export function useUpdateOrder(payload: { id: number; status: OrderStatus }) {
     updateOrder(payload)
       .then((res) => {
         navigate('Order-Completed', { orderId: res.data.id });
-        displayToast({ message: 'Order Updated SuccessFully' });
       })
       .catch((err) => displayToast({ type: 'error', message: err.message }));
   });

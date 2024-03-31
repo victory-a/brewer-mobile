@@ -44,6 +44,7 @@ export function OrderDetails() {
     id: order?.id,
     status: 'completed'
   });
+
   function markAsCompleted() {
     updateOrder();
   }

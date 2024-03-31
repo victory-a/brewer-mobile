@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Keyboard, SafeAreaView, TouchableWithoutFeedback, View } from 'react-native';
+import { Button, Keyboard, SafeAreaView, TouchableWithoutFeedback, View } from 'react-native';
 
 import {
   ContainerView,
@@ -14,7 +14,6 @@ import { useAuth } from 'src/context/AuthContext';
 import { useUpdateUser } from 'src/lib/hooks/auth';
 import { logoutUser } from 'src/lib/requests/auth.request';
 import { stripNGCountryCode } from 'src/utils';
-import { displayToast } from 'src/utils/toast';
 
 const ProfileScreen = () => {
   const { removeUserFromStorage, userDetails } = useAuth();
@@ -31,18 +30,18 @@ const ProfileScreen = () => {
   const { updateUser, isLoading } = useUpdateUser(formValues);
 
   function handleLogout() {
-    logoutUser()
-      .then(removeUserFromStorage)
-      .catch((err) => {
-        console.error(err);
-        displayToast({ type: 'error', message: 'Failed to logout' });
-      });
+    logoutUser().finally(removeUserFromStorage);
   }
+
+  const throwError = () => {
+    throw new Error('Example error triggered by ProfileScreen');
+  };
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} className=" bg-red-300">
       <SafeAreaView className="flex-1 bg-white">
         <ContainerView className="flex-1 pt-8">
+          <Button title="Throw Error" onPress={throwError} />
           <TextInput
             placeholder="Adnan Frimpong"
             label="Name"

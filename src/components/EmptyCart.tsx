@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 
-import { SolidButton, TextButton } from './formElements/Button';
+import { SolidButton } from './formElements/Button';
 import { ContainerView } from './shared/ContainerView';
 import { Text } from './shared/Text';
 import { Image } from './shared/Image';
@@ -9,13 +9,7 @@ import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 
 const emptyCart = require('../../assets/images/empty-cart.png');
 
-export function EmptyCart({
-  headline = '',
-  dummyOrder = false
-}: {
-  headline: string;
-  dummyOrder?: boolean;
-}) {
+export function EmptyCart({ headline = '' }: { headline: string }) {
   const { navigate } = useAppNavigation();
 
   return (
@@ -25,11 +19,6 @@ export function EmptyCart({
       <View className="mt-12 w-full max-w-[275]">
         <SolidButton onPress={() => navigate('Home')}>Place an Order 👀</SolidButton>
       </View>
-      {dummyOrder && (
-        <TextButton onPress={() => navigate('Ongoing-Order-Details')} className="mt-5">
-          View dummy order
-        </TextButton>
-      )}
     </ContainerView>
   );
 }
