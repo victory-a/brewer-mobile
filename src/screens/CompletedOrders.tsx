@@ -3,7 +3,7 @@ import React from 'react';
 import { FlashList } from '@shopify/flash-list';
 import { useFocusEffect } from '@react-navigation/native';
 
-import { EmptyCart, LoadingSpinner, OrderItem } from 'src/components';
+import { EmptyCart, OrderItem } from 'src/components';
 import { useGetOrders } from 'src/lib/hooks/order.hooks';
 
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
