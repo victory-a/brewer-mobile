@@ -20,6 +20,8 @@ import { FlashList } from '@shopify/flash-list';
 const documentIcon = require('../../assets/icon/document.png');
 const editIcon = require('../../assets/icon/edit.png');
 
+const deliveryPrice = 1.0;
+
 export function OrderDetails() {
   const { navigate } = useAppNavigation();
   const { params } = useRoute<RouteProp<AppNavigatorParams, 'Ongoing-Order-Details'>>();
@@ -83,7 +85,7 @@ export function OrderDetails() {
           <Text className="text-base font-semibold text-secondary">Payment Summary</Text>
           <View className="mt-4 flex-row items-center justify-between">
             <Text>Price</Text>
-            <Text>{formatCurrency(4.53)}</Text>
+            <Text>{formatCurrency(Number(order?.totalPrice))}</Text>
           </View>
           <View className="mt-4 flex-row items-center justify-between">
             <Text>Delivery Fee</Text>
@@ -91,7 +93,7 @@ export function OrderDetails() {
               <Text className="text-sm font-normal text-secondary line-through">
                 {formatCurrency(2.9)}
               </Text>
-              <Text className="font-normal  text-secondary">{formatCurrency(1.0)}</Text>
+              <Text className="font-normal  text-secondary">{formatCurrency(deliveryPrice)}</Text>
             </View>
           </View>
 
@@ -99,7 +101,9 @@ export function OrderDetails() {
 
           <View className="mb-7 flex-row items-center justify-between">
             <Text>Grand Total</Text>
-            <Text className="font-semibold">{formatCurrency(5.53)}</Text>
+            <Text className="font-semibold">
+              {formatCurrency(deliveryPrice + Number(order?.totalPrice))}
+            </Text>
           </View>
 
           <SolidButton onPress={markAsCompleted} loading={isLoading}>

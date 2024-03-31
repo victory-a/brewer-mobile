@@ -9,6 +9,8 @@ import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { useGetAnOrder } from 'src/lib/hooks/order.hooks';
 import { FlashList } from '@shopify/flash-list';
 
+const deliveryPrice = 1.0;
+
 export function CompletedOrderDetails() {
   const { navigate } = useAppNavigation();
   const { params } = useRoute<RouteProp<AppNavigatorParams, 'Ongoing-Order-Details'>>();
@@ -58,7 +60,7 @@ export function CompletedOrderDetails() {
           <Text className="text-base font-semibold text-secondary">Payment Summary</Text>
           <View className="mt-4 flex-row items-center justify-between">
             <Text>Price</Text>
-            <Text>{formatCurrency(4.53)}</Text>
+            <Text>{formatCurrency(Number(order?.totalPrice))}</Text>
           </View>
           <View className="mt-4 flex-row items-center justify-between">
             <Text>Delivery Fee</Text>
@@ -66,7 +68,7 @@ export function CompletedOrderDetails() {
               <Text className="text-sm font-normal text-secondary line-through">
                 {formatCurrency(2.9)}
               </Text>
-              <Text className="font-normal  text-secondary">{formatCurrency(1.0)}</Text>
+              <Text className="font-normal  text-secondary">{formatCurrency(deliveryPrice)}</Text>
             </View>
           </View>
 
@@ -74,7 +76,9 @@ export function CompletedOrderDetails() {
 
           <View className="mb-7 flex-row items-center justify-between">
             <Text>Grand Total</Text>
-            <Text className="font-semibold">{formatCurrency(order?.totalPrice)}</Text>
+            <Text className="font-semibold">
+              {formatCurrency(deliveryPrice + Number(order?.totalPrice))}
+            </Text>
           </View>
         </ContainerView>
       </View>
