@@ -2,13 +2,7 @@ import React from 'react';
 import { View, ScrollView, StatusBar, SafeAreaView, RefreshControl } from 'react-native';
 import { FlashList } from '@shopify/flash-list';
 
-import {
-  CoffeeCard,
-  PromoBanner,
-  ContainerView,
-  SelectLocation,
-  LoadingSpinner
-} from 'src/components';
+import { CoffeeCard, PromoBanner, ContainerView, SelectLocation } from 'src/components';
 import { colors } from 'src/styles/theme';
 import { useGetProducts } from 'src/lib/hooks/product.hooks';
 

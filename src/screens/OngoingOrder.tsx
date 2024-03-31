@@ -1,7 +1,7 @@
 import { SafeAreaView, ScrollView, View, RefreshControl } from 'react-native';
 import React from 'react';
 import { FlashList } from '@shopify/flash-list';
-
+import { useFocusEffect } from '@react-navigation/native';
 import { EmptyCart, LoadingSpinner, OrderItem } from 'src/components';
 
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
@@ -15,18 +15,18 @@ const OngoingOrder = () => {
 
   const { execute, isLoading, orders = [] } = useGetOrders('pending');
 
-  React.useEffect(() => {
-    execute();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  useFocusEffect(
+    React.useCallback(() => {
+      execute();
+      return () => {};
+    }, [])
+  );
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
     execute().finally(() => setRefreshing(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  if (isLoading) return <LoadingSpinner />;
 
   return (
     <SafeAreaView className="flex-1 bg-white">

@@ -7,6 +7,7 @@ import { useAuthNavigation, useAuthNavigationRoute } from 'src/hooks/useTypedNav
 import { getToken, setToken, addNGCountryCode } from 'src/utils';
 import { IUpdateUser } from 'src/model/auth';
 import { useAuth } from 'src/context/AuthContext';
+import { displayToast } from 'src/utils/toast';
 
 interface IuseLogin {
   email: string;
@@ -20,7 +21,7 @@ export function useLogin({ email, isAResendOTPRequest = false }: IuseLogin) {
     login({ email })
       .then(() => {
         if (isAResendOTPRequest) {
-          Alert.alert('Success', 'OTP has been sent to your email');
+          displayToast({ message: 'OTP has been sent to your email' });
         } else {
           navigate('Validate-OTP', { email });
         }
@@ -94,7 +95,7 @@ export function useUpdateUser(userDetails: Partial<IUpdateUser>) {
   const { execute, isLoading } = useAsync(() =>
     updateUserDetails(payload)
       .then(validateCurrentUser)
-      .catch((err) => Alert.alert('Error', err.message))
+      .catch((err) => displayToast({ type: 'error', message: err.message }))
   );
 
   return {

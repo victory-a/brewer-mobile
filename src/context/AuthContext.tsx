@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
-import { Alert } from 'react-native';
 import { IUser } from 'src/model/auth';
 import { deleteToken } from 'src/utils';
+import { displayToast } from 'src/utils/toast';
 
 interface ContextProps {
   userDetails: null | IUser;
@@ -20,7 +20,7 @@ function AuthProvider(props: PropsWithChildren) {
       setUserDetails(null);
     } catch (error) {
       console.error(error);
-      Alert.alert('Failed to logout');
+      displayToast({ type: 'error', message: 'Failed to logout' });
     }
   }
 

@@ -1,10 +1,9 @@
-import { Alert } from 'react-native';
-
 import { getAProduct, getProducts } from '../requests/product.request';
 
 import useAsync from 'src/hooks/useAsync';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { IProduct } from 'src/model/order.model';
+import { displayToast } from 'src/utils/toast';
 
 type IAllProducts = Pick<IProduct, 'id' | 'image' | 'name' | 'basePrice' | 'variant'>;
 
@@ -12,7 +11,7 @@ export function useGetProducts() {
   const { isLoading, value, execute } = useAsync(() =>
     getProducts()
       .then((res) => res.data)
-      .catch((err) => Alert.alert('Error', err.message))
+      .catch((err) => displayToast({ type: 'error', message: err.message }))
   );
 
   return {
@@ -30,7 +29,7 @@ export function useGetAProduct() {
         .then((res) => res.data)
         .catch((err) => {
           navigate('AppBottomTabs');
-          Alert.alert('Error', err.message);
+          displayToast({ type: 'error', message: err.message });
         }),
     false
   );
