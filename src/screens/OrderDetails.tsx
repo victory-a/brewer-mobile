@@ -42,13 +42,13 @@ export function OrderDetails() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params?.orderId]);
 
-  const { execute: updateOrder, isLoading } = useUpdateOrder({
+  const { execute: updateOrder, isLoading } = useUpdateOrder();
+  const payload = {
     id: order?.id,
     status: 'completed'
-  });
-
+  };
   function markAsCompleted() {
-    updateOrder();
+    updateOrder(payload);
   }
 
   if (isLoadingOrder) return <LoadingSpinner />;
@@ -107,7 +107,7 @@ export function OrderDetails() {
           </View>
 
           <SolidButton onPress={markAsCompleted} loading={isLoading}>
-            Mark As Completed
+            {isLoading ? 'Processing...' : 'Mark As Completed'}
           </SolidButton>
         </ContainerView>
       </View>

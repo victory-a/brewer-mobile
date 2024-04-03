@@ -61,9 +61,9 @@ export function useCreateOrder() {
   };
 }
 
-export function useUpdateOrder(payload: { id: number; status: OrderStatus }) {
+export function useUpdateOrder() {
   const { navigate } = useAppNavigation();
-  const { execute, isLoading } = useAsync(async () => {
+  const { execute, isLoading } = useAsync(async (payload) => {
     updateOrder(payload)
       .then((res) => {
         navigate('Order-Completed', { orderId: res.data.id });
