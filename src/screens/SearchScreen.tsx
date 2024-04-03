@@ -8,7 +8,7 @@ const SearchScreen = () => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} className=" bg-red-300">
       <SafeAreaView className="flex-1 bg-white">
         <ContainerView className="mt-3 flex-1">
-          <SearchInput placeholder="Search for coffee brand" />
+          <SearchInput placeholder="Search for coffee brand" autoFocus />
         </ContainerView>
       </SafeAreaView>
     </TouchableWithoutFeedback>
