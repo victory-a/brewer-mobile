@@ -85,7 +85,7 @@ export const SelectButton = ({ value = '', isSelected, ...props }: ISelectButton
 };
 
 type SoftButtonType = PressableProps & {
-  label: string;
+  label?: string;
   image?: ImageSourcePropType;
   additionalClassName?: string;
 };
@@ -101,7 +101,7 @@ export function SoftButton({ label, image, additionalClassName = '', ...props }:
           <Image defaultSource={image as number} />
         </View>
       )}
-      {label}
+      {label && label}
     </TextButton>
   );
 }

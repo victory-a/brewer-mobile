@@ -8,8 +8,8 @@ const headers: Record<string, string> = {
 };
 
 const client = axios.create({
-  // baseURL: 'https://7dac-102-91-71-43.ngrok-free.app',
-  baseURL: BASE_URL,
+  baseURL: 'https://f257-102-91-5-109.ngrok-free.app',
+  // baseURL: BASE_URL,
   timeout: 60000,
   headers
 });
