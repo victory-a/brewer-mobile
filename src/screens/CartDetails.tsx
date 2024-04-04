@@ -63,7 +63,7 @@ export function CartDetails() {
           <Text className="text-base font-semibold text-secondary">Payment Summary</Text>
           <View className="mt-4 flex-row items-center justify-between">
             <Text>Price</Text>
-            <Text>{formatCurrency(4.53)}</Text>
+            <Text>{formatCurrency(state.totalUnitPrice)}</Text>
           </View>
           <View className="mt-4 flex-row items-center justify-between">
             <Text>Delivery Fee</Text>
@@ -71,7 +71,9 @@ export function CartDetails() {
               <Text className="text-sm font-normal text-secondary line-through">
                 {formatCurrency(2.9)}
               </Text>
-              <Text className="font-normal text-secondary">{formatCurrency(1.0)}</Text>
+              <Text className="font-normal text-secondary">
+                {formatCurrency(state.deliveryPrice)}
+              </Text>
             </View>
           </View>
 
@@ -79,7 +81,7 @@ export function CartDetails() {
 
           <View className="mb-7 flex-row items-center justify-between">
             <Text>Grand Total</Text>
-            <Text className="font-semibold">{formatCurrency(5.53)}</Text>
+            <Text className="font-semibold">{formatCurrency(state.grandTotal)}</Text>
           </View>
 
           <SolidButton onPress={handlePayment} loading={isLoading}>

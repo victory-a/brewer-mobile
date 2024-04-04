@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, SafeAreaView, ScrollView } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/native';
+import { FlashList } from '@shopify/flash-list';
 
 import {
   ContainerView,
@@ -15,15 +16,14 @@ import { AppNavigatorParams } from 'src/model/navigation.model';
 import { formatCurrency } from 'src/utils';
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { useGetAnOrder, useUpdateOrder } from 'src/lib/hooks/order.hooks';
-import { FlashList } from '@shopify/flash-list';
+import { useCart } from 'src/context/CartContext';
 
 const documentIcon = require('../../assets/icon/document.png');
 const editIcon = require('../../assets/icon/edit.png');
 
-const deliveryPrice = 1.0;
-
 export function OrderDetails() {
   const { navigate } = useAppNavigation();
+  const { state } = useCart();
   const { params } = useRoute<RouteProp<AppNavigatorParams, 'Ongoing-Order-Details'>>();
 
   React.useLayoutEffect(() => {
@@ -93,7 +93,9 @@ export function OrderDetails() {
               <Text className="text-sm font-normal text-secondary line-through">
                 {formatCurrency(2.9)}
               </Text>
-              <Text className="font-normal  text-secondary">{formatCurrency(deliveryPrice)}</Text>
+              <Text className="font-normal  text-secondary">
+                {formatCurrency(state.deliveryPrice)}
+              </Text>
             </View>
           </View>
 
@@ -102,7 +104,7 @@ export function OrderDetails() {
           <View className="mb-7 flex-row items-center justify-between">
             <Text>Grand Total</Text>
             <Text className="font-semibold">
-              {formatCurrency(deliveryPrice + Number(order?.totalPrice))}
+              {formatCurrency(state.deliveryPrice + Number(order?.totalPrice))}
             </Text>
           </View>
 

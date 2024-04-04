@@ -56,6 +56,6 @@ export interface ICartState extends ICartSum {
 }
 export interface ICartSum {
   deliveryPrice: number;
-  computedProductsTotal: number;
-  computedGrandTotal: number;
+  totalUnitPrice: number;
+  grandTotal: number;
 }
