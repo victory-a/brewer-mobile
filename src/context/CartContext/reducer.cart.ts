@@ -2,9 +2,9 @@ import { ICartProduct, ICartState, ICartSum } from 'src/model/order.model';
 import { storeJSONData } from 'src/utils';
 
 export const initialState = {
-  computedProductsTotal: 0,
-  computedGrandTotal: 0,
-  deliveryPrice: 0,
+  totalUnitPrice: 0,
+  grandTotal: 0,
+  deliveryPrice: 1,
   products: []
 };
 
@@ -31,51 +31,64 @@ type IAction =
     }
   | { type: 'CLEAR_CART' };
 
+const calculateUnitPrice = (productInfo: ICartProduct) => {
+  let unitPrice = 0;
+  const sizePrice = productInfo.selectedSize;
+  if (sizePrice) {
+    unitPrice = Number(productInfo[sizePrice]) + Number(productInfo.basePrice);
+  } else {
+    unitPrice = Number(productInfo.basePrice);
+  }
+
+  return unitPrice;
+};
+
 function computeSumAndPersist(state: ICartState): ICartSum {
   storeJSONData('CART_PRODUCTS', state.products);
 
+  const totalUnitPrice = state.products.reduce((acc, product) => {
+    const productPrice = calculateUnitPrice(product);
+    return (acc += productPrice * product.quantity);
+  }, 0);
+
   return {
     deliveryPrice: state.deliveryPrice,
-    computedProductsTotal: 0,
-    computedGrandTotal: 0
+    totalUnitPrice,
+    grandTotal: totalUnitPrice + state.deliveryPrice
   };
 }
 
 export function CartReducer(state: ICartState, action: IAction) {
-  const { products, ...rest } = state;
   switch (action.type) {
     case actions.INITIALIZE: {
+      state.products = action.payload.products;
       return {
         ...state,
-        ...computeSumAndPersist({ ...state, products: action.payload.products }),
-        products: action.payload.products
+        ...computeSumAndPersist(state)
       };
     }
 
     case actions.ADD_ITEM: {
-      const updatedCartProducts = [...state.products];
-      updatedCartProducts.push(action.payload.product);
+      state.products.push(action.payload.product);
 
       return {
         ...state,
-        ...computeSumAndPersist({ ...rest, products: updatedCartProducts }),
-        products: updatedCartProducts
+        ...computeSumAndPersist(state)
       };
     }
 
     case actions.INCREASE_QUANTITY: {
-      const updatedCartProducts = state.products.map((item) => {
+      state.products.map((item) => {
         if (item.temporaryUUID === action.payload.temporaryUUID) {
-          return { ...item, quantity: item.quantity + 1 };
+          item.quantity = item.quantity + 1;
+          return item;
         }
-
         return item;
       });
 
       return {
         ...state,
-        ...computeSumAndPersist({ ...rest, products: updatedCartProducts }),
-        products: updatedCartProducts
+        ...computeSumAndPersist(state)
       };
     }
 
@@ -85,43 +98,39 @@ export function CartReducer(state: ICartState, action: IAction) {
       );
 
       const targetProduct = state.products[targetProductIndex];
-      const productsClone = [...state.products];
 
       if (targetProduct.quantity > 1) {
-        productsClone[targetProductIndex].quantity--;
+        state.products[targetProductIndex].quantity--;
       }
 
       return {
         ...state,
-        ...computeSumAndPersist({ ...rest, products: productsClone }),
-        products: productsClone
+        ...computeSumAndPersist(state)
       };
     }
 
     case actions.REMOVE_ITEM: {
-      const updatedProducts = state.products.filter(
-        (product) => product.temporaryUUID !== action.payload.temporaryUUID
-      );
+      state.products.filter((product) => product.temporaryUUID !== action.payload.temporaryUUID);
 
       return {
         ...state,
-        ...computeSumAndPersist({ ...rest, products: updatedProducts }),
-        products: updatedProducts
+        ...computeSumAndPersist(state)
       };
     }
 
     case actions.SET_DELIVERY_PRICE: {
+      state.deliveryPrice = action.payload.amount;
       return {
         ...state,
-        ...computeSumAndPersist({ ...state, deliveryPrice: action.payload.amount })
+        ...computeSumAndPersist(state)
       };
     }
 
     case actions.CLEAR_CART: {
+      state.products = [];
       return {
         ...state,
-        ...computeSumAndPersist({ ...rest, products: [] }),
-        products: []
+        ...computeSumAndPersist(state)
       };
     }
 

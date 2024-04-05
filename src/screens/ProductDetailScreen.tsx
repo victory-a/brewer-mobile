@@ -18,8 +18,6 @@ import { AppNavigatorParams } from 'src/model/navigation.model';
 import { useGetAProduct } from 'src/lib/hooks/product.hooks';
 import { ISizes } from 'src/model/order.model';
 
-const coffeebg1 = require('../../assets/images/coffee-1.png');
-
 const milk = require('../../assets/icon/milk.png');
 
 export const ProductDetailScreen = () => {
@@ -53,8 +51,7 @@ export const ProductDetailScreen = () => {
 
         <ContainerView className="relative mb-40 mt-2">
           <Image
-            defaultSource={(coffeebg1 as number) ?? (coffeebg1 as number)}
-            // defaultSource={(product?.image as number) ?? (coffeebg1 as number)}
+            source={{ uri: product?.image }}
             className="mx-auto mt-2 h-[226] w-full max-w-[315] rounded-2xl bg-contain"
             resizeMode="contain"
           />
@@ -67,7 +64,7 @@ export const ProductDetailScreen = () => {
               <Text>{product?.rating}</Text>
             </View>
 
-            <Image defaultSource={milk} className="h-[20] w-[20]" resizeMode="contain" />
+            <Image source={milk} className="h-[20] w-[20]" resizeMode="contain" />
           </View>
 
           <Divider additionalClassName="my-5" />

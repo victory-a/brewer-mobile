@@ -15,8 +15,10 @@ import {
 import { useAppNavigation } from 'src/hooks/useTypedNavigation';
 import { useGetAnOrder } from 'src/lib/hooks/order.hooks';
 import { formatCurrency } from 'src/utils';
+import { useCart } from 'src/context/CartContext';
 
 export const OrderCompleted = () => {
+  const { state } = useCart();
   const { params } = useRoute<RouteProp<AppNavigatorParams, 'Order-Completed'>>();
 
   const { navigate } = useAppNavigation();
@@ -49,12 +51,12 @@ export const OrderCompleted = () => {
           </View>
           <View className="mt-2 w-full flex-row items-center justify-between">
             <Text>Delivery </Text>
-            <Text className="text-secondary">{formatCurrency(1.0)}</Text>
+            <Text className="text-secondary">{formatCurrency(state.deliveryPrice)}</Text>
           </View>
           <View className="mt-2 w-full flex-row items-center justify-between">
             <Text className="font-semibold ">Total </Text>
             <Text className="font-semibold  text-secondary">
-              {formatCurrency(order?.totalPrice)}
+              {formatCurrency(state.deliveryPrice + Number(order?.totalPrice))}
             </Text>
           </View>
         </View>

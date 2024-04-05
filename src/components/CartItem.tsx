@@ -7,8 +7,6 @@ import { Image } from './shared/Image';
 import { useCart } from 'src/context/CartContext';
 import { ICartProduct } from 'src/model/order.model';
 
-const coffeebg1 = require('../../assets/images/coffee-1.png');
-
 export function CartItem({ product, index }: { index: number; product: ICartProduct }) {
   const { increase, decrease, remove } = useCart();
 
@@ -27,8 +25,7 @@ export function CartItem({ product, index }: { index: number; product: ICartProd
       <View className=" flex-row items-center justify-between">
         <View className="flex-row items-center space-x-3">
           <Image
-            // defaultSource={props.image || coffeebg1}
-            defaultSource={coffeebg1}
+            source={{ uri: product.image }}
             className="h-[54] w-[54] rounded-2xl"
             resizeMode="contain"
           />

@@ -21,7 +21,7 @@ function CoffeeCard({ name, variant, image, basePrice, id }: PartialProductDetai
       onPress={() => navigate('Product-Detail-Screen', { productID: id })}
     >
       <View className="rounded-lg bg-white" style={styles.shadow}>
-        <Image defaultSource={image as number} className="h-[100] w-full rounded-t-lg" />
+        <Image source={{ uri: image }} className="h-[100] w-full rounded-t-lg" />
         <View className="px-4 py-3">
           <Text className="text-sm font-semibold capitalize text-dark-lemon-green">{name}</Text>
           <Text className="mb-2 text-xs text-nobel">{variant}</Text>

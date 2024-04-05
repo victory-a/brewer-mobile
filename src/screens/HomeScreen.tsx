@@ -6,8 +6,6 @@ import { CoffeeCard, PromoBanner, ContainerView, SelectLocation } from 'src/comp
 import { colors } from 'src/styles/theme';
 import { useGetProducts } from 'src/lib/hooks/product.hooks';
 
-const coffeebg1 = require('../../assets/images/coffee-1.png');
-
 const HomeScreen = () => {
   const [refreshing, setRefreshing] = React.useState(false);
 
@@ -59,8 +57,7 @@ const HomeScreen = () => {
                     name: item.name,
                     basePrice: item.basePrice,
                     variant: item.variant,
-                    image: coffeebg1
-                    // image: item.image
+                    image: item.image
                   }}
                 />
               )}

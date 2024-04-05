@@ -7,9 +7,9 @@ import { displayToast } from 'src/utils/toast';
 
 type IAllProducts = Pick<IProduct, 'id' | 'image' | 'name' | 'basePrice' | 'variant'>;
 
-export function useGetProducts() {
+export function useGetProducts(query?: string) {
   const { isLoading, value, execute } = useAsync(() =>
-    getProducts()
+    getProducts(query)
       .then((res) => res.data)
       .catch((err) => displayToast({ type: 'error', message: err.message }))
   );

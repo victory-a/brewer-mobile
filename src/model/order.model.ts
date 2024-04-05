@@ -14,7 +14,7 @@ export interface IProduct {
   name: string;
   variant: string;
   basePrice: number;
-  image: HTMLImageElement;
+  image: string;
   createdAt: Date;
   updatedAt: Date;
   description: string;
@@ -56,6 +56,6 @@ export interface ICartState extends ICartSum {
 }
 export interface ICartSum {
   deliveryPrice: number;
-  computedProductsTotal: number;
-  computedGrandTotal: number;
+  totalUnitPrice: number;
+  grandTotal: number;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Svg, Path } from 'react-native-svg';
+import { Svg, Path, Line, G } from 'react-native-svg';
 
 import { colors } from 'src/styles/theme';
 
@@ -106,6 +106,26 @@ export const TickIcon = ({ width = 80, height = 80, color = colors.primary }: Ic
         d="M52.51 25.49a6.457 6.457 0 0 1-1.904-4.596c0-4.687-3.813-8.5-8.5-8.5a6.457 6.457 0 0 1-4.596-1.904C35.905 8.885 33.77 8 31.5 8s-4.405.884-6.01 2.49a6.457 6.457 0 0 1-4.596 1.904c-4.687 0-8.5 3.813-8.5 8.5a6.457 6.457 0 0 1-1.904 4.596C8.885 27.095 8 29.23 8 31.5s.884 4.405 2.49 6.01a6.457 6.457 0 0 1 1.904 4.596c0 4.687 3.813 8.5 8.5 8.5 1.736 0 3.368.676 4.596 1.904C27.095 54.115 29.23 55 31.5 55s4.405-.884 6.01-2.49a6.457 6.457 0 0 1 4.596-1.904c4.687 0 8.5-3.813 8.5-8.5 0-1.736.676-3.368 1.904-4.596C54.115 35.905 55 33.77 55 31.5s-.884-4.405-2.49-6.01Zm-9.309 2.303L31.147 39.768a3.276 3.276 0 0 1-4.612.005l-5.73-5.668a2.532 2.532 0 1 1 3.569-3.589l3.697 3.697a1.092 1.092 0 0 0 1.544 0l10.009-10.009a2.531 2.531 0 0 1 3.579 0l.004.004a2.53 2.53 0 0 1-.006 3.585Z"
         stroke-width="0"
       />
+    </Svg>
+  );
+};
+
+export const CancelIcon = ({ width = 22, height = 22, color = colors.black }: IconProps) => {
+  return (
+    <Svg
+      width={width}
+      height={height}
+      viewBox="0 0 64 64"
+      stroke-width="3"
+      stroke={color}
+      fill="none"
+    >
+      <G stroke-width="0"></G>
+      <G stroke-linecap="round" stroke-linejoin="round"></G>
+      <G>
+        <Line x1="8.06" y1="8.06" x2="55.41" y2="55.94"></Line>
+        <Line x1="55.94" y1="8.06" x2="8.59" y2="55.94"></Line>
+      </G>
     </Svg>
   );
 };
