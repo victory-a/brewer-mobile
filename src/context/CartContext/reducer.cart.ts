@@ -2,9 +2,9 @@ import { ICartProduct, ICartState, ICartSum } from 'src/model/order.model';
 import { storeJSONData } from 'src/utils';
 
 export const initialState = {
-  computedProductsTotal: 0,
-  computedGrandTotal: 0,
-  deliveryPrice: 0,
+  totalUnitPrice: 0,
+  grandTotal: 0,
+  deliveryPrice: 1,
   products: []
 };
 
@@ -31,13 +31,30 @@ type IAction =
     }
   | { type: 'CLEAR_CART' };
 
+const calculateUnitPrice = (productInfo: ICartProduct) => {
+  let unitPrice = 0;
+  const sizePrice = productInfo.selectedSize;
+  if (sizePrice) {
+    unitPrice = Number(productInfo[sizePrice]) + Number(productInfo.basePrice);
+  } else {
+    unitPrice = Number(productInfo.basePrice);
+  }
+
+  return unitPrice;
+};
+
 function computeSumAndPersist(state: ICartState): ICartSum {
   storeJSONData('CART_PRODUCTS', state.products);
 
+  const totalUnitPrice = state.products.reduce((acc, product) => {
+    const productPrice = calculateUnitPrice(product);
+    return (acc += productPrice * product.quantity);
+  }, 0);
+
   return {
     deliveryPrice: state.deliveryPrice,
-    computedProductsTotal: 0,
-    computedGrandTotal: 0
+    totalUnitPrice,
+    grandTotal: totalUnitPrice + state.deliveryPrice
   };
 }
 
