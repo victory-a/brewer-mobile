@@ -18,8 +18,6 @@ import { AppNavigatorParams } from 'src/model/navigation.model';
 import { useGetAProduct } from 'src/lib/hooks/product.hooks';
 import { ISizes } from 'src/model/order.model';
 
-const coffeebg1 = require('../../assets/images/coffee-1.png');
-
 const milk = require('../../assets/icon/milk.png');
 
 export const ProductDetailScreen = () => {

@@ -5,8 +5,6 @@ import { Text } from './shared/Text';
 import { Image } from './shared/Image';
 import { ISingleOrderProduct } from 'src/model/order.model';
 
-const coffeebg1 = require('../../assets/images/coffee-1.png');
-
 export function OrderDetailItem({ product }: { product: ISingleOrderProduct }) {
   return (
     <View className="mb-4 w-full">

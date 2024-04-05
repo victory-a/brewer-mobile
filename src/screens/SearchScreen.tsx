@@ -14,8 +14,6 @@ import { CoffeeCard, ContainerView, SearchInput, Text } from 'src/components';
 import { useGetProducts } from 'src/lib/hooks/product.hooks';
 import { colors } from 'src/styles/theme';
 
-const coffeebg1 = require('../../assets/images/coffee-1.png');
-
 const SearchScreen = () => {
   const [query, setQuery] = React.useState('');
   const [debouncedQuery, setDebouncedQuery] = React.useState('');
@@ -75,8 +73,7 @@ const SearchScreen = () => {
                         name: item.name,
                         basePrice: item.basePrice,
                         variant: item.variant,
-                        image: coffeebg1
-                        // image: item.image
+                        image: item.image
                       }}
                     />
                   )}
