@@ -14,7 +14,7 @@ export interface IProduct {
   name: string;
   variant: string;
   basePrice: number;
-  image: HTMLImageElement;
+  image: string;
   createdAt: Date;
   updatedAt: Date;
   description: string;

@@ -59,8 +59,7 @@ const HomeScreen = () => {
                     name: item.name,
                     basePrice: item.basePrice,
                     variant: item.variant,
-                    image: coffeebg1
-                    // image: item.image
+                    image: item.image
                   }}
                 />
               )}

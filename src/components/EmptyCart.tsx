@@ -14,7 +14,7 @@ export function EmptyCart({ headline = '' }: { headline: string }) {
 
   return (
     <ContainerView className="flex-1 items-center justify-center px-3 pt-2">
-      <Image defaultSource={emptyCart} className="min-h-[250] min-w-[250]" />
+      <Image source={emptyCart} className="min-h-[250] min-w-[250]" />
       <Text className="mt-2 text-center text-base text-secondary">{headline}</Text>
       <View className="mt-12 w-full max-w-[275]">
         <SolidButton onPress={() => navigate('Home')}>Place an Order 👀</SolidButton>
