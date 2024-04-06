@@ -18,5 +18,5 @@ export function updateUserDetails(payload: Partial<IUpdateUser>) {
 }
 
 export function logoutUser() {
-  return client.post('/auth/logout');
+  return client.get('/auth/logout');
 }
