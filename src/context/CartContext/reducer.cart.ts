@@ -59,36 +59,40 @@ function computeSumAndPersist(state: ICartState): ICartSum {
 }
 
 export function CartReducer(state: ICartState, action: IAction) {
+  const { products, ...rest } = state;
   switch (action.type) {
     case actions.INITIALIZE: {
-      state.products = action.payload.products;
       return {
         ...state,
-        ...computeSumAndPersist(state)
+        ...computeSumAndPersist({ ...state, products: action.payload.products }),
+        products: action.payload.products
       };
     }
 
     case actions.ADD_ITEM: {
-      state.products.push(action.payload.product);
+      const updatedCartProducts = [...state.products];
+      updatedCartProducts.push(action.payload.product);
 
       return {
         ...state,
-        ...computeSumAndPersist(state)
+        ...computeSumAndPersist({ ...rest, products: updatedCartProducts }),
+        products: updatedCartProducts
       };
     }
 
     case actions.INCREASE_QUANTITY: {
-      state.products.map((item) => {
+      const updatedCartProducts = state.products.map((item) => {
         if (item.temporaryUUID === action.payload.temporaryUUID) {
-          item.quantity = item.quantity + 1;
-          return item;
+          return { ...item, quantity: item.quantity + 1 };
         }
+
         return item;
       });
 
       return {
         ...state,
-        ...computeSumAndPersist(state)
+        ...computeSumAndPersist({ ...rest, products: updatedCartProducts }),
+        products: updatedCartProducts
       };
     }
 
@@ -98,39 +102,43 @@ export function CartReducer(state: ICartState, action: IAction) {
       );
 
       const targetProduct = state.products[targetProductIndex];
+      const productsClone = [...state.products];
 
       if (targetProduct.quantity > 1) {
-        state.products[targetProductIndex].quantity--;
+        productsClone[targetProductIndex].quantity--;
       }
 
       return {
         ...state,
-        ...computeSumAndPersist(state)
+        ...computeSumAndPersist({ ...rest, products: productsClone }),
+        products: productsClone
       };
     }
 
     case actions.REMOVE_ITEM: {
-      state.products.filter((product) => product.temporaryUUID !== action.payload.temporaryUUID);
+      const updatedProducts = state.products.filter(
+        (product) => product.temporaryUUID !== action.payload.temporaryUUID
+      );
 
       return {
         ...state,
-        ...computeSumAndPersist(state)
+        ...computeSumAndPersist({ ...rest, products: updatedProducts }),
+        products: updatedProducts
       };
     }
 
     case actions.SET_DELIVERY_PRICE: {
-      state.deliveryPrice = action.payload.amount;
       return {
         ...state,
-        ...computeSumAndPersist(state)
+        ...computeSumAndPersist({ ...state, deliveryPrice: action.payload.amount })
       };
     }
 
     case actions.CLEAR_CART: {
-      state.products = [];
       return {
         ...state,
-        ...computeSumAndPersist(state)
+        ...computeSumAndPersist({ ...rest, products: [] }),
+        products: []
       };
     }
 
