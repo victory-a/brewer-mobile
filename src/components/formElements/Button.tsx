@@ -32,9 +32,11 @@ export const SolidButton = ({
       {...props}
     >
       {loading ? (
-        <ActivityIndicator color="white" />
+        <View className="py-1">
+          <ActivityIndicator color="white" />
+        </View>
       ) : (
-        <Text className={`text-center text-base font-semibold text-white ${labelClassName}`}>
+        <Text className={`text-center text-lg font-semibold text-white ${labelClassName}`}>
           {children}
         </Text>
       )}
