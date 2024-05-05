@@ -8,8 +8,6 @@ const headers: Record<string, string> = {
 };
 
 const client = axios.create({
-  // baseURL: 'https://d847-102-91-5-200.ngrok-free.app',
-  // baseURL: 'http://ec2-3-88-159-36.compute-1.amazonaws.com:4000',
   baseURL: BASE_URL,
   timeout: 60000,
   headers

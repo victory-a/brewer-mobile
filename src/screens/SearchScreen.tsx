@@ -1,5 +1,4 @@
 import React from 'react';
-import { debounce } from 'lodash';
 import { FlashList } from '@shopify/flash-list';
 import {
   ActivityIndicator,
@@ -13,23 +12,10 @@ import {
 import { CoffeeCard, ContainerView, SearchInput, Text } from 'src/components';
 import { useGetProducts } from 'src/lib/hooks/product.hooks';
 import { colors } from 'src/styles/theme';
+import { useDebounceQuery } from 'src/hooks/useDebounceQuery';
 
 const SearchScreen = () => {
-  const [query, setQuery] = React.useState('');
-  const [debouncedQuery, setDebouncedQuery] = React.useState('');
-
-  // Debounce the query update
-  const updateQuery = React.useCallback(
-    debounce((value) => {
-      setDebouncedQuery(value);
-    }, 600),
-    []
-  );
-
-  // Update debounced query when input value changes
-  React.useEffect(() => {
-    updateQuery(query);
-  }, [query, updateQuery]);
+  const { query, setQuery, debouncedQuery } = useDebounceQuery();
 
   const { execute, isLoading, products = [] } = useGetProducts(debouncedQuery);
 
