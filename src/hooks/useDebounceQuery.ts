@@ -1,5 +1,5 @@
 import React from 'react';
-import { debounce } from 'lodash';
+import debounce from 'lodash/debounce';
 
 function useDebounceQuery(debounceTimeInMS = 600) {
   const [query, setQuery] = React.useState('');
@@ -7,7 +7,7 @@ function useDebounceQuery(debounceTimeInMS = 600) {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const updateQuery = React.useCallback(
-    debounce((value) => {
+    debounce((value: string) => {
       setDebouncedQuery(value);
     }, debounceTimeInMS),
     []
