@@ -6,7 +6,7 @@ The API for this can be found [here](https://github.com/victory-a/brewer-api)
 
 #### <a href="https://drive.google.com/file/d/1-DGrYjYO76hJZkrsEt6E4h_gnpNcgFUy/view?usp=sharing" target="_blank" rel="noopener noreferrer">Demo</a>
 
-##### Screenshots
+### Screenshots
 
 <img width="475" alt="Screenshot 2024-06-12 at 12 26 51 AM" src="https://github.com/victory-a/brewer-mobile/assets/28878343/30b31bb1-9040-4742-b92d-da4fd2a7901e">
 <img width="475" alt="Screenshot 2024-06-12 at 12 27 52 AM" src="https://github.com/victory-a/brewer-mobile/assets/28878343/f764f9ee-6f0a-41f3-8dcb-ccd951dd0dfe">
