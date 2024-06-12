@@ -2,9 +2,9 @@ This is a mobile app for a coffee vendor called Brewer. Users can log in, view t
 
 Technologies used React-native, tailwindcss, Node.js, AWS, Prisma, and PostgreSQL.
 
-Api repo [link](https://github.com/victory-a/brewer-api).
+[Api repo](https://github.com/victory-a/brewer-api).
 
-Design inspiration [link](https://www.figma.com/design/dBjpkOf7sVY5pkhMnsM5cm/Coffee-Shop-Mobile-App-Design-(Community)?node-id=0-1&t=Hx5sC01uq1j1qHDL-0)
+[Design inspiration](https://www.figma.com/design/dBjpkOf7sVY5pkhMnsM5cm/Coffee-Shop-Mobile-App-Design-(Community)?node-id=0-1&t=Hx5sC01uq1j1qHDL-0)
 
 #### <a href="https://drive.google.com/file/d/1-DGrYjYO76hJZkrsEt6E4h_gnpNcgFUy/view?usp=sharing" target="_blank" rel="noopener noreferrer">Demo</a>
 
